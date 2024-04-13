@@ -1,0 +1,64 @@
+/*General*/
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+header{
+    background-color:slateblue ;
+}
+
+/*IDs*/
+#logo {
+    width: 800px;
+    margin: auto;
+}
+
+#imgLogo{
+    margin: 20px;
+    border-radius: 100px;
+}
+
+#log_in{
+    width: 300px;
+    margin: 10px auto 10px auto;
+    
+}
+
+#formulario  {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+}
+
+#labelRegistro, #textBuscar, #submitBuscar {
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid slateblue;
+}
+
+#labelRegistro{
+    width: 150px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto ;
+    margin-right: auto;
+    background-color: red;
+    font-size: 20;
+    border-radius: 20px;
+}
+
+#buscar {
+    display: flex;
+}
+
+#textBuscar {
+    margin-left: 15px;
+    width: 80%;
+}
+
+#submitBuscar{
+    width: 10%;
+}
