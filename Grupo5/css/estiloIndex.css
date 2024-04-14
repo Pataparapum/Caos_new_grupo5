@@ -69,4 +69,16 @@ header{
     padding-right: 20px;
 }
 
+#nav li:hover{
+    color:black;
+}
+
+#carrusel{
+    background-color: aqua;
+}
+
+#masLeido {
+    background-color: blueviolet;
+}
+
 
