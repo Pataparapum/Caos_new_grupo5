@@ -43,54 +43,97 @@
         </div>
     </nav>    
 
-    
-
     <main>
-        <div class="container-fluid">
-            <div class="row">
-                <section id="carrusel" class="col-9">
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <h1>Titulo 1</h1>
-                          </div>
-                          <div class="carousel-item">
-                            <h1>Titulo 2</h1>
-                          </div>
-                          <div class="carousel-item">
-                            <h1>Titulo 3</h1>
-                          </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                    
-                </section>
-    
-    
-                <section id="masLeido" class="col-3">
-                    <h2>Lo mas leido</h2>
-                    <div>
-                        <p>img</p>
-                        <h3>titular</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat praesentium? Consequatur perspiciatis molestias accusamus possimus blanditiis atque quas necessitatibus cumque, a inventore, ab error et officiis id enim accusantium.</p>
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- Carrusel de imagenes-->
+                        <section class="carrusel-imagenes">
+                            <div id="carouselExampleCaptions" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="imagen-noticia" src="img/noticia1.jpg" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>PROTESTA</h5>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor. </p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="imagen-noticia" src="img/noticias2.jpg" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>INTERNACIONAL</h5>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor. </p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="imagen-noticia" src="img/deporte.jpg" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>DEPORTES</h5>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </section>
                     </div>
-                    <div>
-                        <p>img</p>
-                        <h3>titular</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat praesentium? Consequatur perspiciatis molestias accusamus possimus blanditiis atque quas necessitatibus cumque, a inventore, ab error et officiis id enim accusantium.</p>
+                    <div class="seccion-mas-leido col-md-4">
+                        <!-- seccion lo mas leido-->
+                        <section class="mas-leido" id="masLeido">
+                            <h2>Lo más leido</h2>
+                            <div>
+                                <h3>Policial</h3>
+                                <img class="imagen-mas-leido" src="img/policia.jpg" alt="">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat praesentium? Consequatur perspiciatis molestias accusamus possimus blanditiis atque quas necessitatibus cumque, a inventore, ab error et officiis id enim accusantium.</p>
+                            </div>
+                            <div>
+                                <h3>Ciencia</h3>
+                                <img class="imagen-mas-leido" src="img/ciencia.jpg" alt="">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat praesentium? Consequatur perspiciatis molestias accusamus possimus blanditiis atque quas necessitatibus cumque, a inventore, ab error et officiis id enim accusantium.</p>
+                            </div>
+                        </section>
                     </div>
-                </section>
+                </div>
             </div>
-            
-        </div>
-    </main>
+        </main>
+        <!--Pie de pagina-->
+        <section class="pie-de-pagina">
+        <footer class="container-fluid"></footer>
+            <div class="row">
+            <div class="col-md-4">
+                <h4>Sobre nosotros</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Contactanos</h4>
+                <p>Email: caosnews@gmail.com</p>
+                <p>Phone: +56242654454</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Siguenos</h4>
+                <ul class="social-media">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-X"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <p class="text-center">©CaosNews 2024</p>
+            </div>
+        </footer>
+        </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

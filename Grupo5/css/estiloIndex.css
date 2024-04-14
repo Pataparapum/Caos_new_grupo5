@@ -72,13 +72,58 @@ header{
 #nav li:hover{
     color:black;
 }
-
-#carrusel{
-    background-color: aqua;
+/*carrusel*/
+.carousel {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-#masLeido {
-    background-color: blueviolet;
+.imagen-noticia {
+    width: 100%;
+    height: auto;
+}
+/*seccion mas leido*/
+.seccion-mas-leido {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    float: none;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background-color: rgb(255, 255, 255);
 }
 
+.imagen-mas-leido {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+/*texto y fuentes*/
+.h3 {
+    color: rgb(247, 247, 247);
+    font-size: 30px;
+    text-align: center;
+}
 
+.p {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/*pie de pagina*/
+.pie-de-pagina {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: small;
+    padding: 10px 10px 30px 10px;
+    margin-top: 50px;
+    background-color: slateblue;
+}
+.social-media{
+    color: black;
+    .fab{
+        color: black;
+    }
+}
