@@ -32,22 +32,15 @@ header{
     height: 100%;
 }
 
-#labelRegistro, #textBuscar, #submitBuscar {
+#textBuscar, #submitBuscar {
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
     border: 1px solid slateblue;
 }
 
-#labelRegistro{
-    width: 150px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto ;
-    margin-right: auto;
-    background-color: red;
-    font-size: 20;
-    border-radius: 20px;
+#boton{
+    margin: 30px;
 }
 
 #buscar {
@@ -72,6 +65,7 @@ header{
 #nav li:hover{
     color:black;
 }
+
 /*carrusel*/
 .carousel {
     width: 100%;
@@ -101,6 +95,7 @@ header{
     height: auto;
     padding: 20px;
 }
+
 /*texto y fuentes*/
 .h3 {
     color: rgb(247, 247, 247);
@@ -112,6 +107,7 @@ header{
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /*pie de pagina*/
 .pie-de-pagina {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
