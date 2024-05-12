@@ -73,10 +73,9 @@ main{
 
 /*carrusel*/
 .carousel, #carrusel {
-    width: 100%;
-    max-width: 700px;
+    width: 800px;
     height: auto;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 20px;
     background-color: #F2DAC4;
 }
@@ -91,13 +90,13 @@ main{
     max-width: 700px;
     height: auto;
     float: none;
-    margin: 0 auto;
+    margin: auto;
     padding: 40px 30px;
     background-color: rgb(242, 218, 196);
 }
 
 .imagen-mas-leido {
-    width: 100%;
+    width: 500px;
     height: auto;
     padding: 20px;
 }
@@ -119,10 +118,14 @@ main{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     font-size: small;
-    padding: 10px 10px 30px 10px;
-    margin-top: 50px;
+    padding: 10px;
     background-color: #8C7764;
 }
+
+.footerItem{
+    padding-top: 25px;
+}
+
 .social-media{
     color: black;
     .fab{
