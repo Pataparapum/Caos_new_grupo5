@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estiloIndex.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
     <title>Caos New</title>
@@ -12,10 +13,12 @@
 
     <header class="container-fluid">
         <article class="row">
-            <section id="Logo" class="col-9 col-sm text-center text-lg-start"><img src="./img/Logo.jpg" alt="Logo" id="imgLogo"></section>
+            <section id="Logo" class="col-9 col-sm text-center text-lg-start">
+            <img src="./img/Logo.jpg" alt="Logo" id="imgLogo"></a>
+            </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
                 <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill">Login</button>
+                    <button type="button" id="boton" class="btn btn-danger rounded-pill"><a href="inicioSesion.html" target="_self" style="text-decoration: none; color: black;">Login</a></button>
                     <div id="buscar">
                         <input type="text" id="textBuscar">
                         <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -24,6 +27,8 @@
             </section>
         </article>
     </header>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #BFA995;"> 
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,12 +36,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
-                    <li class="border-end border-dark nav-item navbar-text">Nacional</li>
-                    <li class="border-end border-dark nav-item navbar-text">Policial</li>
-                    <li class="border-end border-dark nav-item navbar-text">Economía</li>
-                    <li class="border-end border-dark nav-item navbar-text">deportes</li>
-                    <li class="border-end border-dark nav-item navbar-text">Cienia y tecnología</li>
-                    <li class="border-end border-dark nav-item navbar-text">Internacional</li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="index.html" class="text-decoration-none">Inicio</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="noticiasCienciayTecnologia.html" class="text-decoration-none">Ciencia y tecnología</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="noticiasInternacionales.html" class="text-decoration-none">Internacional</a></li>
                 </ul>
             </div>
             
@@ -60,7 +65,7 @@
                                     <div class="carousel-item active">
                                         <img class="imagen-noticia" src="img/noticia1.jpg" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>PROTESTA</h5>
+                                            <h5>Medio Ambiente</h5>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor. </p>
                                         </div>
                                     </div>
@@ -104,24 +109,83 @@
                             </div>
                         </section>
                     </div>
+
+                    <!-- seccion lo mas leido-->
                     <div class="seccion-mas-leido col-md-4">
-                        <!-- seccion lo mas leido-->
+                        
                         <section class="mas-leido" id="masLeido">
                             <h2>Lo más leido</h2>
                             <div>
-                                <h3>Policial</h3>
+                                <h3>Medio Ambiente</h3>
                                 <img class="imagen-mas-leido" src="img/policia.jpg" alt="">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat praesentium? Consequatur perspiciatis molestias accusamus possimus blanditiis atque quas necessitatibus cumque, a inventore, ab error et officiis id enim accusantium.</p>
+                                <p>En medio de un clamor por la acción climática, una multitud se congrega frente al Congreso de Estados Unidos, exigiendo medidas urgentes para combatir el cambio climático. Con pancartas en alto y 
+                                    cánticos resonando en las calles, los manifestantes hacen un llamado claro y enérgico a los líderes políticos para que tomen medidas audaces en defensa del medio ambiente y del futuro del planeta..
+                                    <br><a href="1-noticiasClimaticas.html" class="btn btn-secondary bt-lg mt-3 ">Seguir leyendo</a></p>
                             </div>
                             <div>
+                                <br>
                                 <h3>Ciencia</h3>
                                 <img class="imagen-mas-leido" src="img/ciencia.jpg" alt="">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat praesentium? Consequatur perspiciatis molestias accusamus possimus blanditiis atque quas necessitatibus cumque, a inventore, ab error et officiis id enim accusantium.</p>
+                                <p>En un emocionante avance en el campo de la física, investigadores han logrado identificar una nueva partícula subatómica, lo que podría transformar significativamente nuestra comprensión del universo. 
+                                    Este descubrimiento, realizado en las instalaciones de alto calibre del Gran Colisionador de Hadrones, no solo desafía las teorías existentes sino que también abre puertas hacia nuevas posibilidades 
+                                    en la exploración de la materia oscura y las fuerzas fundamentales del cosmos..<a href="2-Ciencia.html" class="btn btn-secondary bt-lg mt-3">Seguir leyendo</a></p>
                             </div>
                         </section>
                     </div>
                 </div>
             </div>
+            <hr>
+            <!-- Formulario -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Contactanos</h2>
+                        <form class="row col-9 novalidate">
+                            <div class="col-6 mt-3">
+                                <label for="nombreInput" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombreInput" placeholder="Escribe tu nombre">
+                            </div>
+
+                            <div class="col-6 mt-3">
+                                <label for="apellidoInput" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellidoInput" placeholder="Escribe tu apellido">
+                            </div>
+
+                            <div class="col-6 mt-3">
+                                <label for="paisInput" class="form-label">País</label>
+                                <input type="text" class="form-control" id="paisInput" placeholder="Escribe tu país">
+                            </div>
+
+                            <div class="col-6 mt-3">
+                                <label for="ciudadInput" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" id="ciudadInput" placeholder="Escribe tu ciudad">
+                            </div>
+
+                            <div class="col-6 mt-3">
+                                <label for="emailInput" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailInput" placeholder="Escribe tu email">
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <label for="mensajeInput" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="mensajeInput" rows="5" placeholder="Escribe tu mensaje"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3 mt-3">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>¿Tienes una Historia que Contar? ¡Nosotros la Difundimos!</h2>
+                        <p>En CaosNews, estamos comprometidos con llevar las historias más relevantes e impactantes a nuestra audiencia. Si hay un evento o un tema que crees que merece atención, queremos saber de ello. Puedes contactarnos, estamos aquí para dar voz a tus historias y arrojar luz sobre las verdades que importan.</p>
+                        <img class="camaraP" src="img/periodista.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
         </main>
         <!--Pie de pagina-->
         <section class="pie-de-pagina">
@@ -129,12 +193,7 @@
             <div class="row">
             <div class="col-md-4 footerItem">
                 <h4>Sobre nosotros</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor.</p>
-            </div>
-            <div class="col-md-4 footerItem">
-                <h4>Contactanos</h4>
-                <p>Email: caosnews@gmail.com</p>
-                <p>Phone: +56242654454</p>
+                <p>"En nuestra página de noticias, nos dedicamos a brindar información actualizada y precisa, cubriendo una amplia gama de temas desde política y economía hasta deportes y entretenimiento. Nuestro compromiso es con la verdad y la transparencia, asegurando que cada artículo no solo informe, sino también enriquezca el entendimiento de nuestros lectores sobre los eventos que moldean nuestro mundo. Utilizamos una variedad de fuentes confiables y un equipo editorial dedicado a verificar cada hecho, lo que nos convierte en un recurso indispensable para quienes buscan comprender las complejidades de la actualidad global."</p>
             </div>
             <div class="col-md-4 footerItem">
                 <h4>Siguenos</h4>
@@ -144,10 +203,13 @@
                     <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>
+        </footer>
             <p class="text-center">©CaosNews 2024</p>
             </div>
         </footer>
         </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="form.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
