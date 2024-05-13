@@ -99,6 +99,23 @@ main{
     width: 500px;
     height: auto;
     padding: 20px;
+    border-radius: 5%;
+}
+
+/* imagen camara*/
+.camaraP {
+    width: 600px;
+    height: 400px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    border-radius: 5%;
+}
+
+@media (max-width: 768px) {
+    .camaraP {
+        width: 100%;
+        height: auto;
+    }
 }
 
 /*texto y fuentes*/
@@ -132,5 +149,3 @@ main{
         color: black;
     }
 }
-
-/*FORMULARIO*/
