@@ -19,7 +19,7 @@ $(document).ready(function () {
                 $('#email').focus();
 
             } else {
-                sessionStorage.setItem('usuario',user);
+                localStorage.setItem('usuario',user);
             }   
 
         }

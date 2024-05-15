@@ -1,15 +1,22 @@
 $(document).ready(function () {
     
-    if (sessionStorage.getItem('usuario')){
-        var user = sessionStorage.getItem('usuario');
+    if (localStorage.getItem('usuario')){
+        var user = localStorage.getItem('usuario');
         if (user != null) {
-            $('#boton').text(`${user}`);
+            $('#sesion').text(`${user}`);
             $('#boton').removeClass('btn-danger').addClass('btn-success')
-            $('#sesion').attr('diseable');
+            $('#sesion').attr('disabled');
+            $('#cerrarSesion').text("Log out...");
         }
+
+        $('#cerrarSesion').click(function () {
+            $('#sesion').text("Login");
+            $('#boton').removeClass('btn-success').addClass('btn-danger');
+            $('#sesion').removeAttr('disabled');
+            $('#cerrarSesion').text("");
+            localStorage.removeItem('usuario');
+        })
     }
 
-    
-    
     
 });
