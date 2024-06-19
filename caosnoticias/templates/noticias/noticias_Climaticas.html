@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html5>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caos New</title>
-    <link rel="stylesheet" href="./css/estilonoticias.css">
-    <link rel="stylesheet" href="./css/estiloIndex.css">
+    <link rel="stylesheet" href="{% static './css/estilonoticias.css' %}">
+    <link rel="stylesheet" href="{% static './css/estiloIndex.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
 </head>
@@ -14,7 +15,7 @@
     <header class="container-fluid">
         <article class="row">
             <section id="Logo" class="col-9 col-sm text-center text-lg-start">
-                <img src="./img/Logo.jpg" alt="Logo" id="imgLogo"></a>
+                <img src="{% static './img/Logo.jpg' %}" alt="Logo" id="imgLogo"></a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
                 <form action="#" id="formulario">
@@ -36,7 +37,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
-                    <li class="border-end border-dark nav-item navbar-text"><a href="index.html" class="text-decoration-none">Inicio</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'index'  %}" class="text-decoration-none">Inicio</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
@@ -51,11 +52,11 @@
         <div class="row">
             <div class="col-8 mx-auto">
                 <h1>Manifestantes exigen acción climática urgente frente al Congreso de Estados Unidos</h1><br>
-                <img class="imagen-protesta" src="img/imagenes noticias/protesta-1.jpg" alt="Descripción de la imagen" loading="lazy"><br>
+                <img class="imagen-protesta" src="{% static './img/imagenes noticias/protesta-1.jpg' %}" alt="Descripción de la imagen" loading="lazy"><br>
                 <p class="texto-protesta">Washington D.C. - En una muestra masiva de solidaridad y preocupación por el futuro del planeta, miles de personas se han congregado frente al Congreso de Estados Unidos para exigir medidas urgentes contra el cambio climático. Con pancartas en mano y cánticos resonando en las calles, los manifestantes han dejado claro que el tiempo para la acción es ahora.
                     La protesta, organizada por una coalición de grupos ambientalistas, ha reunido a personas de todas las edades y procedencias, desde jóvenes activistas hasta padres y abuelos preocupados por el legado que dejarán a las generaciones futuras."No podemos quedarnos de brazos cruzados mientras nuestro planeta se enfrenta a una crisis sin precedentes", declaró Sarah Johnson, una de las organizadoras del evento. "Es hora de que nuestros líderes políticos tomen medidas audaces para proteger nuestro medio ambiente y asegurar un futuro sostenible para todos"</p>
                 <br>
-                <img class="imagen-protesta" src="img/imagenes noticias/protesta-2.jpg" alt="Descripción de la imagen" loading="lazy">
+                <img class="imagen-protesta" src="{% static './img/imagenes noticias/protesta-2.jpg' %}" alt="Descripción de la imagen" loading="lazy">
                 <p class="texto-protesta">Entre las demandas de los manifestantes se encuentran la adopción de políticas más estrictas para reducir las emisiones de gases de efecto invernadero, la inversión en energías renovables y la protección de los ecosistemas vulnerables en todo el país. "El cambio climático no es solo una amenaza para el medio ambiente, sino también para nuestra salud, nuestra seguridad y nuestra economía", afirmó Michael Adams, otro participante en la protesta. "Es hora de que nuestros líderes dejen de ignorar esta realidad y comiencen a tomar medidas concretas para abordarla".
                 A medida que la protesta continuaba, los manifestantes se comprometían a mantener la presión sobre los legisladores y funcionarios gubernamentales para asegurar que sus demandas sean escuchadas y atendidas. "Hoy estamos aquí para levantar nuestras voces y exigir un cambio real", dijo Ana García, una estudiante universitaria que participaba en la protesta. "Pero esto es solo el comienzo. Continuaremos luchando hasta que veamos acciones concretas que protejan nuestro planeta y nuestro futuro"
                 Mientras tanto, dentro del Congreso, los legisladores han comenzado a debatir propuestas relacionadas con el cambio climático, aunque algunos críticos sostienen que se necesita un compromiso más firme y una acción más rápida para abordar verdaderamente la crisis ambiental que enfrenta el mundo.</p>
@@ -71,7 +72,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card" style="width: 20rem;">
-                    <img src="img/imagenes noticias/card-1.jpg" class="card-img-top rounded" alt="...">
+                    <img src="{% static './img/imagenes noticias/card-1.jpg' %}" class="card-img-top rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Ciudadanos Desafían el Mal Tiempo para Luchar por el Clima</h5>
                         <p class="card-text">A pesar de la lluvia torrencial, un grupo dedicado de activistas se reunió en el centro de la ciudad para exigir reformas ambientales. La determinación de los manifestantes resaltó la urgencia de su causa, incluso bajo condiciones climáticas adversas.</p>
@@ -82,7 +83,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card" style="width: 20rem;">
-                    <img src="img/imagenes noticias/card-2.jpg" class="card-img-top rounded" alt="...">
+                    <img src="{% static './img/imagenes noticias/card-2.jpg' %}" class="card-img-top rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Escalada de Violencia en Protestas Climáticas en Francia</h5>
                         <p class="card-text">Las protestas climáticas en Francia se tornaron violentas hoy, con choques entre policía y manifestantes en París. Barricadas y altercados reflejaron la creciente frustración por la lenta respuesta política al cambio climático, evidenciando profundas divisiones en la sociedad.</p>
@@ -92,7 +93,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card" style="width: 20rem;">
-                    <img src="img/imagenes noticias/card-3.jpg" class="card-img-top rounded" alt="...">
+                    <img src="{% static './img/imagenes noticias/card-3.jpg' %}" class="card-img-top rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Multitudes se Unen en Nantes para Exigir Acciones Contra el Cambio Climático</h5>
                         <p class="card-text">En un acto de solidaridad y preocupación por el futuro, cientos de personas se congregaron en el centro de Nantes para manifestarse contra la inacción gubernamental frente al cambio climático. A pesar del clima desfavorable, la plaza se llenó de voces unidas por una causa común.</p>
@@ -124,9 +125,9 @@
         </footer>
     </section>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./js/form.js"></script>
-    <script src="./js/getUser.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js' %}"></script>
+    <script src="{% static './js/form.js' %}"></script>
+    <script src="{% static './js/getUser.js' %}"></script>
+    <script src="{% static 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
