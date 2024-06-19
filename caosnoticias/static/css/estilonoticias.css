@@ -22,3 +22,11 @@
         line-height: 1.5;
     }
 }
+
+
+.imagen-salto {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
