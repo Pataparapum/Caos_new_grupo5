@@ -10,7 +10,7 @@ body {
 
 header {
     padding-top: 10px;
-    padding-bottom: 130px;
+    padding-bottom: 50px;
     pointer-events: none;
     user-select: none;
 
@@ -38,7 +38,7 @@ main {
 }
 
 #form {
-    height: 100%;
+    height: auto;
     display: flex;
     text-align: start;
     align-items: center;

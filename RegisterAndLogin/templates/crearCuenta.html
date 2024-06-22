@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static "./css/estiloInicioSesion.css" %}">
+    <link rel="stylesheet" href="{% static "./css/estiloRegistro.css" %}">
 </head>
 <body>
     <header>
@@ -21,18 +21,32 @@
         <form action="{% url "index" %}" class="form-group" id="form">
             <div id="formulario" class="mb-3">
                 <h1>Log in</h1>
+
+                <div class="formItem form-floating mb-3">
+                    <select type="text" id="typeUser" class="selectform form-select" placeholder="typeUser" aria-label="selecione el tipo de usuario">
+                        <option selected>selecione el tipo de usuario</option>
+                        <option value="read">Lector</option>
+                        <option value="write">Reportero</option>
+                    </select>
+                    <label for="typeUser" class="form-label">* Tipo de usuario</label>
+                </div>
+                <div class="formItem form-floating mb-3">
+                    <input type="text" id="user" class="inputform form-control" placeholder="user">
+                    <label for="user" class="form-label">* User name</label>
+                </div>
                 <div class="formItem form-floating mb-3">
                     <input type="email" id="email" class="inputform form-control" placeholder="name@example.com">
                     <label for="email" class="form-label">* Email</label>
                 </div>
                 <div class="formItem form-floating mb-3">
                     <input type="Password" id="password" class="inputform form-control" placeholder="Password">
-                    <label for="password" class="form-label">* Password</label>
+                    <label for="Password" class="form-label">* Password</label>
                 </div>
-
-                <div class="formItem">
-                    <p class="text-secondary">No tienes una cuenta, crea una <a href="{% url 'register' %}">aqui...</a></p>
+                <div class="formItem form-floating mb-3">
+                    <input type="text" id="empresa" class="inputform form-control" placeholder="Empresa" hidden="True">
+                    <label for="empresa" class="form-label">* Empresa</label>
                 </div>
+                
 
                 <div class="d-grid mx-auto mb-3" id="submit">
                     <input type="submit" id="inputSubmit" class="btn btn-outline-secondary btn-dark btn-lg rounded-pill" value="ingresar">
@@ -45,8 +59,17 @@
     </main>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    <script src="./js/inicioSesion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        $(document).on('change', '#typeUser', function(event) {
+            var user = $('#typeUser option:selected').val();
+            if (user == "write") {
+                $('#empresa').removeAttr('hidden');
+            } else {
+                $('#empresa').attr('hidden', 'True');
+            }
+        })
+
+    </script>
 </body>
 </html>
