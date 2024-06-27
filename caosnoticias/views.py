@@ -15,3 +15,6 @@ def noticiasCienciayTecnologia(request):
 def noticiasInternacionales(request):
     context = {}
     return render(request, 'noticias/noticiasInternacionales.html', context)
+def noticiasdeportes(request):
+    context = {}
+    return render(request, 'noticias/noticiasdeportes.html', context)
