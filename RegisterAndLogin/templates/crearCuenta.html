@@ -16,36 +16,21 @@
         </div>
     </header>
     <main>
+        {% if hola %}
+            <p> {{hola}} </p>
+        {% endif %}
         
-
-        <form action="{% url "index" %}" class="form-group" id="form">
+        <form action="{% url 'register' %}" class="form-group" id="form" method="POST">
+            {% csrf_token %}
             <div id="formulario" class="mb-3">
                 <h1>Log in</h1>
 
-                <div class="formItem form-floating mb-3">
-                    <select type="text" id="typeUser" class="selectform form-select" placeholder="typeUser" aria-label="selecione el tipo de usuario">
-                        <option selected>selecione el tipo de usuario</option>
-                        <option value="read">Lector</option>
-                        <option value="write">Reportero</option>
-                    </select>
-                    <label for="typeUser" class="form-label">* Tipo de usuario</label>
-                </div>
-                <div class="formItem form-floating mb-3">
-                    <input type="text" id="user" class="inputform form-control" placeholder="user">
-                    <label for="user" class="form-label">* User name</label>
-                </div>
-                <div class="formItem form-floating mb-3">
-                    <input type="email" id="email" class="inputform form-control" placeholder="name@example.com">
-                    <label for="email" class="form-label">* Email</label>
-                </div>
-                <div class="formItem form-floating mb-3">
-                    <input type="Password" id="password" class="inputform form-control" placeholder="Password">
-                    <label for="Password" class="form-label">* Password</label>
-                </div>
-                <div class="formItem form-floating mb-3">
-                    <input type="text" id="empresa" class="inputform form-control" placeholder="Empresa" hidden="True">
-                    <label for="empresa" class="form-label">* Empresa</label>
-                </div>
+                {% for field in form%}
+                    <div class="formItem form-floating mb-3">
+                        {{field}}
+                        <label for="{{field.auto_id}}" class="form-label">{{field.label}}</label>
+                    </div>
+                {% endfor %}
                 
 
                 <div class="d-grid mx-auto mb-3" id="submit">
@@ -64,9 +49,9 @@
         $(document).on('change', '#typeUser', function(event) {
             var user = $('#typeUser option:selected').val();
             if (user == "write") {
-                $('#empresa').removeAttr('hidden');
+                $('#divEmpresa').removeAttr('hidden');
             } else {
-                $('#empresa').attr('hidden', 'True');
+                $('#divEmpresa').attr('hidden', 'True');
             }
         })
 
