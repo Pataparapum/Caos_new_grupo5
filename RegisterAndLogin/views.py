@@ -1,24 +1,41 @@
 from django.shortcuts import render
-from .forms import Reader
+from .forms import Reader, Writer
 
 # Create your views here.+
 def register(request):
     form = Reader()
+    userType = request.POST["type"]
     context = {}
     
-    if (request.method != "POST"):
+    if (request.POST["type"] == "write"):
+        form = Writer()
         context = {
-            'form': form
+            'form':form,
+            'user':userType
         }
+        
         return render(request, "crearCuenta.html", context)
+    
+    elif (request.POST["type"] == "read"):
+        form = Reader()
+        context = {
+            'form':form,
+            'user':userType
+        }
+        
+        return render(request, "crearCuenta.html", context)
+        
     else:
         lista = []
         lista.append(request.POST["user"])
         lista.append(request.POST["email"])
         lista.append(request.POST["password"])
+        if userType == "createwrite": lista.append(request.POST["empresa"]) 
         
-        context = {'hola': lista,
-                   'form':form}
+        context = {
+            'hola': lista,
+        }
+            
         return render(request, "crearCuenta.html", context)
 
 def login(request):
@@ -26,4 +43,11 @@ def login(request):
     return render(request, "inicioSesion.html", context)
 
 def prueba(request):
-    return render(request, "prueba.html")
+    if(request.method != "POST"):
+        return render(request, "prueba.html")
+    else:
+        value = request.POST["type"]
+        context = {
+            'post':value
+        }
+        return render(request, "prueba.html", context)
