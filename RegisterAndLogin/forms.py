@@ -2,57 +2,67 @@ from django import forms
 from .models import ReadUser, WriteUser
 from django.forms import ModelForm
 
-class Reader(forms.Form):
-    user = forms.CharField(label="* User name", max_length=50, required=True,
-                             widget=forms.TextInput(
+class Reader(forms.Form, ModelForm):
+    
+    class Meta:
+        model = ReadUser
+        fields = ["userName", "email", "password"]
+        labels = {
+            "userName" : "* User Name",
+            "email" : "* Email",
+            "password" : "* Password"
+        }
+        widgets = {
+            "userName" : forms.TextInput(
                                  attrs={'class':'inputform form-control',
                                         'id': 'user',
                                         'placeholder': 'user'
-                                        }
-                             ))
-    email = forms.EmailField(label="* Email", max_length=50, required=True,
-                             widget=forms.EmailInput(
+                                        }),
+            "email" : forms.EmailInput(
                                  attrs={'class':'inputform form-control',
                                         'id':'email',
                                         'placeholder':'name@example.com'
-                                        }
-                             ))
-    password = forms.CharField(label="*password", max_length=50, required=True,
-                               widget=forms.PasswordInput(
+                                        }),
+            "password" : forms.PasswordInput(
                                    attrs={'class':'inputform form-control',
                                           'id':'password',
                                           'placeholder':'password',
                                           'name':'password'
-                                          }
-                               ))
+                                          })
+            
+        }
     
     
-class Writer(forms.Form):
-    user = forms.CharField(label="* User name", max_length=50, required=True,
-                             widget=forms.TextInput(
-                                 attrs={'class':'inputform form-control',
+class Writer(forms.Form, ModelForm):
+
+    class Meta:
+        model = WriteUser
+        fields = ['userName', 'email', 'empresa', 'password']
+        labels = {
+            "userName" : "* User Name",
+            "email" : "* Email",
+            "empresa" : "* Empresa",
+            "password" : "* Password"
+        }
+        widgets = {
+            "userName" : forms.TextInput(attrs={'class':'inputform form-control',
                                         'id': 'user',
                                         'placeholder': 'user'
-                                    }
-                             ))
-    email = forms.EmailField(label="* Email", max_length=50, required=True,
-                             widget=forms.EmailInput(
+                                    }),
+            "email" : forms.EmailInput(
                                  attrs={'class':'inputform form-control',
                                         'id':'email',
                                         'placeholder':'name@example.com'
-                                        }
-                             ))
-    password = forms.CharField(label="* password", max_length=50, required=True,
-                               widget=forms.PasswordInput(
-                                   attrs={'class':'inputform form-control',
-                                          'id':'password',
-                                          'placeholder':'password'
-                                          }
-                               ))
-    empresa = forms.CharField(label="* empresa", max_length=50, required=True,
-                              widget=forms.TextInput(
+                                        }),
+            "empresa" : forms.TextInput(
                                   attrs={'class':'inputform form-control',
                                          'id':'empresa',
                                          'placeholder':'empresa'
-                                         }
-                              ))
+                                         }),
+            "password" : forms.PasswordInput(
+                                   attrs={'class':'inputform form-control',
+                                          'id':'password',
+                                          'placeholder':'password'
+                                          })
+        }
+        

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import ReadUser, WriteUser
 from .forms import Reader, Writer
 
 # Create your views here.+
@@ -26,17 +27,16 @@ def register(request):
         return render(request, "crearCuenta.html", context)
         
     else:
-        lista = []
-        lista.append(request.POST["user"])
-        lista.append(request.POST["email"])
-        lista.append(request.POST["password"])
-        if userType == "createwrite": lista.append(request.POST["empresa"]) 
+        if (userType == "createwrite"):
+            
+            UserW = WriteUser.objects.all();
+            
         
-        context = {
-            'hola': lista,
-        }
+        
+
             
         return render(request, "crearCuenta.html", context)
+
 
 def login(request):
     context = {}
