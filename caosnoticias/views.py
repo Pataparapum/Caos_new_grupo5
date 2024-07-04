@@ -18,3 +18,6 @@ def noticiasInternacionales(request):
 def noticiasdeportes(request):
     context = {}
     return render(request, 'noticias/noticiasdeportes.html', context)
+def noticiaseconomia(request):
+    context = {}
+    return render(request, 'noticias/noticiaseconomia.html', context)
