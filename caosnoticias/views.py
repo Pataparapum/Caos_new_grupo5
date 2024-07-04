@@ -21,3 +21,5 @@ def noticiasdeportes(request):
 def noticiaseconomia(request):
     context = {}
     return render(request, 'noticias/noticiaseconomia.html', context)
+
+
