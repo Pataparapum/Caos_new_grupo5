@@ -29,7 +29,6 @@ def ver_mensajes(request):
     mensajes = ContactoFormModel.objects.all()
     return render(request, 'noticias/ver_mensajes.html', {'mensajes': mensajes})
 
-# Otras vistas...
 def noticias_climaticas(request):
     return render(request, 'noticias/noticias_climaticas.html')
 
@@ -47,3 +46,5 @@ def noticias_fisica_cuantica(request):
 
 def periodistas(request):
     return render(request, 'noticias/periodistas.html')
+
+

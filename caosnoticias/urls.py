@@ -1,11 +1,12 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from django.urls import path, include
+
 
 urlpatterns = [
     path('contacto/', views.contacto, name='contacto'),
     path('index/', views.index, name='index'),
-
     path('noticias_climaticas/', views.noticias_climaticas, name='noticias_climaticas'),
     path('noticias_ciencia_tecnologia/', views.noticias_ciencia_tecnologia, name='noticias_ciencia_tecnologia'),
     path('noticias_internacionales/', views.noticias_internacionales, name='noticias_internacionales'),
