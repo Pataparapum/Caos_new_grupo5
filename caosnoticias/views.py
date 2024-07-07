@@ -20,6 +20,7 @@ def contacto(request):
         form = ContactoForm()
     return render(request, 'noticias/contacto.html', {'form': form})
 
+@login_required
 def formulario_exitoso(request):
     return render(request, 'noticias/formulario_exitoso.html')
 

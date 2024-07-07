@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('contacto/', views.contacto, name='contacto'),
     path('index/', views.index, name='index'),
+
     path('noticias_climaticas/', views.noticias_climaticas, name='noticias_climaticas'),
     path('noticias_ciencia_tecnologia/', views.noticias_ciencia_tecnologia, name='noticias_ciencia_tecnologia'),
     path('noticias_internacionales/', views.noticias_internacionales, name='noticias_internacionales'),
@@ -16,3 +17,4 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'),
     path('periodistas/', views.periodistas, name='periodistas'),
 ]
+
