@@ -8,3 +8,4 @@ def register(request):
 def login(request):
     context = {}
     return render(request, "inicioSesion.html", context)
+    
