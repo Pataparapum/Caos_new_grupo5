@@ -5,7 +5,7 @@ class ReadUser(models.Model):
     id_ReadUser = models.AutoField(db_column="idReadUser", primary_key=True)
     userName = models.CharField(max_length=50)
     email = models.CharField(max_length=50, blank=False, null=False, unique=True)
-    password = models.CharField(max_length=50, null=False)
+    password = models.CharField(max_length=100000, null=False)
     
     class Meta:
         db_table = "Read Users"
@@ -21,7 +21,7 @@ class WriteUser(models.Model):
     userName = models.CharField(max_length=50)
     email = models.CharField(max_length=50, blank=False, null=False, unique=True)
     empresa = models.CharField(max_length=50)
-    password = models.CharField(max_length=50, null=False)
+    password = models.CharField(max_length=100000, null=False)
     
     class Meta:
         db_table = "Write Users"

@@ -16,8 +16,8 @@
         </div>
     </header>
     <main>
-        {% if hola %}
-            <p> {{hola}} </p>
+        {% if mensaje %}
+            <p> {{mensaje}} </p>
         {% endif %}
         
         <form action="{% url 'register' %}" class="form-group" id="form" method="POST">

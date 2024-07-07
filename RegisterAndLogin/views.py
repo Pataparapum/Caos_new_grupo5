@@ -1,10 +1,14 @@
-from django.shortcuts import render
-from .models import ReadUser, WriteUser
+from django.shortcuts import render, redirect
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from .forms import Reader, Writer
 
-# Create your views here.+
+# Create your views here.
+
 def register(request):
-    form = Reader()
+    if (request.method != 'POST'):
+        return redirect('index')
+    
     userType = request.POST["type"]
     context = {}
     
@@ -28,14 +32,64 @@ def register(request):
         
     else:
         if (userType == "createwrite"):
-            
-            UserW = WriteUser.objects.all();
-            
-        
-        
-
-            
-        return render(request, "crearCuenta.html", context)
+            form = Writer(request.POST)
+            if form.is_valid():
+                try:
+                    validate_email(request.POST['email'])
+                except ValidationError:
+                    form = Writer()
+                    mensaje = 'Formato de email invalido'
+                    context = {
+                        'form' : form,
+                        'mensaje' : mensaje,
+                        'user' : 'write'
+                    }
+                    return render (request, 'crearCuenta.html', context)
+                    
+                else:
+                    form.save()
+                    form = Writer()
+                    return redirect('index')
+            else:
+                form = Writer()
+                mensaje = 'los datos no son validos'
+                context = {
+                    'mensaje': mensaje,
+                    'form':form,
+                    'user':'write'
+                }
+                return render(request, 'crearCuenta.html', context)
+                    
+        elif (userType == "createread"):
+            form = Reader(request.POST)
+            if form.is_valid():
+                try:
+                    validate_email(request.POST['email'])
+                except ValidationError:
+                    form = Reader()
+                    mensaje = 'Formato de email invalido'
+                    context = {
+                        'form' : form,
+                        'mensaje' : mensaje,
+                        'user' : 'read'
+                    }
+                    return render (request, 'crearCuenta.html', context)
+                    
+                else:
+                    form.save()
+                    form = Reader()
+                    return redirect('index')
+            else:
+                form = Writer()
+                mensaje = 'los datos no son validos'
+                context = {
+                    'mensaje': mensaje,
+                    'form':form,
+                    'user':'write'
+                }
+                return render(request, 'crearCuenta.html', context)
+                
+    return render(request, 'crearCuenta.html', context)
 
 
 def login(request):
@@ -43,6 +97,8 @@ def login(request):
     return render(request, "inicioSesion.html", context)
 
 def prueba(request):
+    
+    
     if(request.method != "POST"):
         return render(request, "prueba.html")
     else:
