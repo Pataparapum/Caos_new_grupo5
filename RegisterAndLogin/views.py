@@ -43,11 +43,11 @@ def login(request):
     return render(request, "inicioSesion.html", context)
 
 def prueba(request):
-    if(request.method != "POST"):
-        return render(request, "prueba.html")
-    else:
+    if request.method == "POST":
         value = request.POST["type"]
         context = {
-            'post':value
+            'post': value
         }
-        return render(request, "prueba.html", context)
+    else:
+        return render(request, "prueba.html")
+    return render(request, "prueba.html", context)

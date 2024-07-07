@@ -1,11 +1,12 @@
+{% load static%}
 <!DOCTYPE html5>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caos New</title>
-    <link rel="stylesheet" href="./css/estilonoticias.css">
-    <link rel="stylesheet" href="./css/estiloIndex.css">
+    <link rel="stylesheet" href="{% static './css/estilonoticias.css' %}">
+    <link rel="stylesheet" href="{% static './css/estiloIndex.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
 </head>
@@ -14,11 +15,13 @@
     <header class="container-fluid">
         <article class="row">
             <section id="Logo" class="col-9 col-sm text-center text-lg-start">
-                <img src="./img/Logo.jpg" alt="Logo" id="imgLogo"></a>
+                <a href="{% url 'index' %}">
+                    <img src="{% static './img/Logo.jpg' %}" alt="Logo" id="imgLogo">
+                </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
                 <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill"><a id="sesion" href="inicioSesion.html" target="_self" style="text-decoration: none; color: black;">Login</a></button>
+                    <button type="button" id="boton" class="btn btn-danger rounded-pill"><a href="inicioSesion.html" target="_self" style="text-decoration: none; color: black;">Login</a></button>
                     <div id="buscar">
                         <input type="text" id="textBuscar">
                         <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -29,24 +32,26 @@
     </header>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #BFA995;"> 
+    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #ffffff;"> 
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
-                    <li class="border-end border-dark nav-item navbar-text"><a href="index.html" class="text-decoration-none">Inicio</a></li>
+                    <li class="border-end border-dark nav-item navbar-text">
+                        <a href="{% url 'index' %}" class="text-decoration-none">Inicio</a>
+                    </li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="noticiasCienciayTecnologia.html" class="text-decoration-none">Ciencia y tecnología</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="noticiasInternacionales.html" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_ciencia_tecnologia' %}" class="text-decoration-none">Ciencia y tecnología</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_internacionales' %}" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'periodistas' %}" class="text-decoration-none">Nuestro equipo</a></li>
                 </ul>
             </div>
         </div>
-    </nav>    
-
+    </nav>
     <!-- Carrusel de noticias -->
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
@@ -56,13 +61,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active" style="max-height:700px;" >
-            <img src="img/noticiasinternacionales/noticiacarrusel1.jpg" class="d-block w-100" alt="...">
+            <img src="{% static 'img/imagenes economia/Economiasystem.jpg' %}" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item" style="max-height:700px;" >
-            <img src="img/noticiasinternacionales/noticiacarrusel2.jpg" class="d-block w-100" alt="...">
+            <img src="{% static 'img/imagenes economia/Economia 1.jpg' %}" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item" style="max-height:700px;" >
-            <img src="img/noticiasinternacionales/noticiacarrusel3.jpg" class="d-block w-100" alt="...">
+            <img src="{% static 'img/imagenes economia/Economia 2.jpg' %}" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -78,18 +83,18 @@
     <!-- Ejemplo -->
     <div class="container-fluid bg-light py-5 text-center">
         <div class="row"></div>
-        <h1>Internacional</h1>
+        <h1>Economia</h1>
         </div>
     </div>
 
     <div class="container mt-5">
-        <h2 class="text-center">Noticia principal</h2>
+        <h2 class="text-center">Systema economia mundial</h2>
         <div class="row">
-            <div class="col"></div>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa nemo voluptas laudantium sequi nesciunt hic pariatur! Quasi repudiandae delectus cupiditate voluptates voluptas odio eos, maxime omnis ipsum! Suscipit, cupiditate quisquam?
+            <div class="col-8">
+                <img src="{% static 'img/imagenes economia/Economia 3.jpg' %}" alt="">
             </div>
-            <div class="col"></div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea praesentium non architecto eaque molestias exercitationem modi nisi ad ab quod, id enim! Dolorem cum sed nesciunt provident, consequuntur odit possimus!
+            <div class="col-4">
+                <p>.</p>
             </div>
         </div>
     </div>
@@ -99,12 +104,12 @@
         <div class="card mb-3 border-0 ">
             <div class="row g-0">
                 <div class="col-md-5">
-                    <img src="imagenes/imagen2.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes economia/Economia 5.jpg' %}" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Noticia 1</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quo voluptatibus harum rerum odio perspiciatis, culpa est assumenda doloremque eaque distinctio praesentium, totam commodi expedita nemo porro repudiandae dolorem beatae!</p>
+                        <h2 class="card-title">Economia 1</h2>
+                        <p>Aqui pueden aprender un poco de economia mundial, como funciona etc...</p>   
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
@@ -118,15 +123,15 @@
             <div class="row g-0">
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Noticia 2</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quo voluptatibus harum rerum odio perspiciatis, culpa est assumenda doloremque eaque distinctio praesentium, totam commodi expedita nemo porro repudiandae dolorem beatae!</p>
+                        <h2 class="card-title">Economia 2</h2>
+                        <p>El fútbol, conocido como el deporte rey, despierta pasiones y emociones en millones de personas alrededor del mundo. Desde las calles de barrios humildes hasta los estadios más imponentes, el fútbol une a personas de diversas culturas y orígenes bajo una misma bandera: la del deporte. Con su dinamismo, habilidad y estrategia, el fútbol trasciende fronteras y se convierte en mucho más que un juego; es una forma de vida para jugadores y aficionados por igual.</p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="imagenes/imagen2.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes economia/economikasystem.jpg' %}" class="img-fluid rounded-start" alt="...">
                 </div>
             </div>
         </div>
@@ -137,7 +142,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="imagenes/mountains-190055_640.jpg" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes economia/economia 3.jpg' %}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -147,7 +152,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="imagenes/mountains-190055_640.jpg" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes economia/Economia 2.jpg' %}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -157,7 +162,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="imagenes/mountains-190055_640.jpg" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes economia/Economia 1.jpg' %}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -168,6 +173,7 @@
         </div>
     </div>
     
+
     <!-- Pie de página / Footer -->
     <section class="pie-de-pagina">
         <footer class="container-fluid">
@@ -191,7 +197,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="form.js"></script>
-    <script src="./js/getUser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
