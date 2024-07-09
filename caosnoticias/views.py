@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import ContactoForm
-from .models import ContactoFormModel
+from .models import ContactoFormModel 
+
+
 
 def index(request):
     return render(request, 'noticias/index.html')
@@ -32,6 +34,9 @@ def ver_mensajes(request):
 def noticias_climaticas(request):
     return render(request, 'noticias/noticias_climaticas.html')
 
+def noticias_economia(request):
+    return render(request, 'noticias/noticias_economia.html')
+
 def noticias_ciencia_tecnologia(request):
     return render(request, 'noticias/noticias_ciencia_tecnologia.html')
 
@@ -46,5 +51,20 @@ def noticias_fisica_cuantica(request):
 
 def periodistas(request):
     return render(request, 'noticias/periodistas.html')
+
+
+def login(request):
+    context = {}
+    return render(request, "inicioSesion.html", context)
+
+def prueba(request):
+    if request.method == "POST":
+        value = request.POST["type"]
+        context = {
+            'post': value
+        }
+    else:
+        return render(request, "prueba.html")
+    return render(request, "prueba.html", context)
 
 

@@ -15,126 +15,218 @@
 </head>
 <body>
 
-    <header class="container-fluid">
-        <article class="row">
-            <section id="Logo" class="col-9 col-sm text-center text-lg-start">
+    <header class="container-fluid"> 
+        <article class="row align-items-center">
+            <section id="logo" class="col-9 col-sm text-center text-lg-start">
                 <a href="{% url 'index' %}">
-                    <img src="{% static './img/Logo.jpg' %}" alt="Logo" id="imgLogo">
+                    <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
                 <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill"><a id="sesion" href="inicioSesion.html" target="_self" style="text-decoration: none; color: black;">Login</a></button>
-                    <div id="buscar">
-                        <input type="text" id="textBuscar">
-                        <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <button type="button" id="boton" class="btn btn-danger rounded-pill">
+                        <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
+                    </button>
+                    <p id="cerrarSesion"></p>
                 </form>
+                <div id="buscar" class="d-flex mt-2">
+                    <input type="text" id="textBuscar" class="form-control mr-2">
+                    <button type="button" title="boton" id="submitBuscar" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                </div>
             </section>
         </article>
     </header>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #BFA995;"> 
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'index' %}" class="text-decoration-none">Inicio</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_ciencia_tecnologia' %}" class="text-decoration-none">Ciencia y tecnología</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_internacionales' %}" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'index' %}" class="nav-link text-decoration-none">Inicio</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="#" class="nav-link text-decoration-none">Policial</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_economia' %}" class="nav-link text-decoration-none">Economía</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_deportes' %}" class="nav-link text-decoration-none">Deportes</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_ciencia_tecnologia' %}" class="nav-link text-decoration-none">Ciencia y tecnología</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_internacionales' %}" class="nav-link text-decoration-none">Internacional</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'periodistas' %}" class="nav-link text-decoration-none">Nuestro equipo</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>    
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Formulario Enviado</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
+    </nav>
     <body>
-
-
-
-   
-        <h1>Nuestros periodistas</h1>
-
-        <!-- Tarjetas -->
         <div class="container mt-5">
+            <h1>Nuestros equipo</h1>
+            <hr>
+            <br>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="imagenes/mountains-190055_640.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Ir a noticia</a>
-                        </div>
-                    </div>
+            <div class="col-md-4">
+                <div class="card">
+                <img src="{% static 'img/fotosperiodistas/periodista_3.png' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Carlos Fernández</h5>
+                    <p class="card-text">
+                    <hr>
+                    <h6>Noticias Internacionales y Política</h6>
+                    <hr>
+                    Carlos Fernández es un periodista reconocido por su cobertura de noticias internacionales y política.
+                    Con una licenciatura en Ciencias de la Comunicación por la Universidad Autónoma de Madrid, Carlos ha 
+                    trabajado para importantes medios como CNN y BBC World News. A lo largo de su carrera, ha informado sobre 
+                    eventos cruciales como elecciones presidenciales, crisis diplomáticas y conflictos internacionales. 
+                    Su habilidad para ofrecer análisis detallados y perspicaces lo ha convertido en una fuente confiable 
+                    de información política y global. Carlos es invitado frecuente en programas de debate y conferencias 
+                    sobre política internacional, donde comparte su amplia experiencia y conocimientos.
+                    <br>
+                    <hr>
+                    <h6>Contacto</h6>
+                    carlos.fernandez@worldnews.com | @CarlosFernandezInt
+                    </p>
+                    <a href="#" class="btn btn-primary">Ir a noticia</a>
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="periodistas" src="{% static '/img/fotosperiodistas/periodista_2.png' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Laura Martínez</h5>
-                            <p class="card-text"><hr>
-                                <h6>Periodismo Económico</h6>
-                                <hr>
-                                Laura Martínez es una periodista experta en economía con más de 15 años de experiencia 
-                                en el campo. Graduada en Ciencias Económicas por la Universidad Complutense de Madrid, 
-                                Laura comenzó su carrera en el periódico "El País", donde rápidamente se destacó por sus 
-                                análisis profundos y claros sobre las tendencias económicas globales. Ha trabajado para 
-                                medios de prestigio como Bloomberg y Financial Times, cubriendo eventos económicos clave 
-                                y entrevistando a figuras influyentes del sector financiero. Laura es autora del libro 
-                                "La Economía del Futuro" y participa regularmente en conferencias y paneles internacionales, 
-                                donde aporta su conocimiento y visión sobre los desafíos económicos actuales y futuros.
-                                <br>
-                                <hr>
-                                <h6>Contacto</h6>
-                                laura.martinez@economedia.com | @LauraMartinezEco</p></p>
-                            <a href="#" class="btn btn-primary">Ir a noticia</a>
-                        </div>
-                    </div>
                 </div>
-                <div class="col-md-4 periodista">
-                    <div class="card">
-                        <img class="periodistas" src="{% static '/img/fotosperiodistas/periodista_1.png' %}" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Mariana Álvarez</h5>
-                            <p class="card-text">
-                                <hr>
-                                <h6>Periodismo Ambiental</h6>
-                                <hr>
-                                Mariana Álvarez es una destacada periodista especializada en noticias ambientales. 
-                                Con una licenciatura en Ciencias de la Comunicación de la Universidad de Buenos Aires, 
-                                Mariana ha trabajado para medios reconocidos como "La Nación" y la BBC. Sus reportajes 
-                                sobre cambio climático y sostenibilidad han sido galardonados con premios como el 
-                                Global Green Journalist Award. Además de su trabajo periodístico, Mariana es autora de 
-                                dos libros sobre medio ambiente y participa activamente en conferencias y foros internacionales 
-                                para promover la educación ambiental.
-                                <br>
-                                <hr>
-                                <h6>Contacto</h6>
-                                mariana.alvarez@caosNew.com | @MarianaAlvarez</p>
-                            <a href="#" class="btn btn-primary">Ir a noticia</a>
-                        </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                <img class="periodistas" src="{% static 'img/fotosperiodistas/periodista_2.png' %}" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Laura Martínez</h5>
+                    <p class="card-text">
+                    <hr>
+                    <h6>Periodismo Económico</h6>
+                    <hr>
+                    Laura Martínez es una periodista experta en economía con más de 15 años de experiencia en el campo. 
+                    Graduada en Ciencias Económicas por la Universidad Complutense de Madrid, Laura comenzó su carrera 
+                    en el periódico "El País", donde rápidamente se destacó por sus análisis profundos y claros sobre 
+                    las tendencias económicas globales. Ha trabajado para medios de prestigio como Bloomberg y Financial 
+                    Times, cubriendo eventos económicos clave y entrevistando a figuras influyentes del sector financiero. 
+                    Laura es autora del libro "La Economía del Futuro" y participa regularmente en conferencias y paneles 
+                    internacionales, donde aporta su conocimiento y visión sobre los desafíos económicos actuales y futuros.
+                    <br>
+                    <hr>
+                    <h6>Contacto</h6>
+                    laura.martinez@economedia.com | @LauraMartinezEco
+                    </p>
+                    <a href="#" class="btn btn-primary">Ir a noticia</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4 periodista">
+                <div class="card">
+                <img class="periodistas" src="{% static 'img/fotosperiodistas/periodista_1.png' %}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Mariana Álvarez</h5>
+                    <p class="card-text">
+                    <hr>
+                    <h6>Periodismo Ambiental</h6>
+                    <hr>
+                    Mariana Álvarez es una destacada periodista especializada en noticias ambientales. Con una licenciatura 
+                    en Ciencias de la Comunicación de la Universidad de Buenos Aires, Mariana ha trabajado para medios 
+                    reconocidos como "La Nación" y la BBC. Sus reportajes sobre cambio climático y sostenibilidad han sido 
+                    galardonados con premios como el Global Green Journalist Award. Además de su trabajo periodístico, Mariana 
+                    es autora de dos libros sobre medio ambiente y participa activamente en conferencias y foros internacionales 
+                    para promover la educación ambiental.
+                    <br>
+                    <hr>
+                    <h6>Contacto</h6>
+                    mariana.alvarez@caosNew.com | @MarianaAlvarezEnv
+                    </p>
+                    <a href="#" class="btn btn-primary">Ir a noticia</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="periodistas" src="{% static 'img/fotosperiodistas/periodista_4.png' %}" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Ana Gómez</h5>
+                    <p class="card-text">
+                    <hr>
+                    <h6>Periodismo Deportivo</h6>
+                    <hr>
+                    Ana Gómez es una periodista especializada en deportes con una pasión por el fútbol. Graduada en Periodismo 
+                    Deportivo por la Universidad de Barcelona, Ana ha trabajado en medios deportivos de renombre como ESPN y 
+                    Fox Sports. Ha cubierto eventos deportivos de alto nivel, incluyendo la Copa del Mundo y los Juegos Olímpicos, 
+                    y ha entrevistado a destacados deportistas y entrenadores. Ana es conocida por su estilo de escritura dinámico 
+                    y su capacidad para transmitir la emoción de los eventos deportivos a través de sus artículos. Además de su 
+                    trabajo periodístico, Ana es colaboradora en programas de radio y televisión, donde comparte su análisis y 
+                    comentarios sobre el mundo del deporte.
+                    <br>
+                    <hr>
+                    <h6>Contacto</h6>
+                    ana.gomez@deportesnews.com | @AnaGomezDep
+                    </p>
+                    <a href="#" class="btn btn-primary">Ir a noticia</a>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="periodistas" src="{% static 'img/fotosperiodistas/periodista_2.png' %}" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pedro Sánchez</h5>
+                        <p class="card-text">
+                            <hr>
+                            <h6>Periodismo de Investigación</h6>
+                            <hr>
+                            Pedro Sánchez es un periodista especializado en periodismo de investigación. Con una amplia experiencia en 
+                            el campo, Pedro ha trabajado en importantes medios de comunicación como The New York Times y The Guardian. 
+                            Ha llevado a cabo investigaciones sobre temas sensibles como corrupción política, abusos de poder y violaciones 
+                            de derechos humanos. Su trabajo ha sido reconocido con premios como el Pulitzer y ha contribuido a generar 
+                            cambios significativos en la sociedad. Pedro es un defensor de la libertad de prensa y utiliza su plataforma 
+                            para dar voz a aquellos que no pueden hacerlo por sí mismos.
+                            <br>
+                            <hr>
+                            <h6>Contacto</h6>
+                            pedro.sanchez@investigacionnews.com | @PedroSanchezInv
+                        </p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="periodistas" src="{% static 'img/fotosperiodistas/periodista_2.png' %}" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ana López</h5>
+                        <p class="card-text">
+                            <hr>
+                            <h6>Ciencia y Tecnología</h6>
+                            <hr>
+                            Ana López es una periodista destacada en el campo de la ciencia y la tecnología. Graduada en Periodismo 
+                            por la Universidad de Barcelona y con una maestría en Comunicación Científica, Ana ha trabajado para medios 
+                            de renombre como National Geographic y Wired. Su trabajo se centra en explicar complejos avances científicos 
+                            y tecnológicos de manera accesible y atractiva para el público general. Ha cubierto temas desde la inteligencia 
+                            artificial hasta la exploración espacial y la biotecnología. Ana es autora del libro "El Futuro Hoy: Innovaciones 
+                            que Cambiarán el Mundo" y es una conferenciante habitual en eventos de divulgación científica.
+                            <br>
+                            <hr>
+                            <h6>Contacto</h6>
+                            ana.lopez@technews.com | @AnaLopezSciTech
+                        </p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>    
+            </div>
         </div>
-   
+        <br>
+        <hr>
     </body>
-    </html>
-    
-
     <!-- Pie de página / Footer -->
     <section class="pie-de-pagina">
         <footer class="container-fluid">

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import ReadUser, WriteUser
 from .forms import Reader, Writer
 
-# Create your views here.+
+
 def register(request):
     form = Reader()
     userType = request.POST["type"]
