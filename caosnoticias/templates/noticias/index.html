@@ -18,12 +18,22 @@
                 <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo">
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill">
-                        <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
-                    </button>
-                    <p id="cerrarSesion"></p>
-                </form>
+                {% if user %}
+                    <div id="divUsuario">
+                        <button type="button" id="boton" class="btn btn-success rounded-pill" >
+                            {{user}}
+                        </button>
+                    </div>
+                    
+                    <a href="{% url 'logout' %}"></a>
+                {% else %}
+                    <form action="#" id="formulario">
+                        <button type="button" id="boton" class="btn btn-danger rounded-pill">
+                            <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
+                        </button>
+                    </form>
+                {% endif %}
+
                 <div id="buscar">
                     <input type="text" id="textBuscar">
                     <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -145,7 +155,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Contáctanos</h2>
-                    <form class="row col-9 novalidate">
+                    <form class="row col-9 novalidate" action="index.html">
                         <div class="col-6 mt-3">
                             <label for="nombreInput" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombreInput" placeholder="Escribe tu nombre">

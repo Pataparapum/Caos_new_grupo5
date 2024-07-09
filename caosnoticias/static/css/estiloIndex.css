@@ -30,7 +30,7 @@ main{
     
 }
 
-#formulario  {
+#formulario, #divUsuario  {
     display: flex;
     flex-direction: column;
     text-align: center;

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from django.contrib.auth import login
 from django.contrib.auth.models import User
 from .forms import Reader, Writer
 
@@ -50,12 +51,14 @@ def register(request):
                 else:
                     form.save()
                     
-                    user = User.objects.create_user(request.POST['userName', request.POST['email', form.data['password']]])
+                    user = User.objects.create_user(form.data['userName', form.data['email'], form.data['password']])
                     user.user_permissions.add('RegisterAndLogin.view_Newspaper')
                     user.user_permissions.add('RegisterAndLogin.add_Newspaper')
                     user.user_permissions.add('RegisterAndLogin.dalate_Newspaper')
                     user.user_permissions.add('RegisterAndLogin.change_Newspaper')
                     user.save()
+                
+                    login(request, user)
                     
                     form = Writer()
                     return redirect('index')
@@ -86,9 +89,13 @@ def register(request):
                     
                 else:
                     form.save()
-                    user = User.objects.create_user(request.POST['userName', request.POST['email', form.data['password']]])
+                    
+                    user = User.objects.create_user(form.data['userName', form.data['email'], form.data['password']])
                     user.user_permissions.add('RegisterAndLogin.view_Newspaper')
                     user.save()
+
+                    login(request, user)
+                    
                     form = Reader()
                     return redirect('index')
             else:
@@ -102,11 +109,6 @@ def register(request):
                 return render(request, 'crearCuenta.html', context)
                 
     return render(request, 'crearCuenta.html', context)
-
-
-def login(request):
-    context = {}
-    return render(request, "inicioSesion.html", context)
 
 def prueba(request):
     
