@@ -12,43 +12,61 @@
 </head>
 <body>
 
-    <header class="container-fluid">
-        <article class="row">
-            <section id="Logo" class="col-9 col-sm text-center text-lg-start">
+    <header class="container-fluid"> 
+        <article class="row align-items-center">
+            <section id="logo" class="col-9 col-sm text-center text-lg-start">
                 <a href="{% url 'index' %}">
-                    <img src="{%static './img/Logo.jpg' %}" alt="Logo" id="imgLogo">
+                    <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
                 <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill"><a id="sesion" href="inicioSesion.html" target="_self" style="text-decoration: none; color: black;">Login</a></button>
-                    <div id="buscar">
-                        <input type="text" id="textBuscar">
-                        <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <button type="button" id="boton" class="btn btn-danger rounded-pill">
+                        <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
+                    </button>
+                    <p id="cerrarSesion"></p>
                 </form>
+                <div id="buscar" class="d-flex mt-2">
+                    <input type="text" id="textBuscar" class="form-control mr-2">
+                    <button type="button" title="boton" id="submitBuscar" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                </div>
             </section>
         </article>
     </header>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #BFA995;"> 
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'index' %}" class="text-decoration-none">Inicio</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_ciencia_tecnologia' %}" class="text-decoration-none">Ciencia y tecnología</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_internacionales' %}" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'index' %}" class="nav-link text-decoration-none">Inicio</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="#" class="nav-link text-decoration-none">Policial</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_economia' %}" class="nav-link text-decoration-none">Economía</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_deportes' %}" class="nav-link text-decoration-none">Deportes</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_ciencia_tecnologia' %}" class="nav-link text-decoration-none">Ciencia y tecnología</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_internacionales' %}" class="nav-link text-decoration-none">Internacional</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'periodistas' %}" class="nav-link text-decoration-none">Nuestro equipo</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>    
+    </nav>
 
     <section class="container-fluid bg-light py-5 text-center">
         <div class="row">
@@ -61,9 +79,15 @@
                 <br>
                 <img class="imagen-protesta" src="{% static 'img/imagenes noticias ciencia/noticia-ciencia2.jpg' %}" alt="Descripción de la imagen" loading="lazy">
                 <p class="texto-protesta">Por otro lado, el descubrimiento en la Universidad de Purdue sobre los fermiones compuestos de seis flujos ofrece una nueva forma de entender las partículas que emergen en condiciones extremas, como las que se presentan en los estados cuánticos fraccionarios del efecto Hall cuántico fraccional. Este avance podría ser crucial para desarrollar una "tabla periódica" de estados cuánticos fraccionarios, proporcionando un marco más claro para la clasificación y estudio de estos fenómenos.</p>
+                <br>
+                <div class="autor-info">
+                    <img src="{% static 'img/fotosperiodistas/periodista_2.png' %}" alt="Foto periodista" style="width: 50px; height: 50px; border-radius: 50%;" loading="lazy">
+                    <p class="autor">Escrito por: <strong>Nombre del Autor</strong></p>
+                </div>
             </div>
         </div>
     </section>
+    
 
     <!-- Noticias relacionadas / Tarjetas -->
     <div>
@@ -103,7 +127,6 @@
             </div>
         </div>
     </div>
-   
     <!-- Pie de página / Footer -->
     <section class="pie-de-pagina">
         <footer class="container-fluid">

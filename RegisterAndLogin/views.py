@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from .forms import Reader, Writer
 
-# Create your views here.
+
 
 def register(request):
     if (request.method != 'POST'):

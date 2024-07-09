@@ -10,7 +10,7 @@ class Contacto(models.Model):
     email = models.EmailField()
     mensaje = models.TextField()
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.nombre} {self.apellido} - {self.email}"
 
 
@@ -22,5 +22,5 @@ class ContactoFormModel(models.Model):
     email = models.EmailField()
     mensaje = models.TextField()
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.nombre} {self.apellido}"

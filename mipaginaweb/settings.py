@@ -53,10 +53,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mipaginaweb.urls'
 
+# settings.py
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
+        'DIRS': [BASE_DIR / 'templates'],  # Asegúrate de tener esta línea configurada correctamente
+=======
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+>>>>>>> 883add300c7b5dd879efc4f48bb5a6d8fed3f527
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,8 +74,12 @@ TEMPLATES = [
     },
 ]
 
+<<<<<<< HEAD
+# URL a la que redirigir después del login exitoso
+=======
 LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
+>>>>>>> 883add300c7b5dd879efc4f48bb5a6d8fed3f527
 
 WSGI_APPLICATION = 'mipaginaweb.wsgi.application'
 
