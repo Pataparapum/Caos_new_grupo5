@@ -1,10 +1,16 @@
-from django.shortcuts import render
-from .models import ReadUser, WriteUser
+from django.shortcuts import render, redirect
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.contrib.auth import login
+from django.contrib.auth.models import User
 from .forms import Reader, Writer
 
 
+
 def register(request):
-    form = Reader()
+    if (request.method != 'POST'):
+        return redirect('index')
+    
     userType = request.POST["type"]
     context = {}
     
@@ -28,22 +34,91 @@ def register(request):
         
     else:
         if (userType == "createwrite"):
-            
-            UserW = WriteUser.objects.all();
-            
-        return render(request, "crearCuenta.html", context)
+            form = Writer(request.POST)
+            if form.is_valid():
+                try:
+                    validate_email(request.POST['email'])
+                except ValidationError:
+                    form = Writer()
+                    mensaje = 'Formato de email invalido'
+                    context = {
+                        'form' : form,
+                        'mensaje' : mensaje,
+                        'user' : 'write'
+                    }
+                    return render (request, 'crearCuenta.html', context)
+                    
+                else:
+                    form.save()
+                    
+                    user = User.objects.create_user(form.data['userName', form.data['email'], form.data['password']])
+                    user.user_permissions.add('RegisterAndLogin.view_Newspaper')
+                    user.user_permissions.add('RegisterAndLogin.add_Newspaper')
+                    user.user_permissions.add('RegisterAndLogin.dalate_Newspaper')
+                    user.user_permissions.add('RegisterAndLogin.change_Newspaper')
+                    user.save()
+                
+                    login(request, user)
+                    
+                    form = Writer()
+                    return redirect('index')
+            else:
+                form = Writer()
+                mensaje = 'los datos no son validos'
+                context = {
+                    'mensaje': mensaje,
+                    'form':form,
+                    'user':'write'
+                }
+                return render(request, 'crearCuenta.html', context)
+                    
+        elif (userType == "createread"):
+            form = Reader(request.POST)
+            if form.is_valid():
+                try:
+                    validate_email(request.POST['email'])
+                except ValidationError:
+                    form = Reader()
+                    mensaje = 'Formato de email invalido'
+                    context = {
+                        'form' : form,
+                        'mensaje' : mensaje,
+                        'user' : 'read'
+                    }
+                    return render (request, 'crearCuenta.html', context)
+                    
+                else:
+                    form.save()
+                    
+                    user = User.objects.create_user(form.data['userName', form.data['email'], form.data['password']])
+                    user.user_permissions.add('RegisterAndLogin.view_Newspaper')
+                    user.save()
 
-
-def login(request):
-    context = {}
-    return render(request, "inicioSesion.html", context)
+                    login(request, user)
+                    
+                    form = Reader()
+                    return redirect('index')
+            else:
+                form = Writer()
+                mensaje = 'los datos no son validos'
+                context = {
+                    'mensaje': mensaje,
+                    'form':form,
+                    'user':'write'
+                }
+                return render(request, 'crearCuenta.html', context)
+                
+    return render(request, 'crearCuenta.html', context)
 
 def prueba(request):
-    if request.method == "POST":
+
+    
+    if(request.method != "POST"):
+        return render(request, "prueba.html")
+    else:
         value = request.POST["type"]
         context = {
             'post': value
         }
-    else:
-        return render(request, "prueba.html")
-    return render(request, "prueba.html", context)
+        return render(request, "prueba.html", context)
+

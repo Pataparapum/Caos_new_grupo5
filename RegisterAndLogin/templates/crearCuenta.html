@@ -18,14 +18,14 @@
         </div>
     </header>
     <main>
-        {% if hola %}
-            <p> {{hola}} </p>
+        {% if mensaje %}
+            <p> {{mensaje}} </p>
         {% endif %}
         
         <form action="{% url 'register' %}" class="form-group" id="form" method="POST">
             {% csrf_token %}
             <div id="formulario" class="mb-3">
-                <h1>Log in</h1>
+                <h1>Sing up</h1>
 
                 {% for field in form%}
                     <div class="formItem form-floating mb-3">

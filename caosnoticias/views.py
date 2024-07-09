@@ -1,3 +1,5 @@
+# tu_app_noticias/views.py
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -7,8 +9,21 @@ from .models import ContactoFormModel
 
 
 def index(request):
-    return render(request, 'noticias/index.html')
-
+    if (request.method == 'POST' ):
+        logout(request)
+        del request.session['usuario']
+    if (request.user.is_authenticated):
+        
+            request.session['usuario']=request.user.username
+            user = request.session['usuario']
+            context = {
+                'user':user
+            }
+            return render(request, 'noticias/index.html', context)
+    else :
+        context = {}
+        return render(request,'noticias/index.html', context)
+    
 def contacto(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
@@ -51,6 +66,9 @@ def noticias_fisica_cuantica(request):
 
 def periodistas(request):
     return render(request, 'noticias/periodistas.html')
+
+def userCenter(request):
+    return render(request, 'iserCenter.html')
 
 
 def login(request):

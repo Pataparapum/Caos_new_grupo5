@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/estiloIndex.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estiloindex.css' %}">
     <!-- Carga única de jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -20,16 +20,23 @@
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
+                {% if user %}
+                <div id="divUsuario" class="dropdown">
+                    <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
+                        {{user}}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url "userCenter" %}"></a></li>
+                    </ul>
+                </div>
+                
+            {% else %}
                 <form action="#" id="formulario">
                     <button type="button" id="boton" class="btn btn-danger rounded-pill">
                         <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
                     </button>
-                    <p id="cerrarSesion"></p>
                 </form>
-                <div id="buscar" class="d-flex mt-2">
-                    <input type="text" id="textBuscar" class="form-control mr-2">
-                    <button type="button" title="boton" id="submitBuscar" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
-                </div>
+            {% endif %}
             </section>
         </article>
     </header>
@@ -221,7 +228,5 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="{% static 'js/form.js' %}"></script>
-    <script src="{% static 'js/getUser.js' %}"></script>
 </body>
 </html>
