@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #F3EFEE; /* Fondo blanco */
+    background-color: #333333; /* Fondo blanco */
 }
 
 main {
@@ -84,6 +84,12 @@ main {
     
 }
 
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo negro con transparencia */
+    color: white;
+    padding: 10px;
+    border-radius: 5px; /* Opcional: para bordes redondeados */
+}
 
 .carousel-control-prev, .carousel-control-next {
     display: none;
@@ -195,4 +201,11 @@ p {
 
 .navbar-nav .nav-item .nav-link.active::after {
     width: 100%;
+}
+
+
+.weather-section {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
 }
