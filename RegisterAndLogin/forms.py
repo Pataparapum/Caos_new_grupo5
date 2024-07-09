@@ -1,8 +1,17 @@
+from typing import Any
 from django import forms
-from .models import ReadUser, WriteUser
+from django.contrib.auth.models import User
 from django.forms import ModelForm
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
+from .models import ReadUser, WriteUser
+from django.contrib.auth.hashers import *
 
 class Reader(forms.Form, ModelForm):
+    
+    def clean_password(self):
+        data = self.cleaned_data['password']
+        hashPassword = make_password(data)
+        return hashPassword
     
     class Meta:
         model = ReadUser
@@ -35,6 +44,12 @@ class Reader(forms.Form, ModelForm):
     
 class Writer(forms.Form, ModelForm):
 
+    
+    def clean_password(self):
+        data = self.cleaned_data['password']
+        hashPassword = make_password(data)
+        return hashPassword
+    
     class Meta:
         model = WriteUser
         fields = ['userName', 'email', 'empresa', 'password']
@@ -65,4 +80,25 @@ class Writer(forms.Form, ModelForm):
                                           'placeholder':'password'
                                           })
         }
-        
+    
+class UserLoginForm(AuthenticationForm):
+    def __init__(self, request: Any = ..., *args: Any, **kwargs: Any) -> None:
+        super().__init__(request, *args, **kwargs)
+    
+    def get_user(self) -> User:
+        return super().get_user()
+    
+    username = UsernameField(widget=forms.TextInput(
+        attrs={
+            'class':'inputform form-control',
+            'placeholder': 'username',
+            'id':'user'
+        }
+    ))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class':'inputform form-control',
+            'placeholder':'password',
+            'id':'password'
+        }
+    ))
