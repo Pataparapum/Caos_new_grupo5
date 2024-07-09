@@ -9,20 +9,13 @@ from .models import ContactoFormModel
 
 
 def index(request):
-    if (request.method == 'POST' ):
-        logout(request)
-        del request.session['usuario']
-    if (request.user.is_authenticated):
-        
-            request.session['usuario']=request.user.username
-            user = request.session['usuario']
-            context = {
-                'user':user
-            }
-            return render(request, 'noticias/index.html', context)
-    else :
-        context = {}
-        return render(request,'noticias/index.html', context)
+        request.session['usuario'] = request.user.username
+        user = request.session['usuario']
+        context = {
+            'usuario':user
+        }
+        print(user)
+        return render(request, 'noticias/index.html', context)
     
 def contacto(request):
     if request.method == 'POST':

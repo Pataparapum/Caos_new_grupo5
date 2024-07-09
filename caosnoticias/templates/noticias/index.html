@@ -20,7 +20,7 @@
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                {% if user %}
+            {% if user.is_authenticated %}
                 <div id="divUsuario" class="dropdown">
                     <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
                         {{user}}
@@ -37,8 +37,8 @@
                             Crear Cuenta
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="">Crear Cuenta</a></li>
-                            <li><a href="{%url 'login' %}">iniciar Sesion</a></li>
+                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a href="{% url 'login' %}">iniciar Sesion</a></li>
                         </ul>
                     </div>
                 </form>

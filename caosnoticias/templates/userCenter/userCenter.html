@@ -59,10 +59,11 @@
                 </section>
                 <section id="selected" class="col-8">
                     <ul>
-                        <li>Cambiar nombre de usuario</li>
-                        <li>Cambiar contraseña</li>
+                        <li><a href="{% url 'newUsername' %}">Cambiar nombre de usuario</a></li>
+                        <li><a href="{% url 'newPassword' %}">Cambiar contraseña</a></li>
                     </ul>
                     <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
                         <button type="submit" class="btn">Cerrar Sesion</button>
                     </form>
                 </section>

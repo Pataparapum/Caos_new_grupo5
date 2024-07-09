@@ -51,11 +51,11 @@ def register(request):
                 else:
                     form.save()
                     
-                    user = User.objects.create_user(form.data['userName', form.data['email'], form.data['password']])
-                    user.user_permissions.add('RegisterAndLogin.view_Newspaper')
-                    user.user_permissions.add('RegisterAndLogin.add_Newspaper')
-                    user.user_permissions.add('RegisterAndLogin.dalate_Newspaper')
-                    user.user_permissions.add('RegisterAndLogin.change_Newspaper')
+                    user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
+                    user.has_perm('RegisterAndLogin.view_Newspaper')
+                    user.has_perm('RegisterAndLogin.add_Newspaper')
+                    user.has_perm('RegisterAndLogin.dalate_Newspaper')
+                    user.has_perm('RegisterAndLogin.change_Newspaper')
                     user.save()
                 
                     login(request, user)
@@ -90,11 +90,8 @@ def register(request):
                 else:
                     form.save()
                     
-                    user = User.objects.create_user(form.data['userName', form.data['email'], form.data['password']])
-                    user.user_permissions.add('RegisterAndLogin.view_Newspaper')
-                    user.save()
-
-                    login(request, user)
+                    user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
+                    user.has_perm('RegisterAndLogin.view_Newspaper')
                     
                     form = Reader()
                     return redirect('index')
@@ -110,15 +107,10 @@ def register(request):
                 
     return render(request, 'crearCuenta.html', context)
 
-def prueba(request):
+def tipoUser(request):
 
-    
     if(request.method != "POST"):
-        return render(request, "prueba.html")
-    else:
-        value = request.POST["type"]
-        context = {
-            'post': value
-        }
-        return render(request, "prueba.html", context)
+        return render(request, "tipoUser.html")
 
+def newUsername(request):
+    return render(request, 'cambiarUsername.html')
