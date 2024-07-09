@@ -31,10 +31,6 @@ def register(request):
             
             UserW = WriteUser.objects.all();
             
-        
-        
-
-            
         return render(request, "crearCuenta.html", context)
 
 

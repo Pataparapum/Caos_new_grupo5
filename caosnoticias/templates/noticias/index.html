@@ -11,12 +11,12 @@
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
     <title>Caos News</title>
 </head>
-<body>
-    <header class="container-fluid">
-        <article class="row">
-            <section id="Logo" class="col-9 col-sm text-center text-lg-start">
+<body class="bg-white">
+    <header class="container-fluid bg-white"> <!-- Asegurar fondo blanco -->
+        <article class="row align-items-center">
+            <section id="logo" class="col-9 col-sm text-center text-lg-start">
                 <a href="{% url 'index' %}">
-                    <img src="{% static './img/Logo.jpg' %}" alt="Logo" id="imgLogo">
+                    <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
@@ -26,16 +26,16 @@
                     </button>
                     <p id="cerrarSesion"></p>
                 </form>
-                <div id="buscar">
-                    <input type="text" id="textBuscar">
-                    <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div id="buscar" class="d-flex mt-2">
+                    <input type="text" id="textBuscar" class="form-control mr-2">
+                    <button type="button" title="boton" id="submitBuscar" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                 </div>
             </section>
         </article>
     </header>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #BFA995;"> 
+    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #ffffff;"> 
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
