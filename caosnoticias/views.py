@@ -63,6 +63,6 @@ def periodistas(request):
     return render(request, 'noticias/periodistas.html')
 
 def userCenter(request):
-    return render(request, 'iserCenter.html')
+    return render(request, 'userCenter/userCenter.html')
 
 

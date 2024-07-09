@@ -2,15 +2,15 @@
 body {
     padding: 0px;
     margin: 0px;
-    background-color: #000000; /* Fondo blanco */
+    background-color: #F3EFEE; /* Fondo blanco */
 }
 
 header {
-    background-color: #000000; /* Fondo blanco */
+    background-color: #F3EFEE; /* Fondo blanco */
 }
 
 main {
-    background-color: #020202; /* Fondo blanco */
+    background-color: #F3EFEE; /* Fondo blanco */
 }
 
 /*IDs*/
@@ -26,7 +26,7 @@ main {
 
 #log_in {
     width: 300px;
-    margin: 10px auto 10px auto;
+    margin: auto;
 }
 
 #formulario, #divUsuario  {
@@ -34,6 +34,10 @@ main {
     flex-direction: column;
     text-align: center;
     height: 100%;
+}
+
+#userCenter{
+    color: white;
 }
 
 #textBuscar, #submitBuscar {
@@ -47,14 +51,6 @@ main {
     margin: 30px 30px 0px 30px;
 }
 
-#cerrarSesion {
-    margin-top: 5px;
-    color: #F2DAC4;
-}
-
-#cerrarSesion:hover {
-    color: #8C7764;
-}
 
 #buscar {
     display: flex;
