@@ -4,7 +4,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import ContactoForm
-from .models import ContactoFormModel
+from .models import ContactoFormModel 
+
+
 
 def index(request):
     if (request.method == 'POST' ):
@@ -65,3 +67,25 @@ def noticias_fisica_cuantica(request):
 def periodistas(request):
     return render(request, 'noticias/periodistas.html')
 
+<<<<<<< HEAD
+=======
+def userCenter(request):
+    return render(request, 'iserCenter.html')
+
+
+def login(request):
+    context = {}
+    return render(request, "inicioSesion.html", context)
+
+def prueba(request):
+    if request.method == "POST":
+        value = request.POST["type"]
+        context = {
+            'post': value
+        }
+    else:
+        return render(request, "prueba.html")
+    return render(request, "prueba.html", context)
+
+
+>>>>>>> 143ce4cc04887bafaa8315044e76f65184fb6b2e

@@ -14,46 +14,60 @@
 </head>
 <body>
 
-    <header class="container-fluid">
-        <article class="row">
-            <section id="Logo" class="col-9 col-sm text-center text-lg-start">
+    <header class="container-fluid"> 
+        <article class="row align-items-center">
+            <section id="logo" class="col-9 col-sm text-center text-lg-start">
                 <a href="{% url 'index' %}">
-                    <img src="{% static './img/Logo.jpg' %}" alt="Logo" id="imgLogo">
+                    <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
                 <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill"><a id="sesion" href="inicioSesion.html" target="_self" style="text-decoration: none; color: black;">Login</a></button>
-                    <div id="buscar">
-                        <input type="text" id="textBuscar">
-                        <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <button type="button" id="boton" class="btn btn-danger rounded-pill">
+                        <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
+                    </button>
+                    <p id="cerrarSesion"></p>
                 </form>
+                <div id="buscar" class="d-flex mt-2">
+                    <input type="text" id="textBuscar" class="form-control mr-2">
+                    <button type="button" title="boton" id="submitBuscar" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                </div>
             </section>
         </article>
     </header>
-
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #BFA995;"> 
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
-                    <li class="border-end border-dark nav-item navbar-text">
-                        <a href="{% url 'index' %}" class="text-decoration-none">Inicio</a>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'index' %}" class="nav-link text-decoration-none">Inicio</a>
                     </li>
-                    
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="noticias_ciencia_tecnologia.html" class="text-decoration-none">Ciencia y tecnología</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="noticias_internacionales.html" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="#" class="nav-link text-decoration-none">Policial</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_economia' %}" class="nav-link text-decoration-none">Economía</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_deportes' %}" class="nav-link text-decoration-none">Deportes</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_ciencia_tecnologia' %}" class="nav-link text-decoration-none">Ciencia y tecnología</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_internacionales' %}" class="nav-link text-decoration-none">Internacional</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'periodistas' %}" class="nav-link text-decoration-none">Nuestro equipo</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>    
+    </nav>
 
     <!-- Carrusel de noticias -->
     <div id="carouselExampleIndicators" class="carousel slide">

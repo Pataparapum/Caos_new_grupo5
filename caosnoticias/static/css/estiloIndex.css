@@ -1,8 +1,8 @@
-/*General*/
+/* General */
 body {
     padding: 0px;
     margin: 0px;
-    background-color: #000000; /* Fondo blanco */
+    background-color: #ffffff; /* Fondo gris claro */
 }
 
 header {
@@ -10,10 +10,10 @@ header {
 }
 
 main {
-    background-color: #020202; /* Fondo blanco */
+    background-color: #ffffff; /* Fondo blanco */
 }
 
-/*IDs*/
+/* IDs */
 #logo {
     width: 800px;
     margin: auto;
@@ -79,13 +79,18 @@ main {
     color: black;
 }
 
-/*carrusel*/
+/* Carrusel */
 .carousel, #carrusel {
     width: 800px;
     height: auto;
     margin: 40px auto;
     padding: 20px;
-    background-color: #ffffff; /* Fondo blanco */
+    
+}
+
+
+.carousel-control-prev, .carousel-control-next {
+    display: none;
 }
 
 .imagen-noticia {
@@ -93,7 +98,7 @@ main {
     height: auto;
 }
 
-/*seccion mas leido*/
+/* Sección Lo más leído */
 .seccion-mas-leido {
     width: 100%;
     max-width: 700px;
@@ -111,7 +116,7 @@ main {
     border-radius: 5%;
 }
 
-/* imagen camara*/
+/* Imagen cámara */
 .camaraP {
     width: 600px;
     height: 400px;
@@ -127,25 +132,25 @@ main {
     }
 }
 
-/*texto y fuentes*/
+/* Texto y fuentes */
 .h3 {
     color: rgb(247, 247, 247);
     font-size: 30px;
     text-align: center;
 }
 
-.p {
+p {
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/*pie de pagina*/
+/* Pie de página */
 .pie-de-pagina {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: black;
     font-size: small;
     padding: 10px;
-    background-color: #ffffff; /* Fondo blanco */
+    background-color: #626262; /* Fondo blanco */
 }
 
 .footerItem {
@@ -154,7 +159,44 @@ main {
 
 .social-media {
     color: black;
-    .fab {
-        color: black;
-    }
+}
+
+.fab {
+    color: black;
+}
+
+/* Navbar */
+.navbar-nav .nav-item .nav-link {
+    color: #000;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007BFF;
+}
+
+.navbar-nav .nav-item .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #007BFF;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-item .nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    color: #007BFF;
+}
+
+.navbar-nav .nav-item .nav-link.active::after {
+    width: 100%;
 }

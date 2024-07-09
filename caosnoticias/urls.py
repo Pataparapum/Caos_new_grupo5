@@ -1,10 +1,10 @@
-from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 from django.urls import path, include
 
 
 urlpatterns = [
+    path('login/', views.login, name="login"),
     path('contacto/', views.contacto, name='contacto'),
     path('index/', views.index, name='index'),
     path('noticias_climaticas/', views.noticias_climaticas, name='noticias_climaticas'),
@@ -15,9 +15,11 @@ urlpatterns = [
     path('noticias_fisica_cuantica/', views.noticias_fisica_cuantica, name='noticias_fisica_cuantica'),
     path('formulario_exitoso/', views.formulario_exitoso, name='formulario_exitoso'),
     path('ver_mensajes/', views.ver_mensajes, name='ver_mensajes'),
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'),
     path('periodistas/', views.periodistas, name='periodistas'),
+<<<<<<< HEAD
 
+=======
+    path('user/', views.userCenter, name='userCenter'),
+>>>>>>> 143ce4cc04887bafaa8315044e76f65184fb6b2e
 ]
 
