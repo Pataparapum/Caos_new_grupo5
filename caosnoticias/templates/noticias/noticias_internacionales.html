@@ -20,16 +20,28 @@
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill">
-                        <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
+            {% if user.is_authenticated %}
+                <div id="divUsuario" class="dropdown">
+                    <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
+                        {{user}}
                     </button>
-                    <p id="cerrarSesion"></p>
-                </form>
-                <div id="buscar" class="d-flex mt-2">
-                    <input type="text" id="textBuscar" class="form-control mr-2">
-                    <button type="button" title="boton" id="submitBuscar" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a id="userCenter" class="dropdown-item" href="{% url "userCenter" %}">Configuraciones</a></li>
+                    </ul>
                 </div>
+            {% else %}
+                <form action="#" id="formulario">
+                    <div id="divUsuario" class="dropdown">
+                        <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
+                            Crear Cuenta
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a href="{% url 'login' %}">iniciar Sesion</a></li>
+                        </ul>
+                    </div>
+                </form>
+            {% endif %}
             </section>
         </article>
     </header>
