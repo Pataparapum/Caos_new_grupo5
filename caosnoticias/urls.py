@@ -16,6 +16,10 @@ urlpatterns = [
     path('formulario_exitoso/', views.formulario_exitoso, name='formulario_exitoso'),
     path('ver_mensajes/', views.ver_mensajes, name='ver_mensajes'),
     path('periodistas/', views.periodistas, name='periodistas'),
+<<<<<<< HEAD
+
+=======
     path('user/', views.userCenter, name='userCenter'),
+>>>>>>> 143ce4cc04887bafaa8315044e76f65184fb6b2e
 ]
 

@@ -67,6 +67,8 @@ def noticias_fisica_cuantica(request):
 def periodistas(request):
     return render(request, 'noticias/periodistas.html')
 
+<<<<<<< HEAD
+=======
 def userCenter(request):
     return render(request, 'iserCenter.html')
 
@@ -86,3 +88,4 @@ def prueba(request):
     return render(request, "prueba.html", context)
 
 
+>>>>>>> 143ce4cc04887bafaa8315044e76f65184fb6b2e
