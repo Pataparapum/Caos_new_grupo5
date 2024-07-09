@@ -20,7 +20,8 @@
     <main>
         
 
-        <form action="{% url "index" %}" class="form-group" id="form">
+        <form class="form-group" id="form" method="POST">
+            {% csrf_token %}
             <div id="formulario" class="mb-3">
                 {{ form.non_field_errors}}
                 <h1>Log in</h1>

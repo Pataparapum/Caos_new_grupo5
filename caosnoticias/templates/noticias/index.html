@@ -20,7 +20,7 @@
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                {% if user %}
+            {% if user.is_authenticated %}
                 <div id="divUsuario" class="dropdown">
                     <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
                         {{user}}
@@ -29,7 +29,6 @@
                         <li><a id="userCenter" class="dropdown-item" href="{% url "userCenter" %}">Configuraciones</a></li>
                     </ul>
                 </div>
-                
             {% else %}
                 <form action="#" id="formulario">
                     <div id="divUsuario" class="dropdown">
@@ -37,8 +36,8 @@
                             Crear Cuenta
                         </button>
                         <ul class="dropdown-menu">
-                            <li><input type="submit" value="write" name="type"></li>
-                            <li><input type="submit" value="read" name="type"></li>
+                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a href="{% url 'login' %}">iniciar Sesion</a></li>
                         </ul>
                     </div>
                 </form>
@@ -46,7 +45,6 @@
             </section>
         </article>
     </header>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-md">
@@ -113,21 +111,21 @@
                                     <img src="{% static 'img/deporteCarrusel.jpg' %}" class="d-block w-100 imagen-noticia" alt="Deportes">
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>Deportes</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor.</p>
+                                        <p>¡Emocionante semifinal de la Eurocopa: España vs. Francia!</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img src="{% static 'img/noticia_carrusel_3.jpg' %}" class="d-block w-100 imagen-noticia" alt="Adaptación Climática">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>Adaptación Climática</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor.</p>
+                                        <h5>Ciencia</h5>
+                                        <p>¡Científicos descubren un nuevo proceso de formación de agujeros negros!</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img src="{% static 'img/protesta.jpg' %}" class="d-block w-100 imagen-noticia" alt="Protesta">
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>Protesta</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dignissim et ligula id placerat. In hac habitasse platea dictumst. Nam dolor tortor, aliquet et nisi in, interdum pellentesque dolor.</p>
+                                        <p>¡Protestas anarquistas sacuden Francia!</p>
                                     </div>
                                 </div>
                             </div>
@@ -141,6 +139,7 @@
                             </button>
                         </div>
                     </section>
+                    <br>
                     <!-- Sección de videos y noticias importantes -->
                     <section class="featured-section mt-4">
                         <hr>
@@ -167,8 +166,7 @@
                             </div>
                         </div>
                     </section>
-                    
-
+                    <br>
                     <!-- Sección del clima -->
                     <section class="weather-section mt-4">
                         <h2 class="text-center">Clima Actual</h2>
@@ -203,6 +201,7 @@
             </div>
         </div>
         <hr>
+        <br>
         <!-- Formulario -->
         <div class="container">
             <div class="row">

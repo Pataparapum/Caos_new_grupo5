@@ -1,7 +1,7 @@
 from typing import Any
 from django import forms
 from django.contrib.auth.models import User
-from django.forms import ModelForm
+from django.forms import ModelForm, ValidationError
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from .models import ReadUser, WriteUser
 from django.contrib.auth.hashers import *
@@ -84,9 +84,18 @@ class Writer(forms.Form, ModelForm):
 class UserLoginForm(AuthenticationForm):
     def __init__(self, request: Any = ..., *args: Any, **kwargs: Any) -> None:
         super().__init__(request, *args, **kwargs)
+        
+    def confirm_login_allowed(self, user):
+        if not user.is_active:
+            raise ValidationError(
+                ("This account is inactive."),
+                code="inactive",
+            )
     
     def get_user(self) -> User:
         return super().get_user()
+    
+
     
     username = UsernameField(widget=forms.TextInput(
         attrs={

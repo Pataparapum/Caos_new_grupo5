@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estiloCenter.css' %}">
     <link rel="stylesheet" href="{% static 'css/estiloindex.css' %}">
     <title>User Center</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
@@ -12,7 +13,7 @@
     
 </head>
 <body>
-    <header class="container-fluid bg-white"> <!-- Asegurar fondo blanco -->
+    <header class="container-fluid"> <!-- Asegurar fondo blanco -->
         <article class="row align-items-center">
             <section id="logo" class="col-9 col-sm text-center text-lg-start">
                 <a href="{% url 'index' %}">
@@ -50,18 +51,19 @@
             </div>
         </div>
     </nav>    
-    <main>
+    <main style="background-color: #F3EFEE">
         <div class="container-fluid">
-            <div class="row">
-                <section class="col-3">
-                    {{user}}
+            <div id="bloque" class="row">
+                <section id="user" class="col-3 border">
+                    <p>{{user}}</p>
                 </section>
-                <section class="col-8">
+                <section id="selected" class="col-8">
                     <ul>
-                        <li>Cambiar nombre de usuario</li>
-                        <li>Cambiar contraseña</li>
+                        <li><a href="{% url 'newUsername' %}">Cambiar nombre de usuario</a></li>
+                        <li><a href="{% url 'newPassword' %}">Cambiar contraseña</a></li>
                     </ul>
                     <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
                         <button type="submit" class="btn">Cerrar Sesion</button>
                     </form>
                 </section>
