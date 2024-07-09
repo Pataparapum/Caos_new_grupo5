@@ -60,8 +60,10 @@
                     <ul>
                         <li>Cambiar nombre de usuario</li>
                         <li>Cambiar contraseña</li>
-                        <li>Cerrar Sesion</li>
                     </ul>
+                    <form action="{% url 'logout' %}" method="POST">
+                        <button type="submit" class="btn">Cerrar Sesion</button>
+                    </form>
                 </section>
             </div>
         </div>
