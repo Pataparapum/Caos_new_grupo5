@@ -11,14 +11,16 @@
 <body>
     <header>
         <div id="caosNew">
-            <img src="{% static "./img/Logo.jpg" %}" alt="" width="50px">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/Logo.jpg' %}" alt="Logo" width="50px">
+            </a>
             <p>Caos News</p>
         </div>
-    </header>
+    </header>    
     <main>
-    
-        <form method='POST' class="form-group" id="form">
-            {% csrf_token %}
+        
+
+        <form action="{% url "index" %}" class="form-group" id="form">
             <div id="formulario" class="mb-3">
                 {{ form.non_field_errors}}
                 <h1>Log in</h1>

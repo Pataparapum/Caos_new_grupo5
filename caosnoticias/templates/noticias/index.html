@@ -11,29 +11,21 @@
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
     <title>Caos News</title>
 </head>
-<body>
-    <header class="container-fluid">
-        <article class="row">
-            <section id="Logo" class="col-9 col-sm text-center text-lg-start">
-                <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo">
+<body class="bg-white">
+    <header class="container-fluid bg-white"> <!-- Asegurar fondo blanco -->
+        <article class="row align-items-center">
+            <section id="logo" class="col-9 col-sm text-center text-lg-start">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
+                </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                {% if user %}
-                    <div id="divUsuario">
-                        <button type="button" id="boton" class="btn btn-success rounded-pill" >
-                            {{user}}
-                        </button>
-                    </div>
-                    
-                    <a href="{% url 'logout' %}"></a>
-                {% else %}
-                    <form action="#" id="formulario">
-                        <button type="button" id="boton" class="btn btn-danger rounded-pill">
-                            <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
-                        </button>
-                    </form>
-                {% endif %}
-
+                <form action="#" id="formulario">
+                    <button type="button" id="boton" class="btn btn-danger rounded-pill">
+                        <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
+                    </button>
+                    <p id="cerrarSesion"></p>
+                </form>
                 <div id="buscar">
                     <input type="text" id="textBuscar">
                     <button type="button" title="boton" id="submitBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -43,7 +35,7 @@
     </header>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #BFA995;"> 
+    <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #ffffff;"> 
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,8 +48,9 @@
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticiasCienciayTecnologia' %}" class="text-decoration-none">Ciencia y tecnología</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticiasInternacionales' %}" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_ciencia_tecnologia' %}" class="text-decoration-none">Ciencia y tecnología</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_internacionales' %}" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'periodistas' %}" class="text-decoration-none">Nuestro equipo</a></li>
                 </ul>
             </div>
         </div>
@@ -134,7 +127,7 @@
                             <h3>Medio Ambiente</h3>
                             <img class="imagen-mas-leido" src="{% static 'img/policia.jpg' %}" alt="Medio Ambiente">
                             <p>En medio de un clamor por la acción climática, una multitud se congrega frente al Congreso de Estados Unidos, exigiendo medidas urgentes para combatir el cambio climático. Con pancartas en alto y cánticos resonando en las calles, los manifestantes hacen un llamado claro y enérgico a los líderes políticos para que tomen medidas audaces en defensa del medio ambiente y del futuro del planeta.
-                                <br><a href="{% url 'noticias_Climaticas' %}" class="btn btn-secondary bt-lg mt-3">Seguir leyendo</a>
+                                <br><a href="{% url 'noticias_climaticas' %}" class="btn btn-secondary bt-lg mt-3">Seguir leyendo</a>
                             </p>
                         </div>
                         <div>
@@ -142,7 +135,7 @@
                             <h3>Ciencia</h3>
                             <img class="imagen-mas-leido" src="{% static 'img/ciencia.jpg' %}" alt="Ciencia">
                             <p>En un emocionante avance en el campo de la física, investigadores han logrado identificar una nueva partícula subatómica, lo que podría transformar significativamente nuestra comprensión del universo. Este descubrimiento, realizado en las instalaciones de alto calibre del Gran Colisionador de Hadrones, no solo desafía las teorías existentes sino que también abre puertas hacia nuevas posibilidades en la exploración de la materia oscura y las fuerzas fundamentales del cosmos.
-                                <br><a href="2-Ciencia.html" class="btn btn-secondary bt-lg mt-3">Seguir leyendo</a>
+                                <br><a href="{% url 'noticias_fisica_cuantica' %}" class="btn btn-secondary bt-lg mt-3">Seguir leyendo</a>
                             </p>
                         </div>
                     </section>
@@ -155,38 +148,36 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Contáctanos</h2>
-                    <form class="row col-9 novalidate" action="index.html">
+                    <form class="row col-9 novalidate">
                         <div class="col-6 mt-3">
                             <label for="nombreInput" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombreInput" placeholder="Escribe tu nombre">
+                            <input type="text" class="form-control" id="nombreInput" name="nombre" placeholder="Escribe tu nombre" required>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="apellidoInput" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellidoInput" placeholder="Escribe tu apellido">
+                            <input type="text" class="form-control" id="apellidoInput" name="apellido" placeholder="Escribe tu apellido" required>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="paisInput" class="form-label">País</label>
-                            <input type="text" class="form-control" id="paisInput" placeholder="Escribe tu país">
+                            <input type="text" class="form-control" id="paisInput" name="pais" placeholder="Escribe tu país" required>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="ciudadInput" class="form-label">Ciudad</label>
-                            <input type="text" class="form-control" id="ciudadInput" placeholder="Escribe tu ciudad">
+                            <input type="text" class="form-control" id="ciudadInput" name="ciudad" placeholder="Escribe tu ciudad" required>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="emailInput" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="emailInput" placeholder="Escribe tu email">
+                            <input type="email" class="form-control" id="emailInput" name="email" placeholder="Escribe tu email" required>
                         </div>
                         <div class="col-12 mt-3">
                             <label for="mensajeInput" class="form-label">Mensaje</label>
-                            <textarea class="form-control" id="mensajeInput" rows="5" placeholder="Escribe tu mensaje"></textarea>
+                            <textarea class="form-control" id="mensajeInput" name="mensaje" rows="5" placeholder="Escribe tu mensaje" required></textarea>
                         </div>
-                        <div class="row">
-                            <div class="col-3 mt-3">
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                            </div>
+                        <div class="col-3 mt-3">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
                     </form>
-                </div>
+            </div>                    
                 <div class="col-md-6">
                     <h2>¿Tienes una Historia que Contar? ¡Nosotros la Difundimos!</h2>
                     <p>En Caos News, estamos comprometidos con llevar las historias más relevantes e impactantes a nuestra audiencia. Si hay un evento o un tema que crees que merece atención, queremos saber de ello. Puedes contactarnos, estamos aquí para dar voz a tus historias y arrojar luz sobre las verdades que importan.</p>
@@ -195,7 +186,6 @@
             </div>
         </div>
     </main>
-
     <!-- Pie de página -->
     <section class="pie-de-pagina">
         <footer class="container-fluid">

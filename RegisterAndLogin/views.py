@@ -118,6 +118,8 @@ def prueba(request):
     else:
         value = request.POST["type"]
         context = {
-            'post':value
+            'post': value
         }
-        return render(request, "prueba.html", context)
+    else:
+        return render(request, "prueba.html")
+    return render(request, "prueba.html", context)

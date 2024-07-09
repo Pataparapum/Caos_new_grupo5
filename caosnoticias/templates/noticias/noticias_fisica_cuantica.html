@@ -1,11 +1,12 @@
+{%load static%}
 <!DOCTYPE html5>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caos New</title>
-    <link rel="stylesheet" href="./css/estilonoticias.css">
-    <link rel="stylesheet" href="./css/estiloIndex.css">
+    <link rel="stylesheet" href="{% static './css/estilonoticias.css' %}">
+    <link rel="stylesheet" href="{% static './css/estiloIndex.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
 </head>
@@ -14,7 +15,9 @@
     <header class="container-fluid">
         <article class="row">
             <section id="Logo" class="col-9 col-sm text-center text-lg-start">
-                <img src="./img/Logo.jpg" alt="Logo" id="imgLogo"></a>
+                <a href="{% url 'index' %}">
+                    <img src="{%static './img/Logo.jpg' %}" alt="Logo" id="imgLogo">
+                </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
                 <form action="#" id="formulario">
@@ -36,12 +39,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
-                    <li class="border-end border-dark nav-item navbar-text"><a href="index.html" class="text-decoration-none">Inicio</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'index' %}" class="text-decoration-none">Inicio</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Policial</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Economía</a></li>
                     <li class="border-end border-dark nav-item navbar-text"><a href="#" class="text-decoration-none">Deportes</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="noticiasCienciayTecnologia.html" class="text-decoration-none">Ciencia y tecnología</a></li>
-                    <li class="border-end border-dark nav-item navbar-text"><a href="noticiasInternacionales.html" class="text-decoration-none">Internacional</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_ciencia_tecnologia' %}" class="text-decoration-none">Ciencia y tecnología</a></li>
+                    <li class="border-end border-dark nav-item navbar-text"><a href="{% url 'noticias_internacionales' %}" class="text-decoration-none">Internacional</a></li>
                 </ul>
             </div>
         </div>
@@ -51,12 +54,12 @@
         <div class="row">
             <div class="col-8 mx-auto">
                 <h1>Descubrimientos Pioneros en el LHC: Nuevas Partículas Exóticas y Avances en Física Cuántica</h1><br>
-                <img class="imagen-protesta" src="img/imagenes noticias ciencia/noticia-ciencia1.jpg" alt="Descripción de la imagen" loading="lazy"><br>
+                <img class="imagen-protesta" src="{% static 'img/imagenes noticias ciencia/noticia-ciencia1.jpg' %}" alt="Descripción de la imagen" loading="lazy"><br>
                 <p class="texto-protesta">Recientemente, la comunidad científica ha observado algunos avances notables en la física de partículas. En el Gran Colisionador de Hadrones (LHC), el experimento LHCb ha descubierto tres nuevas partículas exóticas, incluyendo un tipo nuevo de "pentaquark" y el primer par conocido de "tetraquarks". Estos hallazgos podrían ayudar a los físicos a entender mejor cómo los quarks se combinan para formar estas partículas compuestas, ampliando nuestro conocimiento de la estructura fundamental de la materia.
                     Además, en otro avance significativo, investigadores en la Universidad de Purdue han identificado un nuevo estado cuántico con partículas emergentes llamadas fermiones compuestos de seis flujos. Este descubrimiento podría expandir nuestra comprensión de los estados cuánticos fraccionarios conocidos en el efecto Hall cuántico fraccional, proporcionando una nueva perspectiva sobre estas intrigantes configuraciones de partículas.
                     Estos descubrimientos no solo subrayan el continuo potencial de los aceleradores de partículas como herramientas para explorar los fundamentos de la física, sino que también resaltan el uso de tecnologías avanzadas y teorías matemáticas para descifrar los fenómenos más complejos del universo.</p>
                 <br>
-                <img class="imagen-protesta" src="img/imagenes noticias ciencia/noticia-ciencia2.jpg" alt="Descripción de la imagen" loading="lazy">
+                <img class="imagen-protesta" src="{% static 'img/imagenes noticias ciencia/noticia-ciencia2.jpg' %}" alt="Descripción de la imagen" loading="lazy">
                 <p class="texto-protesta">Por otro lado, el descubrimiento en la Universidad de Purdue sobre los fermiones compuestos de seis flujos ofrece una nueva forma de entender las partículas que emergen en condiciones extremas, como las que se presentan en los estados cuánticos fraccionarios del efecto Hall cuántico fraccional. Este avance podría ser crucial para desarrollar una "tabla periódica" de estados cuánticos fraccionarios, proporcionando un marco más claro para la clasificación y estudio de estos fenómenos.</p>
             </div>
         </div>
@@ -70,7 +73,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card" style="width: 20rem;">
-                    <img src="img/imagenes noticias/card-1.jpg" class="card-img-top rounded" alt="...">
+                    <img src="{% static 'img/imagenes noticias/card-1.jpg' %}" class="card-img-top rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Ciudadanos Desafían el Mal Tiempo para Luchar por el Clima</h5>
                         <p class="card-text">A pesar de la lluvia torrencial, un grupo dedicado de activistas se reunió en el centro de la ciudad para exigir reformas ambientales. La determinación de los manifestantes resaltó la urgencia de su causa, incluso bajo condiciones climáticas adversas.</p>
@@ -80,7 +83,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card" style="width: 20rem;">
-                    <img src="img/imagenes noticias/card-2.jpg" class="card-img-top rounded" alt="...">
+                    <img src="{%static 'img/imagenes noticias/card-2.jpg' %}" class="card-img-top rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Escalada de Violencia en Protestas Climáticas en Francia</h5>
                         <p class="card-text">Las protestas climáticas en Francia se tornaron violentas hoy, con choques entre policía y manifestantes en París. Barricadas y altercados reflejaron la creciente frustración por la lenta respuesta política al cambio climático, evidenciando profundas divisiones en la sociedad.</p>
@@ -90,7 +93,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card" style="width: 20rem;">
-                    <img src="img/imagenes noticias/card-3.jpg" class="card-img-top rounded" alt="...">
+                    <img src="{% static 'img/imagenes noticias/card-3.jpg' %}" class="card-img-top rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Multitudes se Unen en Nantes para Exigir Acciones Contra el Cambio Climático</h5>
                         <p class="card-text">En un acto de solidaridad y preocupación por el futuro, cientos de personas se congregaron en el centro de Nantes para manifestarse contra la inacción gubernamental frente al cambio climático. A pesar del clima desfavorable, la plaza se llenó de voces unidas por una causa común.</p>
@@ -123,8 +126,8 @@
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./js/form.js"></script>
-    <script src="./js/getUser.js"></script>
+    <script src="{% static './js/form.js' %}"></script>
+    <script src="{% static './js/getUser.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

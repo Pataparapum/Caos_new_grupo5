@@ -11,7 +11,9 @@
 <body>
     <header>
         <div id="caosNew">
-            <img src="{% static "./img/Logo.jpg" %}" alt="" width="50px">
+            <a href="{% url 'login' %}">
+                <img src="{% static 'img/Logo.jpg' %}" alt="Logo" width="50px">
+            </a>
             <p>Caos News</p>
         </div>
     </header>

@@ -1,16 +1,16 @@
 /*General*/
-body{
+body {
     padding: 0px;
     margin: 0px;
-    background-color: #F2DAC4;
+    background-color: #000000; /* Fondo blanco */
 }
 
-header{
-    background-color:#594432 ;
+header {
+    background-color: #000000; /* Fondo blanco */
 }
 
-main{
-    background-color:#F2DAC4;
+main {
+    background-color: #020202; /* Fondo blanco */
 }
 
 /*IDs*/
@@ -19,15 +19,14 @@ main{
     margin: auto;
 }
 
-#imgLogo{
+#imgLogo {
     margin: 20px;
     border-radius: 100px;
 }
 
-#log_in{
+#log_in {
     width: 300px;
     margin: 10px auto 10px auto;
-    
 }
 
 #formulario, #divUsuario  {
@@ -44,13 +43,13 @@ main{
     border: 1px solid slateblue;
 }
 
-#boton{
+#boton {
     margin: 30px 30px 0px 30px;
 }
 
 #cerrarSesion {
     margin-top: 5px;
-    color:#F2DAC4;
+    color: #F2DAC4;
 }
 
 #cerrarSesion:hover {
@@ -66,18 +65,18 @@ main{
     width: 80%;
 }
 
-#submitBuscar{
+#submitBuscar {
     width: 10%;
 }
 
-#nav li{
+#nav li {
     margin: 10px;
     padding: 10px;
     padding-right: 20px;
 }
 
-#nav li:hover{
-    color:black;
+#nav li:hover {
+    color: black;
 }
 
 /*carrusel*/
@@ -86,13 +85,14 @@ main{
     height: auto;
     margin: 40px auto;
     padding: 20px;
-    background-color: #F2DAC4;
+    background-color: #ffffff; /* Fondo blanco */
 }
 
 .imagen-noticia {
     width: 100%;
     height: auto;
 }
+
 /*seccion mas leido*/
 .seccion-mas-leido {
     width: 100%;
@@ -101,7 +101,7 @@ main{
     float: none;
     margin: auto;
     padding: 40px 30px;
-    background-color: rgb(242, 218, 196);
+    background-color: #ffffff; /* Fondo blanco */
 }
 
 .imagen-mas-leido {
@@ -145,16 +145,16 @@ main{
     color: white;
     font-size: small;
     padding: 10px;
-    background-color: #8C7764;
+    background-color: #ffffff; /* Fondo blanco */
 }
 
-.footerItem{
+.footerItem {
     padding-top: 25px;
 }
 
-.social-media{
+.social-media {
     color: black;
-    .fab{
+    .fab {
         color: black;
     }
 }
