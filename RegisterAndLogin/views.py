@@ -111,7 +111,7 @@ def register(request):
     return render(request, 'crearCuenta.html', context)
 
 def prueba(request):
-    
+
     
     if(request.method != "POST"):
         return render(request, "prueba.html")
@@ -120,6 +120,5 @@ def prueba(request):
         context = {
             'post': value
         }
-    else:
-        return render(request, "prueba.html")
-    return render(request, "prueba.html", context)
+        return render(request, "prueba.html", context)
+
