@@ -128,13 +128,13 @@ main {
 }
 
 /*texto y fuentes*/
-.h3 {
+h3 {
     color: rgb(247, 247, 247);
     font-size: 30px;
     text-align: center;
 }
 
-.p {
+p {
     font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -142,7 +142,7 @@ main {
 /*pie de pagina*/
 .pie-de-pagina {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: black;
     font-size: small;
     padding: 10px;
     background-color: #ffffff; /* Fondo blanco */
