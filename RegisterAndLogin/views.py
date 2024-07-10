@@ -7,6 +7,8 @@ from .forms import Reader, Writer
 from .models import ReadUser, WriteUser
 
 
+def userExist(username):
+    return User.objects.filter(username=username).count() < 1
 
 def register(request):
     if (request.method != 'POST'):
@@ -35,78 +37,77 @@ def register(request):
         
     else:
         if (userType == "createwrite"):
+            try:
+                validate_email(request.POST['email'])
+            except ValidationError:
+                form = Writer()
+                mensaje = 'Formato de email invalido'
+                context = {
+                    'form' : form,
+                    'error' : mensaje,
+                    'user' : 'write'
+                }
+                return render (request, 'crearCuenta.html', context)
+            
             form = Writer(request.POST)
-            if form.is_valid():
-                try:
-                    validate_email(request.POST['email'])
-                except ValidationError:
-                    form = Writer()
-                    mensaje = 'Formato de email invalido'
-                    context = {
-                        'form' : form,
-                        'mensaje' : mensaje,
-                        'user' : 'write'
-                    }
-                    return render (request, 'crearCuenta.html', context)
-                    
-                else:
-                    form.save()
-                    
-                    user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], request.POST['password'])
-                    user.has_perm('RegisterAndLogin.view_Newspaper')
-                    user.has_perm('RegisterAndLogin.add_Newspaper')
-                    user.has_perm('RegisterAndLogin.dalate_Newspaper')
-                    user.has_perm('RegisterAndLogin.change_Newspaper')
-                    user.save()
+            if form.is_valid() and userExist(request.POST['userName']):
                 
-                    login(request, user)
+                form.save()
+                
+                user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], request.POST['password'])
+                user.has_perm('RegisterAndLogin.view_Newspaper')
+                user.has_perm('RegisterAndLogin.add_Newspaper')
+                user.has_perm('RegisterAndLogin.dalate_Newspaper')
+                user.has_perm('RegisterAndLogin.change_Newspaper')
+                user.save()
+                
+                login(request, user)
                     
-                    form = Writer()
-                    return redirect('index')
+                form = Writer()
+                return redirect('index')
             else:
                 form = Writer()
-                mensaje = 'los datos no son validos'
+                mensaje = 'los datos no son validos o el usuario ya esta registrado'
                 context = {
-                    'mensaje': mensaje,
+                    'error': mensaje,
                     'form':form,
                     'user':'write'
                 }
                 return render(request, 'crearCuenta.html', context)
                     
         elif (userType == "createread"):
-            form = Reader(request.POST)
-            if form.is_valid():
-                try:
-                    validate_email(request.POST['email'])
-                except ValidationError:
-                    form = Reader()
-                    mensaje = 'Formato de email invalido'
-                    context = {
-                        'form' : form,
-                        'mensaje' : mensaje,
-                        'user' : 'read'
-                    }
-                    return render (request, 'crearCuenta.html', context)
-                    
-                else:
-                    form.save()
-                    
-                    user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
-                    user.has_perm('RegisterAndLogin.view_Newspaper')
-                    
-                    form = Reader()
-                    return redirect('index')
-            else:
-                form = Writer()
-                mensaje = 'los datos no son validos'
+            try:
+                validate_email(request.POST['email'])
+            except ValidationError:
+                form = Reader()
+                mensaje = 'Formato de email invalido'
                 context = {
-                    'mensaje': mensaje,
+                    'form' : form,
+                    'error' : mensaje,
+                    'user' : 'read'
+                }
+                return render (request, 'crearCuenta.html', context)
+            
+            form = Reader(request.POST)
+            if form.is_valid() and userExist(request.POST['userName']):
+                form.save()
+                    
+                user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
+                user.has_perm('RegisterAndLogin.view_Newspaper')
+                
+                form = Reader()
+                return redirect('index')
+            
+            else:
+                form = Reader()
+                mensaje = 'los datos no son validos o el usuario ya esta registrado'
+                context = {
+                    'error': mensaje,
                     'form':form,
                     'user':'write'
                 }
                 return render(request, 'crearCuenta.html', context)
                 
-    return render(request, 'crearCuenta.html', context)
 
 def tipoUser(request):
 

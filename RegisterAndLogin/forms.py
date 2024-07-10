@@ -9,11 +9,6 @@ from django.contrib.auth.hashers import *
 
 class Reader(forms.Form, ModelForm):
     
-    def clean_password(self):
-        data = self.cleaned_data['password']
-        hashPassword = make_password(data)
-        return hashPassword
-    
     class Meta:
         model = ReadUser
         fields = ["userName", "email"]

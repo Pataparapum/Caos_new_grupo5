@@ -4,26 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static './css/estiloRegistro.css'%}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './css/estiloRegistro.css'%}">
     <title>tipo de usuario</title>
 </head>
 <body>
-
-    {% if post %}
-        {{post}}
-        {% for p in post %}
-            <div>
-                {{p}}
+    <header>
+        <div id="caosNew">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/Logo.jpg' %}" alt="Logo" width="50px">
+            </a>
+            <p>Caos News</p>
+        </div>
+    </header>
+    <main>
+        
+        <form action="{% url "register" %}" class="form-group formtype" id="form" method="POST">
+            {% csrf_token %}
+            <div id="formulario" class="mb-3">
+                <h1>Seleccione el tipo de usuario</h1>
+                <div class="formItem">
+                    <div class="btb-group d-flex justify-content-center" role="group" aria-label="grupo escritor">
+                        <button type="submit" class="btn btn-dark btn-lg rounded-start" value="write" name="type">Usuario escritor</button>
+                        <button type="button" class="btn btn-dark btn-lg btn-outline-secondary rounded-end" data-bs-toggle="collapse" data-bs-target="#infow" aria-expanded="false" aria-controls="información usuario escritor">About...</button>
+                    </div>
+                    <div class="collapse" id="infow">
+                        <div class="card card-body">
+                            Un usuario escritor al igual que el lector, puede leer las noticias disponibles, pero ademas tendra la posibilidad de subir sus pripias noticas dentro de la pagina
+                        </div>
+                    </div>
+                </div>
+                <div class="formItem">
+                    <div class="btb-group d-flex justify-content-center" role="group" aria-label="grupo lector">
+                        <button type="submit" class="btn btn-dark btn-lg rounded-start" value="read" name="type">Usuario lector</button>
+                        <button type="button" class="btn btn-dark btn-lg btn-outline-secondary rounded-end" data-bs-toggle="collapse" data-bs-target="#infor" aria-expanded="false" aria-controls="información usuario escritor">About...</button>
+                    </div>
+                    <div class="collapse" id="infor">
+                        <div class="card card-body">
+                            Un usuario Lector solo prodra entrar y ver las noticas subidas en la pagina, no podra subir sus propias noticas, por lo que si quiere dar a conocer una situación particular, tendra que ser desde el formulario de contacto
+                        </div>
+                    </div>
+                </div>
             </div>
-        {% endfor %}
-    {% endif %}
-
-    <form action="{% url "register" %}" class="form-group" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="write" name="type">
-        <input type="submit" value="read" name="type">
-    </form>
+        </form>
+    </main>
+    
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

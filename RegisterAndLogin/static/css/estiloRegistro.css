@@ -48,6 +48,8 @@ main {
     font-size: 15px;
 }
 
+
+
 #formulario {
     width: 400px;
     user-select: none;
@@ -80,4 +82,8 @@ main {
     background-color: #F3EFEE;
     border: 1px solid #F3EFEE;
     border-radius: 10px;
+}
+
+.formtype {
+    margin-top: 100px;
 }
