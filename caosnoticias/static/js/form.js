@@ -20,7 +20,7 @@ $(document).ready(function() {
         }
     });
 
-    // aquí la clase CSS para las validaciones
+     //CSS para las validaciones
     $('.form-control').on('input', function() {
         let value = $(this).val().trim();
         if (this.checkValidity() && isValidInput($(this), value)) {

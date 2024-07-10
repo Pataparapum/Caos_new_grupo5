@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'caosnoticias',
     'RegisterAndLogin',
+    'subir_noticias',
 ]
 
 MIDDLEWARE = [

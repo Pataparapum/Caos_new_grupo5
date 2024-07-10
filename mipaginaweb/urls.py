@@ -7,4 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('noticias/', include('caosnoticias.urls')),
     path('sesion/', include('RegisterAndLogin.urls')),
+    path('subir_noticias/', include('subir_noticias.urls')),
 ]
