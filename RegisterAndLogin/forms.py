@@ -1,5 +1,6 @@
 from typing import Any
 from django import forms
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import User
 from django.forms import ModelForm, ValidationError
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
@@ -15,11 +16,10 @@ class Reader(forms.Form, ModelForm):
     
     class Meta:
         model = ReadUser
-        fields = ["userName", "email", "password"]
+        fields = ["userName", "email"]
         labels = {
             "userName" : "* User Name",
             "email" : "* Email",
-            "password" : "* Password"
         }
         widgets = {
             "userName" : forms.TextInput(
@@ -32,12 +32,6 @@ class Reader(forms.Form, ModelForm):
                                         'id':'email',
                                         'placeholder':'name@example.com'
                                         }),
-            "password" : forms.PasswordInput(
-                                   attrs={'class':'inputform form-control',
-                                          'id':'password',
-                                          'placeholder':'password',
-                                          'name':'password'
-                                          })
             
         }
     
@@ -45,19 +39,13 @@ class Reader(forms.Form, ModelForm):
 class Writer(forms.Form, ModelForm):
 
     
-    def clean_password(self):
-        data = self.cleaned_data['password']
-        hashPassword = make_password(data)
-        return hashPassword
-    
     class Meta:
         model = WriteUser
-        fields = ['userName', 'email', 'empresa', 'password']
+        fields = ['userName', 'email', 'empresa']
         labels = {
             "userName" : "* User Name",
             "email" : "* Email",
             "empresa" : "* Empresa",
-            "password" : "* Password"
         }
         widgets = {
             "userName" : forms.TextInput(attrs={'class':'inputform form-control',
@@ -74,11 +62,6 @@ class Writer(forms.Form, ModelForm):
                                          'id':'empresa',
                                          'placeholder':'empresa'
                                          }),
-            "password" : forms.PasswordInput(
-                                   attrs={'class':'inputform form-control',
-                                          'id':'password',
-                                          'placeholder':'password'
-                                          })
         }
     
 class UserLoginForm(AuthenticationForm):
@@ -94,8 +77,6 @@ class UserLoginForm(AuthenticationForm):
     
     def get_user(self) -> User:
         return super().get_user()
-    
-
     
     username = UsernameField(widget=forms.TextInput(
         attrs={

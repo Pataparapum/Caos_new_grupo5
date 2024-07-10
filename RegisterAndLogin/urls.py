@@ -12,9 +12,7 @@ urlpatterns = [
     ),
          name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
-    path('newPassword/', views.PasswordChangeView.as_view(
-        template_name="cambiarPassword.html"
-    ),
-         name='newPassword'),
-    path('newUsername/', newUsername, name='newUsername'),
+    path('newPassword/', cambiarPassword, name='newPassword'),
+    path('newUsername/', CambiarUsername, name='newUsername'),
+    path('modelPassword/', modelPassword, name='modelPassword')
 ]

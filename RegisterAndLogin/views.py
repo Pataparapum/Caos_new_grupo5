@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from .forms import Reader, Writer
+from .models import ReadUser, WriteUser
 
 
 
@@ -51,7 +52,7 @@ def register(request):
                 else:
                     form.save()
                     
-                    user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
+                    user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], request.POST['password'])
                     user.has_perm('RegisterAndLogin.view_Newspaper')
                     user.has_perm('RegisterAndLogin.add_Newspaper')
                     user.has_perm('RegisterAndLogin.dalate_Newspaper')
@@ -112,5 +113,24 @@ def tipoUser(request):
     if(request.method != "POST"):
         return render(request, "tipoUser.html")
 
-def newUsername(request):
+def CambiarUsername(request):
     return render(request, 'cambiarUsername.html')
+
+def cambiarPassword(request):
+    return render(request, 'cambiarPassword.html');
+    
+
+def modelPassword(request):
+    if (request.method == "POST"):
+        user = request.user.username
+        read = ReadUser.objects.all().filter(userName=user)
+        write = WriteUser.objects.all().filter(userName=user)
+        if (read):
+            read.password = request.user.password
+            read.save()
+        elif (write):
+            write.passwrod = request.user.password
+            write.save()
+        return redirect('index')
+    else:
+        return redirect('index')
