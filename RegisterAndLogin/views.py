@@ -1,7 +1,8 @@
+from django.contrib.messages import constants as messages
 from django.shortcuts import render, redirect
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from .forms import Reader, Writer, ChangePassword, ChangeUserName
@@ -222,3 +223,19 @@ def cambiarPassword(request):
             'error':mensaje
         }
         return render(request, 'cambiarPassword.html', context)
+    
+def deleteAccount(request):
+    username = request.user.username
+    try:
+        user = User.objects.get(username=username)
+        logout(request)
+        user.delete()
+        
+        return redirect('index')
+    
+    except User.DoesNotExist:
+        messages.error(request, 'El usuario no existe')
+        
+    except Exception as e:
+        messages.error(request, e)
+        
