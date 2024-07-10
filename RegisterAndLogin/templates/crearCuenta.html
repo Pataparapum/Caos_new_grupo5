@@ -11,20 +11,18 @@
 <body>
     <header>
         <div id="caosNew">
-            <a href="{% url 'login' %}">
+            <a href="{% url 'index' %}">
                 <img src="{% static 'img/Logo.jpg' %}" alt="Logo" width="50px">
             </a>
             <p>Caos News</p>
         </div>
     </header>
     <main>
-        {% if mensaje %}
-            <p> {{mensaje}} </p>
-        {% endif %}
         <form action="{% url 'register' %}" class="form-group" id="form" method="POST">
             {% csrf_token %}
             <div id="formulario" class="mb-3">
-                <h1>Sing up</h1>
+                
+                <h1>Sign up</h1>
 
                 {% for field in form%}
                     <div class="formItem form-floating mb-3">
@@ -32,11 +30,19 @@
                         <label for="{{field.auto_id}}" class="form-label">{{field.label}}</label>
                     </div>
                 {% endfor %}
+                <div class="formItem form-floating mb-3">
+                    <input type="password" class="inputform form-control" id="password" placeholder="password" name="password" required>
+                    <label for="password" class="form-label">* password</label>
+                </div>
+
                 <input type="text" value="create{{user}}" name="type" hidden>
                 <div class="d-grid mx-auto mb-3" id="submit">
                     <input type="submit" id="inputSubmit" class="btn btn-outline-secondary btn-dark btn-lg rounded-pill" value="ingresar">
                     <p id="obligatorio" class="text-secondary">* obligatorio</p>
-                    <p id="error" class="text-danger"></p>
+                    <p>¿Tienes un cuenta? <a href="{% url 'login' %}">Sign in</a></p>
+                    {% if error %}
+                    <p id="error" class="text-danger">{{error}}</p>
+                    {% endif %}
                 </div>
             </div>
             
