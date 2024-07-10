@@ -3,7 +3,8 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-from .forms import Reader, Writer
+from django.contrib.auth.hashers import check_password
+from .forms import Reader, Writer, ChangePassword
 from .models import ReadUser, WriteUser
 
 
@@ -97,6 +98,8 @@ def register(request):
                 user.first_name = "read"
                 user.has_perm('RegisterAndLogin.view_Newspaper')
                 
+                login(request, user)
+                
                 form = Reader()
                 return redirect('index')
             
@@ -119,21 +122,44 @@ def tipoUser(request):
 def CambiarUsername(request):
     return render(request, 'cambiarUsername.html')
 
-def cambiarPassword(request):
-    return render(request, 'cambiarPassword.html');
-    
 
-def modelPassword(request):
-    if (request.method == "POST"):
-        user = request.user.username
-        read = ReadUser.objects.all().filter(userName=user)
-        write = WriteUser.objects.all().filter(userName=user)
-        if (read):
-            read.password = request.user.password
-            read.save()
-        elif (write):
-            write.passwrod = request.user.password
-            write.save()
-        return redirect('index')
+def oldPasswordCorrect(old, user):
+    password = User.objects.filter(username=user).first().password
+    print(password)
+    return check_password(old, password)
+
+def cambiarPassword(request):
+    if (request.method != 'POST'):
+        form = ChangePassword()
+        context = {
+            'form':form
+        }
+        return render(request, 'cambiarPassword.html', context);
+    
+    oldP = request.POST['oldPassword']
+    newP = request.POST['newPassword']
+    cNewP = request.POST['newPasswordC']
+    username = request.user.username
+    if (oldPasswordCorrect(oldP, username)):
+        if (newP == cNewP):
+            user = User.objects.get(username=username)
+            user.set_password(newP)
+            user.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            form = ChangePassword()
+            mensaje = "las contraseñas no coinciden"
+            context = {
+                'form':form,
+                'error':mensaje
+            }
+            return render(request, 'cambiarPassword.html', context)
     else:
-        return redirect('index')
+        form = ChangePassword()
+        mensaje = "la contraseña antigua es incorrecta"
+        context = {
+            'form':form,
+            'error':mensaje
+        }
+        return render(request, 'cambiarPassword.html', context)

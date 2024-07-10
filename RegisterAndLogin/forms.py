@@ -58,6 +58,32 @@ class Writer(forms.Form, ModelForm):
                                          'placeholder':'empresa'
                                          }),
         }
+        
+class ChangePassword(forms.Form):
+    
+    oldPassword = forms.CharField(label="Contraseña Antigua", required=True, widget=forms.PasswordInput(
+        attrs={
+            'class':'inputform form-control',
+            'id':'oldpassword',
+            'placeholder':'old password'
+        }
+    ))
+    
+    newPassword = forms.CharField(label="Nueva Contraseña", required=True, widget=forms.PasswordInput(
+        attrs={
+            'class':'inputform form-control',
+            'id':'newpassword',
+            'placeholder':'new password'
+        }
+    ))
+    
+    newPasswordC = forms.CharField(label="Confirmar Contraseña", required=True, widget=forms.PasswordInput(
+        attrs={
+            'class':'inputform form-control',
+            'id':'newpasswordc',
+            'placeholder':'confirmar password'
+        }
+    ))
     
 class UserLoginForm(AuthenticationForm):
     def __init__(self, request: Any = ..., *args: Any, **kwargs: Any) -> None:
