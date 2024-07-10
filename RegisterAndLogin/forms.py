@@ -59,6 +59,24 @@ class Writer(forms.Form, ModelForm):
                                          }),
         }
         
+class ChangeUserName(forms.Form):
+    
+    newUsername = forms.CharField(label='New username', required=True, widget=forms.TextInput(
+        attrs={
+            'class':'inputform form-control',
+            'id':'newusername',
+            'placeholder':'nuevo nombre de usuario'
+        }
+    ))
+    
+    CnewUserName = forms.CharField(label='Confirm New Username', required=True, widget=forms.TextInput(
+        attrs={
+            'class':'inputform form-control',
+            'id':'cnewusername',
+            'placeholder':'confirmar nombre de usuario'
+        }
+    ))
+        
 class ChangePassword(forms.Form):
     
     oldPassword = forms.CharField(label="Contraseña Antigua", required=True, widget=forms.PasswordInput(

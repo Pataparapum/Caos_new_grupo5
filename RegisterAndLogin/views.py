@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
-from .forms import Reader, Writer, ChangePassword
+from .forms import Reader, Writer, ChangePassword, ChangeUserName
 from .models import ReadUser, WriteUser
 
 
@@ -59,9 +59,12 @@ def register(request):
                 user.first_name = "write"
                 user.has_perm('RegisterAndLogin.view_Newspaper')
                 user.has_perm('RegisterAndLogin.add_Newspaper')
-                user.has_perm('RegisterAndLogin.dalate_Newspaper')
+                user.has_perm('RegisterAndLogin.delete_Newspaper')
                 user.has_perm('RegisterAndLogin.change_Newspaper')
+                user.has_perm('RegisterAndLogin.delete_WriteUser')
+                user.has_perm('RegisterAndLogin.change_WriteUser')
                 user.save()
+                
                 
                 login(request, user)
                     
@@ -97,6 +100,8 @@ def register(request):
                 user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
                 user.first_name = "read"
                 user.has_perm('RegisterAndLogin.view_Newspaper')
+                user.has_perm('RegisterAndLogin.delete_ReadUser')
+                user.has_perm('RegisterAndLogin.change_ReadUser')
                 
                 login(request, user)
                 
@@ -120,7 +125,58 @@ def tipoUser(request):
         return render(request, "tipoUser.html")
 
 def CambiarUsername(request):
-    return render(request, 'cambiarUsername.html')
+    if (request.method != 'POST'):
+        form = ChangeUserName()
+        context = {
+            'form':form
+        }
+        return render(request, 'cambiarUsername.html', context)
+    username = request.user.username
+    typeUser = User.objects.filter(username=username).first().first_name
+    newUsername = request.POST['newUsername']
+    cNewUsername = request.POST['CnewUserName']
+    
+    if (User.objects.filter(username=newUsername).count() == 1):
+        form = ChangeUserName()
+        mensaje = 'usuario ya registrado'
+        context = {
+            'form':form,
+            'error':mensaje
+        }
+        return render(request, 'cambiarUsername.html', context)
+    
+    if (newUsername == cNewUsername):
+        if (typeUser == 'write'):
+            writeU = WriteUser.objects.get(userName=username)
+            user = User.objects.get(username=username)
+            writeU.userName = newUsername
+            user.username = newUsername
+            user.save()
+            writeU.save()
+            
+            login(request, user)
+            return redirect('index')
+        elif (typeUser == 'read'):
+            readU = ReadUser.objects.get(userName=username)
+            user = User.obects.get(username=username)
+            readU.userName = newUsername
+            user.username = newUsername
+            user.save()
+            writeU.save()
+            
+            login(request, user)
+            return redirect('index')
+    else:
+        form = ChangeUserName()
+        mensaje = 'Los campos no coinciden'
+        context = {
+            'form':form,
+            'error':mensaje
+        }
+        return render(request, 'cambiarUsername.html', context)
+            
+            
+            
 
 
 def oldPasswordCorrect(old, user):
@@ -140,16 +196,19 @@ def cambiarPassword(request):
     newP = request.POST['newPassword']
     cNewP = request.POST['newPasswordC']
     username = request.user.username
+    
     if (oldPasswordCorrect(oldP, username)):
-        if (newP == cNewP):
+        
+        if (newP == cNewP):    
             user = User.objects.get(username=username)
             user.set_password(newP)
             user.save()
             login(request, user)
             return redirect('index')
+        
         else:
             form = ChangePassword()
-            mensaje = "las contraseñas no coinciden"
+            mensaje = "los campos no coinciden"
             context = {
                 'form':form,
                 'error':mensaje
