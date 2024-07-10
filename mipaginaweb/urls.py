@@ -8,4 +8,5 @@ urlpatterns = [
     path('noticias/', include('caosnoticias.urls')),
     path('sesion/', include('RegisterAndLogin.urls')),
     path('subir_noticias/', include('subir_noticias.urls')),
+    path('suscripciones/', include('suscripciones.urls')),
 ]

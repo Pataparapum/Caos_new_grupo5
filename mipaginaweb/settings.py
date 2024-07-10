@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'caosnoticias',
     'RegisterAndLogin',
     'subir_noticias',
+    'suscripciones',
 ]
 
 MIDDLEWARE = [
