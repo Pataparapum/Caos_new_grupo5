@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import *
 from django.contrib.auth import views
-from .forms import UserLoginForm, UserPasswordChangeForm
+from .forms import UserLoginForm
 
 urlpatterns = [
     path('register/', register, name="register"),
@@ -12,11 +12,7 @@ urlpatterns = [
     ),
          name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
-    path('newPassword/', PasswordChangeView.as_view(
-        template_name="cambiarPassword.html",
-        form_class= UserPasswordChangeForm,
-    ),
-         name='newPassword'),
-    path('newUsername/', newUsername, name='newUsername'),
+    path('newPassword/', cambiarPassword, name='newPassword'),
+    path('newUsername/', CambiarUsername, name='newUsername'),
     path('modelPassword/', modelPassword, name='modelPassword')
 ]
