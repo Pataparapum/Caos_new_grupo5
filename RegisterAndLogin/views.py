@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth import login
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.models import User
-from .forms import Reader, Writer
+from .forms import Reader, Writer, UserPasswordChangeForm
+from .models import ReadUser, WriteUser
 
 
 
@@ -114,3 +116,18 @@ def tipoUser(request):
 
 def newUsername(request):
     return render(request, 'cambiarUsername.html')
+
+def modelPassword(request):
+    if (request.method == "POST"):
+        user = request.user.username
+        read = ReadUser.objects.all().filter(userName=user)
+        write = WriteUser.objects.all().filter(userName=user)
+        if (read):
+            read.password = request.user.password
+            read.save()
+        elif (write):
+            write.passwrod = request.user.password
+            write.save()
+        return redirect('index')
+    else:
+        return redirect('index')

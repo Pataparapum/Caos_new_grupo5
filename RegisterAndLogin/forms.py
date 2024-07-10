@@ -1,8 +1,9 @@
 from typing import Any
 from django import forms
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import User
 from django.forms import ModelForm, ValidationError
-from django.contrib.auth.forms import AuthenticationForm, UsernameField
+from django.contrib.auth.forms import AuthenticationForm, UsernameField, PasswordChangeForm
 from .models import ReadUser, WriteUser
 from django.contrib.auth.hashers import *
 
@@ -95,8 +96,6 @@ class UserLoginForm(AuthenticationForm):
     def get_user(self) -> User:
         return super().get_user()
     
-
-    
     username = UsernameField(widget=forms.TextInput(
         attrs={
             'class':'inputform form-control',
@@ -111,3 +110,32 @@ class UserLoginForm(AuthenticationForm):
             'id':'password'
         }
     ))
+    
+class UserPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, user: AbstractBaseUser | None, *args: Any, **kwargs: Any) -> None:
+        super().__init__(user, *args, **kwargs)
+
+    old_password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class':'inputform form-control',
+            'placeholder':'oldpassword',
+            'id':'oldpasswprd'
+        }
+    ))
+    
+    new_password1 = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class':'inputform form-control',
+            'placeholder':'newpassword2',
+            'id':'newpassword2'
+        }
+    ))
+    
+    new_password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class':'inputform form-control',
+            'placeholder':'newpassword2',
+            'id':'newpassword2'
+        }
+    ))
+    
