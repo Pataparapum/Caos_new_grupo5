@@ -1,17 +1,17 @@
-{% load static%}
-<!DOCTYPE html5>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caos New</title>
-    <link rel="stylesheet" href="{% static './css/estilonoticias.css' %}">
-    <link rel="stylesheet" href="{% static './css/estiloIndex.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estiloindex.css' %}">
+    <!-- Carga única de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
+    <title>Caos News</title>
 </head>
 <body>
-
     <header class="container-fluid"> 
         <article class="row align-items-center">
             <section id="logo" class="col-9 col-sm text-center text-lg-start">
@@ -20,16 +20,29 @@
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                <form action="#" id="formulario">
-                    <button type="button" id="boton" class="btn btn-danger rounded-pill">
-                        <a id="sesion" href="{% url 'login' %}" target="_self" style="text-decoration: none; color: black;">Login</a>
+            {% if user.is_authenticated %}
+                <div id="divUsuario" class="dropdown">
+                    <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
+                        {{user}}
                     </button>
-                    <p id="cerrarSesion"></p>
-                </form>
-                <div id="buscar" class="d-flex mt-2">
-                    <input type="text" id="textBuscar" class="form-control mr-2">
-                    <button type="button" title="boton" id="submitBuscar" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a id="userCenter" class="dropdown-item" href="{% url "userCenter" %}">Configuraciones</a></li>
+                    </ul>
                 </div>
+                
+            {% else %}
+                <form action="#" id="formulario">
+                    <div id="divUsuario" class="dropdown">
+                        <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
+                            Crear Cuenta
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a href="{% url 'login' %}">iniciar Sesion</a></li>
+                        </ul>
+                    </div>
+                </form>
+            {% endif %}
             </section>
         </article>
     </header>
@@ -76,13 +89,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes economia/Economiasystem.jpg' %}" class="d-block w-100" alt="...">
+            <img src="{% static 'img/noticiasdeportes/deportecarussel1.jpg' %}" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes economia/Economia 1.jpg' %}" class="d-block w-100" alt="...">
+            <img src="{% static 'img/noticiasdeportes/deportecarussel2.jpg' %}" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes economia/Economia 2.jpg' %}" class="d-block w-100" alt="...">
+            <img src="{% static 'img/noticiasdeportes/deportecarussel3.jpg' %}" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -98,18 +111,18 @@
     <!-- Ejemplo -->
     <div class="container-fluid bg-light py-5 text-center">
         <div class="row"></div>
-        <h1>Economia</h1>
+        <h1>Deportes</h1>
         </div>
     </div>
 
     <div class="container mt-5">
-        <h2 class="text-center">Systema economia mundial</h2>
+        <h2 class="text-center">Histórico salto: Atleta rompe récord mundial de longitud</h2>
         <div class="row">
             <div class="col-8">
-                <img src="{% static 'img/imagenes economia/Economia 3.jpg' %}" alt="">
+                <img class="{% static 'imagen-salto' %}" src="{% static 'img/noticiasdeportes/saltado.jpg' %}" alt="">
             </div>
             <div class="col-4">
-                <p>.</p>
+                <p>En una impresionante hazaña en el mundo del atletismo, la joven saltadora de longitud, Valentina Rojas, ha superado la marca de los 8 metros en un salto asombroso durante la competición internacional en Tokio. Rojas, de 22 años y representando a su país natal, Colombia, deslumbró a los espectadores con un salto de 8.05 metros, estableciendo así un nuevo récord mundial en esta disciplina. Este logro histórico no solo la convierte en la primera mujer en superar los 8 metros en la historia del salto de longitud, sino que también marca un hito significativo para el deporte femenino a nivel global.</p>
             </div>
         </div>
     </div>
@@ -119,13 +132,12 @@
         <div class="card mb-3 border-0 ">
             <div class="row g-0">
                 <div class="col-md-5">
-                    <img src="{% static 'img/imagenes economia/Economia 5.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/noticiasdeportes/natacion2.jpg' %}" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Economia 1</h2>
-                        <p>Aqui pueden aprender un poco de economia mundial, como funciona etc...</p> 
-                        <p>La economía mundial funciona como una red interconectada de países que comercian bienes, servicios y capital. A través del comercio internacional, los países exportan e importan productos, aprovechando sus ventajas comparativas. Las instituciones financieras globales, como el Fondo Monetario Internacional (FMI) y el Banco Mundial, así como organizaciones como la Organización Mundial del Comercio (OMC), regulan y facilitan estas interacciones. La globalización y la tecnología han aumentado la interdependencia económica, permitiendo flujos rápidos de información, inversión y mano de obra, lo que impulsa el crecimiento económico y la innovación a nivel mundial.</p>  
+                        <h2 class="card-title">Deporte 1</h2>
+                        <p>En el reciente Campeonato Mundial de Natación en Budapest, destacados nadadores como Emma McKeon de Australia y Caeleb Dressel de Estados Unidos dejaron su huella al batir récords mundiales en diversas pruebas. McKeon estableció un nuevo récord en los 100 metros libres con un tiempo de 52.06 segundos, mientras que Dressel igualó el récord en los 100 metros mariposa con un tiempo de 49.50 segundos. Estas actuaciones espectaculares no solo impresionaron a los aficionados, sino que también inspiraron a una nueva generación de nadadores en todo el mundo, destacando el talento y la emoción que rodea a este deporte.</p>   
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
@@ -139,26 +151,15 @@
             <div class="row g-0">
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Economia 2</h2>
-                        <p>En esta rubrica explicaremos un poco de economia mundial.</p>
-                        <p>La economía mundial ha pasado por diversas etapas a lo largo de la historia. En la antigüedad, las economías eran principalmente locales y basadas en el trueque. Con la aparición de la moneda en civilizaciones como la mesopotámica y la romana, el comercio comenzó a expandirse.
-
-                            Durante la Edad Media, el feudalismo predominaba en Europa, mientras que el comercio internacional creció con la Ruta de la Seda conectando Asia y Europa. En el Renacimiento, el surgimiento de las ciudades-estado italianas y los descubrimientos geográficos impulsaron el comercio marítimo.
-                            
-                            La Revolución Industrial en el siglo XVIII transformó radicalmente la economía global. La producción en masa y la mecanización aumentaron la productividad y fomentaron el crecimiento de las ciudades. Esto llevó a la creación de grandes imperios coloniales y una economía mundial más interconectada.
-                            
-                            El siglo XX vio dos guerras mundiales y la Gran Depresión, que afectaron profundamente a la economía global. Después de la Segunda Guerra Mundial, el Plan Marshall ayudó a reconstruir Europa y el sistema Bretton Woods estableció instituciones como el Fondo Monetario Internacional (FMI) y el Banco Mundial para estabilizar la economía global.
-                            
-                            En la segunda mitad del siglo XX, la globalización y la liberalización del comercio aumentaron significativamente. La creación de la Organización Mundial del Comercio (OMC) en 1995 fomentó un comercio más libre y justo. China y otros países emergentes comenzaron a jugar un papel crucial en la economía mundial.
-                            
-                            En el siglo XXI, la economía mundial enfrenta nuevos desafíos y oportunidades. La crisis financiera de 2008 demostró la interdependencia global, y la pandemia de COVID-19 en 2020 tuvo un impacto significativo en la economía mundial. La digitalización, el cambio climático y la desigualdad económica son temas centrales en la actualidad.</p>
+                        <h2 class="card-title">Deporte 2</h2>
+                        <p>El fútbol, conocido como el deporte rey, despierta pasiones y emociones en millones de personas alrededor del mundo. Desde las calles de barrios humildes hasta los estadios más imponentes, el fútbol une a personas de diversas culturas y orígenes bajo una misma bandera: la del deporte. Con su dinamismo, habilidad y estrategia, el fútbol trasciende fronteras y se convierte en mucho más que un juego; es una forma de vida para jugadores y aficionados por igual.</p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="{% static 'img/imagenes economia/economikasystem.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/noticiasdeportes/Estadio.jpg' %}" class="img-fluid rounded-start" alt="...">
                 </div>
             </div>
         </div>
@@ -169,17 +170,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes economia/economia 3.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">La evolución de la economía mundial puede resumirse en varias etapas clave: en la antigüedad, las economías eran locales y basadas en el trueque; en la Edad Media, el feudalismo dominaba y el comercio internacional creció con rutas como la de la Seda; el Renacimiento impulsó el comercio marítimo con descubrimientos geográficos; la Revolución Industrial del siglo XVIII transformó la producción con la mecanización y el crecimiento urbano; el siglo XX estuvo marcado por guerras mundiales, la Gran Depresión y la creación de instituciones globales como el FMI y el Banco Mundial; y en el siglo XXI, la globalización, la digitalización y los desafíos como el cambio climático y la desigualdad económica configuran la economía mundial actual.</p>
-                        <a href="#" class="btn btn-primary">Ir a noticia</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{% static 'img/imagenes economia/Economia 2.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'imagenes/mountains-190055_640.jpg' %}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -189,7 +180,17 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes economia/Economia 1.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'imagenes/mountains-190055_640.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'imagenes/mountains-190055_640.jpg' %}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
