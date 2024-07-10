@@ -209,3 +209,39 @@ p {
     padding: 20px;
     border-radius: 10px;
 }
+
+
+.subscription-banner {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.subscription-banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.subscription-banner p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.subscription-banner .btn {
+    padding: 10px 20px;
+    font-size: 1.25rem;
+}
+
+
+/* Estilo para la notificación del carrito */
+.position-relative .badge {
+    font-size: 0.75rem;
+    line-height: 1;
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    vertical-align: baseline;
+    border-radius: 10rem;
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+}
