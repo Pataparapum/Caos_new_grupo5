@@ -53,8 +53,8 @@
     <main style="background-color: #F3EFEE">
         <div class="container-fluid">
             <div id="bloque" class="row">
-                <h1>Tu Cuenta</h1>
                 <section id="user" class="col-3 border">
+                    <h1>Tu Cuenta</h1>
                     <p>{{user}}</p>
                 </section>
                 <section id="selected" class="col-8">
@@ -64,6 +64,7 @@
                         <li><a href="{% url 'subir_noticia' %}">Subir noticia</a></li>
                         <li><a href="{% url 'revisar_noticias' %}">Revisar noticia</a></li>
                         <li><a href="{% url 'perfil_usuario' %}">Ver estado de noticias</a></li>
+                        <li><a href="{% url 'deleteAccount' %}">Borrar Cuenta</a></li>
                     </ul>
                     <form action="{% url 'logout' %}" method="POST">
                         {% csrf_token %}
