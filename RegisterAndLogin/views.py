@@ -55,6 +55,7 @@ def register(request):
                 form.save()
                 
                 user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], request.POST['password'])
+                user.first_name = "write"
                 user.has_perm('RegisterAndLogin.view_Newspaper')
                 user.has_perm('RegisterAndLogin.add_Newspaper')
                 user.has_perm('RegisterAndLogin.dalate_Newspaper')
@@ -93,6 +94,7 @@ def register(request):
                 form.save()
                     
                 user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
+                user.first_name = "read"
                 user.has_perm('RegisterAndLogin.view_Newspaper')
                 
                 form = Reader()
