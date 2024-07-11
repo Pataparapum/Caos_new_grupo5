@@ -1,0 +1,66 @@
+.plan-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.plan-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+    margin: 10px;
+}
+.plan-card .recommended {
+    display: block;
+    background-color: #ffeb3b;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.plan-card h2 {
+    margin-bottom: 10px;
+}
+.plan-card .price-section {
+    margin: 20px 0;
+}
+.plan-card .price-section .old-price {
+    text-decoration: line-through;
+    color: #888;
+    display: block;
+}
+.plan-card .price-section .new-price {
+    font-size: 1.5em;
+    color: #e91e63;
+    display: block;
+}
+.plan-card .price-section .discount {
+    background-color: #e91e63;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+}
+.plan-card button {
+    margin: 20px 0;
+}
+.plan-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+.plan-card ul li {
+    margin: 10px 0;
+    position: relative;
+}
+.plan-card ul li:before {
+    content: '✔';
+    color: #4caf50;
+    font-weight: bold;
+    margin-right: 10px;
+}

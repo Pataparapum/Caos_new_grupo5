@@ -48,85 +48,39 @@
             </div>
         </div>
     </nav>
-
-    <div class="container mt-5">
-        <h1>Suscríbete a nuestro servicio de noticias</h1>
-        <br>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Plan Plus: Papel + Digital</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">40,000 CLP <span class="text-decoration-line-through">80,000 CLP</span> -50%</h6>
-                        <p class="card-text">Por solo 3,333 CLP al mes</p>
-                        <ul class="list-unstyled">
-                            <li>✔ 50% de descuento hasta el <strong>14/07/2024</strong></li>
-                            <li>✔ Noticias en papel en tu casa</li>
-                            <li>✔ Gastos de envío gratuitos</li>
-                            <li>✔ Acceso a todo el contenido exclusivo en la web</li>
-                            <li>✔ Edición digital de las noticias en la web y en la app</li>
-                            <li>✔ Acceso a la Hemeroteca digital de noticias en la web y en la app</li>
-                            <li>✔ Participación en experiencias y eventos digitales exclusivos</li>
-                        </ul>
-                        <form method="post" action="{% url 'suscribirse' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="subscription_type" value="Plan Plus: Papel + Digital">
-                            <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Plan Papel Anual</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            32,355 CLP <span class="text-decoration-line-through">80,910 CLP</span> -60%
-                        </h6>
-                        <p class="card-text">Por solo 2,691 CLP al mes</p>
-                        <ul class="list-unstyled">
-                            <li>✔ 60% de descuento por tiempo limitado</li>
-                            <li>✔ Noticias en papel en tu casa</li>
-                            <li>✔ Gastos de envío gratuitos</li>
-                            <li>✔ Acceso a todo el contenido exclusivo en la web</li>
-                            <li>✔ Edición digital de las noticias en la web y en la app</li>
-                        </ul>
-                        <form method="post" action="{% url 'suscribirse' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="subscription_type" value="Plan Papel Anual">
-                            <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Plan Digital Anual</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            10,800 CLP <span class="text-decoration-line-through">44,991 CLP</span> -76%
-                        </h6>
-                        <p class="card-text">Por solo 900 CLP al mes</p>
-                        <ul class="list-unstyled">
-                            <li>✔ 76% de descuento por tiempo limitado</li>
-                            <li>✔ Acceso a todo el contenido exclusivo en la web</li>
-                            <li>✔ Edición digital de las noticias en la web y en la app</li>
-                            <li>✔ Acceso a la Hemeroteca digital de noticias en la web y en la app</li>
-                            <li>✔ Participación en experiencias y eventos digitales exclusivos</li>
-                        </ul>
-                        <form method="post" action="{% url 'suscribirse' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="subscription_type" value="Plan Digital Anual">
-                            <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="{% url 'view_cart' %}" class="btn btn-success mt-3">Ver Carrito</a>
+<body>
+    <div class="container mt-4">
+        <h1>Realizar Compra</h1>
+        {% if user.is_authenticated %}
+            <h2>Carrito de Compras</h2>
+            <ul class="list-group mb-3">
+                {% for item in cart %}
+                    <li class="list-group-item">{{ item.type }} - ${{ item.price }}</li>
+                {% endfor %}
+            </ul>
+            <h3>Total: ${{ total_price }}</h3>
+            <form method="POST" action="{% url 'resumen_pedido' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Confirmar Compra</button>
+            </form>
+        {% else %}
+            <h2>Iniciar Sesión</h2>
+            <form method="POST" action="{% url 'realizar_compra' %}">
+                {% csrf_token %}
+                {{ login_form.as_p }}
+                <button type="submit" name="login" class="btn btn-primary">Iniciar Sesión</button>
+            </form>
+            <h2>Registrarse</h2>
+            <form method="POST" action="{% url 'realizar_compra' %}">
+                {% csrf_token %}
+                {{ register_form.as_p }}
+                <button type="submit" name="register" class="btn btn-secondary">Registrarse</button>
+            </form>
+        {% endif %}
     </div>
-    <br>
-    <br>
+</body>
+</html>
+
     <!-- Pie de página -->
     <section class="pie-de-pagina">
         <footer class="container-fluid">
