@@ -60,5 +60,6 @@ def noticias_fisica_cuantica(request):
 def periodistas(request):
     return render(request, 'noticias/periodistas.html')
 
+@login_required
 def userCenter(request):
     return render(request,'userCenter/userCenter.html')
