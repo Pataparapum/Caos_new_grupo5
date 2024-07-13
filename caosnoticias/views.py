@@ -62,3 +62,6 @@ def periodistas(request):
 
 def userCenter(request):
     return render(request,'userCenter/userCenter.html')
+
+def noticias_policial(request):
+    return render(request, 'noticias/noticias_policial.html')

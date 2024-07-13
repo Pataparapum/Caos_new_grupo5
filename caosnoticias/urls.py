@@ -16,5 +16,6 @@ urlpatterns = [
     path('ver_mensajes/', views.ver_mensajes, name='ver_mensajes'),
     path('periodistas/', views.periodistas, name='periodistas'),
     path('user/', views.userCenter, name='userCenter'),
+    path('noticias_policial/', views.noticias_policial, name='noticias_policial'),
 ]
 
