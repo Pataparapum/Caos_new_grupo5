@@ -4,13 +4,13 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.decorators import login_required
+from .funciones import userExist, oldPasswordCorrect
 from .forms import Reader, Writer, ChangePassword, ChangeUserName
 from .models import ReadUser, WriteUser
 
 
-def userExist(username):
-    return User.objects.filter(username=username).count() < 1
+
 
 def register(request):
     if (request.method != 'POST'):
@@ -121,10 +121,10 @@ def register(request):
                 
 
 def tipoUser(request):
-
     if(request.method != "POST"):
         return render(request, "tipoUser.html")
 
+@login_required
 def CambiarUsername(request):
     if (request.method != 'POST'):
         form = ChangeUserName()
@@ -174,17 +174,9 @@ def CambiarUsername(request):
             'form':form,
             'error':mensaje
         }
-        return render(request, 'cambiarUsername.html', context)
-            
-            
-            
+        return render(request, 'cambiarUsername.html', context)          
 
-
-def oldPasswordCorrect(old, user):
-    password = User.objects.filter(username=user).first().password
-    print(password)
-    return check_password(old, password)
-
+@login_required
 def cambiarPassword(request):
     if (request.method != 'POST'):
         form = ChangePassword()
@@ -224,6 +216,7 @@ def cambiarPassword(request):
         }
         return render(request, 'cambiarPassword.html', context)
     
+@login_required
 def deleteAccount(request):
     username = request.user.username
     try:
