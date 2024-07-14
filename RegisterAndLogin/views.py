@@ -120,6 +120,12 @@ def register(request):
                 return render(request, 'crearCuenta.html', context)
                 
 
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
+
 def tipoUser(request):
     if(request.method != "POST"):
         return render(request, "tipoUser.html")
