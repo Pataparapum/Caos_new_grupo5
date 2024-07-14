@@ -53,31 +53,37 @@
     <main class="container mt-4">
         <h1>Perfil de Usuario</h1>
         <h2>Mis Noticias</h2>
-        <table class="table table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Título</th>
                     <th>Estado</th>
                     <th>Motivo del Rechazo</th>
                     <th>Fecha</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for noticia in noticias %}
-                    <tr>
-                        <td>{{ noticia.titulo }}</td>
-                        <td>
-                            {% if noticia.aprobada %}
-                                Aprobada
-                            {% elif noticia.rechazada %}
-                                Rechazada
-                            {% else %}
-                                Pendiente
-                            {% endif %}
-                        </td>
-                        <td>{{ noticia.motivo_rechazo }}</td>
-                        <td>{{ noticia.fecha_publicacion }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ noticia.titulo }}</td>
+                    <td>
+                        {% if noticia.aprobada %}
+                            <span class="text-success">Aprobada</span>
+                        {% elif noticia.rechazada %}
+                            <span class="text-danger">Rechazada</span>
+                        {% else %}
+                            <span class="text-warning">Pendiente</span>
+                        {% endif %}
+                    </td>
+                    <td>{% if noticia.rechazada %}{{ noticia.motivo_rechazo }}{% else %}N/A{% endif %}</td>
+                    <td>{{ noticia.fecha_publicacion }}</td>
+                    <td>
+                        {% if noticia.aprobada %}
+                            <a href="{% url 'ver_noticia_publicada' noticia.id %}" class="btn btn-primary">Publicar</a>
+                        {% endif %}
+                    </td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>

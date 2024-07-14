@@ -8,6 +8,10 @@ class Categoria(models.Model):
     def __str__(self):
         return self.nombre
 
+# models.py
+from django.db import models
+from django.contrib.auth.models import User
+
 class Noticia(models.Model):
     CATEGORIAS = [
         ('----', '---'),
@@ -27,6 +31,10 @@ class Noticia(models.Model):
     aprobada = models.BooleanField(default=False)
     rechazada = models.BooleanField(default=False)
     motivo_rechazo = models.TextField(blank=True, null=True)
+    publicada = models.BooleanField(default=False)  # Añadir este campo
+
+    def __str__(self):
+        return self.titulo
 
 
 class Imagen(models.Model):
