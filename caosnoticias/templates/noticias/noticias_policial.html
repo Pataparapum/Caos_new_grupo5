@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estiloindex.css' %}">
+    <!-- Carga única de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
+    <title>Caos News</title>
+</head>
+<body>
+    <header class="container-fluid d-flex align-items-center justify-content-between">
+        <section id="logo" class="text-center text-lg-start">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
+            </a>
+        </section>
+        <section id="log_in" class="mt-auto">
+            {% if user.is_authenticated %}
+                <div id="divUsuario" class="dropdown">
+                    <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a id="userCenter" class="dropdown-item" href="{% url 'userCenter' %}">Configuraciones</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <form action="#" id="formulario">
+                    <div id="divUsuario" class="dropdown">
+                        <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Crear Cuenta
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                        </ul>
+                    </div>
+                </form>
+            {% endif %}
+        </section>
+        <!-- Carrito de compras -->
+        <section class="mt-auto">
+            <a href="{% url 'view_cart' %}" class="btn btn-success position-relative">
+                <i class="fas fa-shopping-cart"></i>
+                {% if cart_count > 0 %}
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        1
+                    </span>
+                {% endif %}
+            </a>
+        </section>
+    </header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-md">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'index' %}" class="nav-link text-decoration-none">Inicio</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="#" class="nav-link text-decoration-none">Policial</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_economia' %}" class="nav-link text-decoration-none">Economía</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_deportes' %}" class="nav-link text-decoration-none">Deportes</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_ciencia_tecnologia' %}" class="nav-link text-decoration-none">Ciencia y tecnología</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_internacionales' %}" class="nav-link text-decoration-none">Internacional</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'periodistas' %}" class="nav-link text-decoration-none">Nuestro equipo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Carrusel de noticias -->
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="max-height:700px;" >
+            <img src="{% static 'img/imagenes policial/police llu.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" style="max-height:700px;" >
+            <img src="{% static 'img/imagenes policial/police car.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" style="max-height:700px;" >
+            <img src="{% static 'img/imagenes policial/police foret.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Ejemplo -->
+    <div class="container-fluid bg-light py-5 text-center">
+        <div class="row"></div>
+        <h1>Policial</h1>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Historia de un detective</h2>
+        <div class="row">
+            <div class="col-8">
+                <img class="{% static 'imagen-salto' %}" src="{% static 'img/imagenes policial/police eli.jpg' %}" alt="">
+            </div>
+            <div class="col-4">
+                <p>El detective Marco Ramírez, conocido por resolver los casos más enigmáticos en una pequeña ciudad costera, recibió una llamada urgente del Museo de Historia Local: su joya más valiosa, un diamante azul, había desaparecido sin señales de entrada forzada. Al investigar, descubrió una huella dactilar que pertenecía a Julia, la curadora del museo, quien confesó haber sido chantajeada por un ex empleado, Roberto. Marco ideó un plan para atraparlo, convenciendo a Julia de fingir que aún estaba bajo su control y organizando un encuentro para entregar la joya. En la cita, el detective y su equipo arrestaron a Roberto, recuperaron el diamante y resolvieron el caso, demostrando una vez más la astucia de Marco.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas horizontales -->
+    <div class="container mt-5">
+        <div class="card mb-3 border-0 ">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <img src="{% static 'img/imagenes policial/police gra.jpg' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h2 class="card-title">Policial 1</h2>
+                        <p>El primer acto que puede hacer un policía cuando ocurre un accidente es asegurar la escena. Esto implica evaluar la situación para determinar la gravedad del accidente y los posibles riesgos inmediatos, como incendios o fugas de combustible. Luego, debe proteger la escena colocando señales de advertencia o barreras para desviar el tráfico y evitar más accidentes, al mismo tiempo que preserva cualquier evidencia. Si está capacitado, el policía debe proporcionar primeros auxilios a los heridos hasta la llegada de los servicios médicos de emergencia. Además, debe notificar a los servicios de emergencia necesarios, como paramédicos y bomberos, y comenzar a recopilar información inicial relevante, como la ubicación exacta y las condiciones del tráfico y el clima</p>   
+                        <div class="text-center">
+                            <a href="#" class="btn btn-success bt-lg">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="card mb-3 border-0 ">
+            <div class="row g-0">
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h2 class="card-title">Policial 2</h2>
+                        <p>El primer acto que puede hacer un policía cuando ocurre un accidente es asegurar la escena. Esto implica evaluar la situación para determinar la gravedad del accidente y los posibles riesgos inmediatos, como incendios o fugas de combustible. Luego, debe proteger la escena colocando señales de advertencia o barreras para desviar el tráfico y evitar más accidentes, al mismo tiempo que preserva cualquier evidencia. Si está capacitado, el policía debe proporcionar primeros auxilios a los heridos hasta la llegada de los servicios médicos de emergencia. Además, debe notificar a los servicios de emergencia necesarios, como paramédicos y bomberos, y comenzar a recopilar información inicial relevante, como la ubicación exacta y las condiciones del tráfico y el clima.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-success bt-lg">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <img src="{% static 'img/imagenes policial/police minot.jpg' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'img/imagenes policial/police sena.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'img/imagenes policial/police car.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'img/imagenes policial/police moto.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Pie de página / Footer -->
+    <section class="pie-de-pagina">
+        <footer class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 footerItem">
+                    <h4>Sobre nosotros</h4>
+                    <p>"En nuestra página de noticias, nos dedicamos a brindar información actualizada y precisa, cubriendo una amplia gama de temas desde política y economía hasta deportes y entretenimiento. Nuestro compromiso es con la verdad y la transparencia, asegurando que cada artículo no solo informe, sino también enriquezca el entendimiento de nuestros lectores sobre los eventos que moldean nuestro mundo. Utilizamos una variedad de fuentes confiables y un equipo editorial dedicado a verificar cada hecho, lo que nos convierte en un recurso indispensable para quienes buscan comprender las complejidades de la actualidad global."</p>
+                </div>
+                <div class="col-md-4 footerItem">
+                    <h4>Síguenos</h4>
+                    <ul class="social-media">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-X"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-center">©CaosNews 2024</p>
+        </footer>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static './js/form.js' %}"></script>
+    <script src="{% static './js/getUser.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
