@@ -53,22 +53,36 @@
     <main style="background-color: #F3EFEE">
         <div class="container-fluid">
             <div id="bloque" class="row">
-                <section id="user" class="col-3 border">
-                    <h1>Tu Cuenta</h1>
-                    <p>{{user}}</p>
+                <section id="user" class="col-lg-3 col-sm border text-center">
+                    <h1 id="tu_cuenta">Tu Cuenta</h1>
+                    <button type="button" id="user_c" class="btn btn-dark rounded-pill">
+                        {{user}}
+                    </button>
                 </section>
-                <section id="selected" class="col-8">
-                    <ul>
-                        <li><a href="{% url 'newUsername' %}">Cambiar nombre de usuario</a></li>
-                        <li><a href="{% url 'newPassword' %}">Cambiar contraseña</a></li>
-                        <li><a href="{% url 'subir_noticia' %}">Subir noticia</a></li>
-                        <li><a href="{% url 'revisar_noticias' %}">Revisar noticia</a></li>
-                        <li><a href="{% url 'perfil_usuario' %}">Ver estado de noticias</a></li>
-                        <li><a href="{% url 'deleteAccount' %}">Borrar Cuenta</a></li>
-                    </ul>
+                <section id="selected" class="col-lg-9">
+                    <div class="list-group">
+                        <a class="list-group-item list-group-item-action" href="{% url 'newUsername' %}">Cambiar nombre de usuario</a></div>
+                        <a class="list-group-item list-group-item-action" href="{% url 'newPassword' %}">Cambiar contraseña</a></li>
+                        
+                        <a class="list-group-item list-group-item-action" href="{% url 'subir_noticia' %}">Subir noticia</a></li>
+                        <a class="list-group-item list-group-item-action" href="{% url 'revisar_noticias' %}">Revisar noticia</a></>
+                        <a class="list-group-item list-group-item-action" href="{% url 'perfil_usuario' %}">Ver estado de noticias</a></>
+                        <a class="list-group-item list-group-item-action" href="{% url 'deleteAccount' %}">Borrar Cuenta</a></>
+                    </div>
                 </section>
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+        
+              var height = $(window).height();
+        
+              $('#bloque ').height(height);
+        });
+        
+        </script>
 </body>
 </html>

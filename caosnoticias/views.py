@@ -62,6 +62,7 @@ def periodistas(request):
 
 @login_required
 def userCenter(request):
+    typeUser = request.user.first_name
     return render(request,'userCenter/userCenter.html')
 
 def noticias_policial(request):
