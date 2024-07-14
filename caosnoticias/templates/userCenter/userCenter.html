@@ -20,10 +20,13 @@
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                <div id="divUsuario">
-                    <button type="button" id="boton" class="btn btn-success rounded-pill">
-                        {{user}}
+                <div id="divUsuario" class="dropdown">
+                    <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user }}
                     </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a id="userCenter" class="dropdown-item" href="{% url 'index' %}">Volver a la pantalla principal</a></li>
+                    </ul>
                 </div>
             </section>
         </article>
@@ -55,6 +58,13 @@
             <div id="bloque" class="row">
                 <section id="user" class="col-lg-3 col-sm border text-center">
                     <h1 id="tu_cuenta">Tu Cuenta</h1>
+                    {% if typeU == 'write' %}
+                        <p>Usuario Escritor</p>
+                    {% elif typeU == 'read' %}
+                        <p>Usuario lector</p>
+                    {% else %}
+                        <p>Usuario Admin</p>
+                    {% endif %}
                     <button type="button" id="user_c" class="btn btn-dark rounded-pill">
                         {{user}}
                     </button>
@@ -63,10 +73,13 @@
                     <div class="list-group">
                         <a class="list-group-item list-group-item-action" href="{% url 'newUsername' %}">Cambiar nombre de usuario</a></div>
                         <a class="list-group-item list-group-item-action" href="{% url 'newPassword' %}">Cambiar contraseña</a></li>
-                        
-                        <a class="list-group-item list-group-item-action" href="{% url 'subir_noticia' %}">Subir noticia</a></li>
-                        <a class="list-group-item list-group-item-action" href="{% url 'revisar_noticias' %}">Revisar noticia</a></>
-                        <a class="list-group-item list-group-item-action" href="{% url 'perfil_usuario' %}">Ver estado de noticias</a></>
+                        {% if typeU == 'write' %}
+                            <a class="list-group-item list-group-item-action" href="{% url 'subir_noticia' %}">Subir noticia</a></li>
+                            <a class="list-group-item list-group-item-action" href="{% url 'perfil_usuario' %}">Ver estado de noticias</a></>
+                        {% endif %}
+                        {% if typeU == 'admin' %}
+                            <a class="list-group-item list-group-item-action" href="{% url 'revisar_noticias' %}">Revisar solicitudes de noticias</a></>
+                        {% endif %}
                         <a class="list-group-item list-group-item-action" href="{% url 'deleteAccount' %}">Borrar Cuenta</a></>
                     </div>
                 </section>

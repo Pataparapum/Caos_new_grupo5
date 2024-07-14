@@ -4,19 +4,15 @@ body, html{
     flex-direction: column;
 }
 
-#bloque {
-    flex: 1;
-}
-
 #user{
     padding: 50px;
     background-color:antiquewhite;
 }
 
 #user_c{
+    margin-top: 20px;
     margin: 40px;
-    margin-left: 20px;
-    width: 200px;;
+    width: 200px;
 }
 
 #tu_cuenta{

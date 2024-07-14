@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import ContactoForm
 from .models import ContactoFormModel 
-
+from RegisterAndLogin.models import ReadUser, WriteUser
 
 
 def index(request):
@@ -62,8 +62,26 @@ def periodistas(request):
 
 @login_required
 def userCenter(request):
-    typeUser = request.user.first_name
-    return render(request,'userCenter/userCenter.html')
+    user = request.user.username
+    context = {}
+    if (WriteUser.objects.filter(userName=user)):
+        typeUser = request.user.first_name
+        context = {
+            'typeU':typeUser
+        }
+        return render(request, 'userCenter/userCenter.html', context)
+    elif(ReadUser.objects.filter(userName=user)):
+        typeUser =request.user.first_name
+        context = {
+            'typeU': typeUser
+        }
+        return render(request, 'userCenter/userCenter.html', context)
+    else:
+        typeUser = 'admin'
+        context = {
+            'typeU': typeUser
+        }
+        return render(request,'userCenter/userCenter.html', context)
 
 def noticias_policial(request):
     return render(request, 'noticias/noticias_policial.html')
