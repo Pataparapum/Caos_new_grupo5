@@ -26,7 +26,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a id="userCenter" class="dropdown-item" href="{% url 'userCenter' %}">Configuraciones</a></li>
-                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                        <li><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
                     </ul>
                 </div>
             {% else %}
@@ -35,9 +35,9 @@
                         <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Crear Cuenta
                         </button>
-                        <ul class="dropdown-menu dropdow-menu-dark">
-                            <li><a class="dropdown-item" href="{% url 'typeUser' %}">Crear Cuenta</a></li>
-                            <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
                         </ul>
                     </div>
                 </form>
