@@ -1,78 +1,21 @@
-.cuerpo {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 20px;
-}
-
 .mensajes-recibidos {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.mensajes-recibidos h1 {
-    color: #333;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-}
-
-.mensaje-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.mensaje-avatar img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.mensaje-info {
-    flex: 1;
-    margin-left: 10px;
-}
-
-.nombre {
-    font-weight: bold;
-    color: #333;
-}
-
-.destinatario {
-    color: #666;
-}
-
-.mensaje-fecha {
-    color: #999;
-    font-size: 0.9em;
-}
-
-.mensaje-cuerpo {
-    margin-top: 10px;
-    color: #555;
-}
-
-.no-mensajes {
-    text-align: center;
-    color: #999;
-    font-style: italic;
     margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.mensajes {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #f0f0f0;
 }

@@ -185,7 +185,7 @@
                                 <h3>{{ ultima_noticia.titulo }}</h3>
                                 <p>Autor: {{ ultima_noticia.autor }}</p>
                                 <p>Fecha: {{ ultima_noticia.fecha_publicacion }}</p>
-                                <p>{{ ultima_noticia.contenido }}</p>
+                                <p>{{ ultima_noticia.contenido|truncatewords:50 }}</p>
                                 <img src="{{ ultima_noticia.imagen.url }}" alt="Imagen de la noticia" class="img-fluid">
                                 <a href="{% url 'ver_noticia' ultima_noticia.id %}" class="btn btn-primary mt-3">Leer más</a>
                             {% else %}
