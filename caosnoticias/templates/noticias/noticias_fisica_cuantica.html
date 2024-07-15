@@ -1,73 +1,60 @@
-{%load static%}
-<!DOCTYPE html5>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caos New</title>
-    <link rel="stylesheet" href="{% static './css/estilonoticias.css' %}">
-    <link rel="stylesheet" href="{% static './css/estiloIndex.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estiloindex.css' %}">
+    <!-- Carga única de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
+    <title>Caos News</title>
 </head>
 <body>
-    {% load static %}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'css/estiloindex.css' %}">
-        <!-- Carga única de jQuery -->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
-        <title>Caos News</title>
-    </head>
-    <body>
-        <header class="container-fluid"> 
-            <article class="row align-items-center">
-                <section id="logo" class="col-9 col-sm text-center text-lg-start">
-                    <a href="{% url 'index' %}">
-                        <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
-                    </a>
-                </section>
-                <section id="log_in" class="col-3 col-sm mt-auto">
-                {% if user.is_authenticated %}
+    <header class="container-fluid d-flex align-items-center justify-content-between">
+        <section id="logo" class="text-center text-lg-start">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/Logo.jpg' %}" alt="Logo" id="imgLogo" class="img-fluid">
+            </a>
+        </section>
+        <section id="log_in" class="mt-auto">
+            {% if user.is_authenticated %}
+                <div id="divUsuario" class="dropdown">
+                    <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a id="userCenter" class="dropdown-item" href="{% url 'userCenter' %}">Configuraciones</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <form action="#" id="formulario">
                     <div id="divUsuario" class="dropdown">
-                        <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
-                            {{user}}
+                        <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Crear Cuenta
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a id="userCenter" class="dropdown-item" href="{% url "userCenter" %}">Configuraciones</a></li>
+                            <li><a class="dropdown-item" href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a></li>
                         </ul>
                     </div>
-                {% else %}
-                    <form action="#" id="formulario">
-                        <div id="divUsuario" class="dropdown">
-                            <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expand="false">
-                                Crear Cuenta
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
-                                <li><a href="{% url 'login' %}">iniciar Sesion</a></li>
-                            </ul>
-                        </div>
-                    </form>
+                </form>
+            {% endif %}
+        </section>
+        <!-- Carrito de compras -->
+        <section class="mt-auto">
+            <a href="{% url 'view_cart' %}" class="btn btn-success position-relative">
+                <i class="fas fa-shopping-cart"></i>
+                {% if cart_count > 0 %}
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        1
+                    </span>
                 {% endif %}
-                </section>
-            </article>
-            <div class="position-relative">
-                <a href="{% url 'view_cart' %}" class="btn btn-success position-relative">
-                    <i class="fas fa-shopping-cart"></i>
-                    {% if cart_count > 0 %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            1
-                        </span>
-                    {% endif %}
-                </a>
-            </div>
-        </header>
+            </a>
+        </section>
+    </header>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-md">
@@ -80,7 +67,7 @@
                         <a href="{% url 'index' %}" class="nav-link text-decoration-none">Inicio</a>
                     </li>
                     <li class="border-end border-dark nav-item">
-                        <a href="#" class="nav-link text-decoration-none">Policial</a>
+                        <a href="{% url 'noticias_policial' %}" class="nav-link text-decoration-none">Policial</a>
                     </li>
                     <li class="border-end border-dark nav-item">
                         <a href="{% url 'noticias_economia' %}" class="nav-link text-decoration-none">Economía</a>
