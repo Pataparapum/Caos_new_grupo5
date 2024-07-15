@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .funciones import userExist, oldPasswordCorrect
+from .funciones import userExist, oldPasswordCorrect, ReadUserExist, WriteUserExist
 from .forms import Reader, Writer, ChangePassword, ChangeUserName
 from .models import ReadUser, WriteUser
 
@@ -65,7 +65,6 @@ def register(request):
                 user.has_perm('RegisterAndLogin.delete_WriteUser')
                 user.has_perm('RegisterAndLogin.change_WriteUser')
                 user.save()
-                
                 
                 login(request, user)
                     
@@ -143,7 +142,7 @@ def CambiarUsername(request):
     newUsername = request.POST['newUsername']
     cNewUsername = request.POST['CnewUserName']
     
-    if (User.objects.filter(username=newUsername).count() == 1):
+    if (userExist(newUsername)):
         form = ChangeUserName()
         mensaje = 'usuario ya registrado'
         context = {
@@ -173,6 +172,10 @@ def CambiarUsername(request):
             
             login(request, user)
             return redirect('index')
+        else:
+            user = User.objects.get(username=username)
+            user.username = newUsername
+            user.save()
     else:
         form = ChangeUserName()
         mensaje = 'Los campos no coinciden'
@@ -227,10 +230,24 @@ def deleteAccount(request):
     username = request.user.username
     try:
         user = User.objects.get(username=username)
-        logout(request)
-        user.delete()
+        if(WriteUserExist(user)):
+            write = WriteUser.objects.get(userName=username)
+            logout(request)
+            write.delete()
+            user.delete()
+            return redirect('index')
         
-        return redirect('index')
+        elif (ReadUserExist(user)):
+            read = ReadUser.objects.get(userName=username)
+            logout(request)
+            read.delete()
+            user.delete()
+            return redirect('index')
+        
+        else:
+            logout(request)
+            user.delete()
+            return redirect('index')
     
     except User.DoesNotExist:
         messages.error(request, 'El usuario no existe')

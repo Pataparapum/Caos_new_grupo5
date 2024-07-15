@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
 from subir_noticias.models import Noticia
 from .forms import ContactoForm
 from .models import Contacto
+from RegisterAndLogin.models import ReadUser, WriteUser
+
+
 
 def index(request):
     try:
@@ -47,6 +49,29 @@ def noticias_fisica_cuantica(request):
 
 def periodistas(request):
     return render(request, 'noticias/periodistas.html')
+
+@login_required
+def userCenter(request):
+    user = request.user.username
+    context = {}
+    if (WriteUser.objects.filter(userName=user)):
+        typeUser = request.user.first_name
+        context = {
+            'typeU':typeUser
+        }
+        return render(request, 'userCenter/userCenter.html', context)
+    elif(ReadUser.objects.filter(userName=user)):
+        typeUser =request.user.first_name
+        context = {
+            'typeU': typeUser
+        }
+        return render(request, 'userCenter/userCenter.html', context)
+    else:
+        typeUser = 'admin'
+        context = {
+            'typeU': typeUser
+        }
+        return render(request,'userCenter/userCenter.html', context)
 
 def noticias_policial(request):
     return render(request, 'noticias/noticias_policial.html')

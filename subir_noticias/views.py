@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from RegisterAndLogin.funciones import  WriteUserExist
 from .models import Noticia, Imagen
 from .forms import NoticiaForm, ImagenForm
 
 @login_required
 def subir_noticia(request):
+    if (request.user.first_name != 'write' and not WriteUserExist):
+        return redirect('index')
     if request.method == 'POST':
         noticia_form = NoticiaForm(request.POST)
         imagen_form = ImagenForm(request.POST, request.FILES)
@@ -27,11 +30,15 @@ def confirmacion(request):
 
 @login_required
 def revisar_noticias(request):
+    if (request.user.first_name != 'write' and not WriteUserExist(request.user.username) ):
+        return redirect('index')
     noticias = Noticia.objects.filter(aprobada=False, rechazada=False)
     return render(request, 'subir_noticias/revisar_noticias.html', {'noticias': noticias})
 
 @login_required
 def aprobar_noticia(request, noticia_id):
+    if (request.user.first_name == 'write' or request.user.first_name == 'read'):
+        return redirect('index')
     noticia = get_object_or_404(Noticia, id=noticia_id)
     noticia.aprobada = True
     noticia.rechazada = False
@@ -41,6 +48,8 @@ def aprobar_noticia(request, noticia_id):
     return redirect('revisar_noticias')
 
 def rechazar_noticia(request, noticia_id):
+    if (request.user.first_name == 'write' or request.user.first_name == 'read'):
+        return redirect('index')
     noticia = get_object_or_404(Noticia, id=noticia_id)
     
     if request.method == 'POST':
