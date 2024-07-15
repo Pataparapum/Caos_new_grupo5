@@ -33,7 +33,7 @@
                     <input type="submit" id="inputSubmit" class="btn btn-outline-secondary btn-dark btn-lg rounded-pill" value="ingresar">
                 </div>
                 <p>¿no tienes una cuenta? <a href="{% url 'typeUser' %}">Sign un</a></p>
-                <a href="{% url 'index' %}">Volver...</a>
+                <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'index' %}">Volver...</a>
                 <p id="error" class="text-danger">{{ form.non_field_errors}}</p>
 
             </div>
