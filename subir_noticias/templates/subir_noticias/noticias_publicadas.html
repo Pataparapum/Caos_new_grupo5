@@ -26,7 +26,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark">
                         <li><a id="userCenter" class="dropdown-item" href="{% url 'userCenter' %}">Configuraciones</a></li>
-                        <li><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
                     </ul>
                 </div>
             {% else %}
@@ -35,9 +35,9 @@
                         <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Crear Cuenta
                         </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
-                            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                        <ul class="dropdown-menu dropdow-menu-dark">
+                            <li><a class="dropdown-item" href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a></li>
                         </ul>
                     </div>
                 </form>
@@ -87,6 +87,38 @@
                 </ul>
             </div>
         </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-md">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul id="nav" class="navbar-nav mb-2 mn-lg-0 mx-auto">
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'index' %}" class="nav-link text-decoration-none">Inicio</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="#" class="nav-link text-decoration-none">Policial</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_economia' %}" class="nav-link text-decoration-none">Economía</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_deportes' %}" class="nav-link text-decoration-none">Deportes</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_ciencia_tecnologia' %}" class="nav-link text-decoration-none">Ciencia y tecnología</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'noticias_internacionales' %}" class="nav-link text-decoration-none">Internacional</a>
+                    </li>
+                    <li class="border-end border-dark nav-item">
+                        <a href="{% url 'periodistas' %}" class="nav-link text-decoration-none">Nuestro equipo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <main class="container mt-4">
@@ -94,6 +126,18 @@
         <div class="row">
             {% for noticia in noticias %}
             <div class="col-md-4">
+                <div class="card mb-4">
+                    {% if noticia.imagenes.all %}
+                        <img src="{{ noticia.imagenes.first.imagen.url }}" class="card-img-top" alt="Imagen de la noticia">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'ver_noticia_publicada' noticia.id %}">{{ noticia.titulo }}</a></h5>
+                        <p class="card-text">{{ noticia.contenido|truncatewords:30 }}</p>
+                        <p class="card-text">Autor: {{ noticia.autor.username }}</p>
+                        <p class="card-text">Fecha: {{ noticia.fecha_publicacion }}</p>
+                        <a href="{% url 'ver_noticia_publicada' noticia.id %}" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
                 <div class="card mb-4">
                     {% if noticia.imagenes.all %}
                         <img src="{{ noticia.imagenes.first.imagen.url }}" class="card-img-top" alt="Imagen de la noticia">

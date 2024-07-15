@@ -9,7 +9,7 @@ def ReadUserExist(username):
     return ReadUser.objects.filter(userName=username).count() > 0
 
 def WriteUserExist(username):
-    return WriteUser.objects.filtert(userName=username).count() > 0
+    return WriteUser.objects.filter(userName=username).count() > 0
 
 def oldPasswordCorrect(old, user):
     password = User.objects.filter(username=user).first().password

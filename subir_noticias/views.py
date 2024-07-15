@@ -30,7 +30,7 @@ def confirmacion(request):
 
 @login_required
 def revisar_noticias(request):
-    if (request.user.first_name != 'write' and not WriteUserExist(request.user.username) ):
+    if (request.user.first_name == 'write' or request.user.first_name == 'read'):
         return redirect('index')
     noticias = Noticia.objects.filter(aprobada=False, rechazada=False)
     return render(request, 'subir_noticias/revisar_noticias.html', {'noticias': noticias})

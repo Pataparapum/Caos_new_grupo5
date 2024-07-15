@@ -22,18 +22,7 @@
         <form action="{% url "register" %}" class="form-group formtype" id="form" method="POST">
             {% csrf_token %}
             <div id="formulario" class="mb-3">
-                <h1>Seleccione el tipo de usuario</h1>
-                <div class="formItem">
-                    <div class="btb-group d-flex justify-content-center" role="group" aria-label="grupo escritor">
-                        <button type="submit" class="btn btn-dark btn-lg rounded-start" value="write" name="type">Usuario escritor</button>
-                        <button type="button" class="btn btn-dark btn-lg btn-outline-secondary rounded-end" data-bs-toggle="collapse" data-bs-target="#infow" aria-expanded="false" aria-controls="información usuario escritor">About...</button>
-                    </div>
-                    <div class="collapse" id="infow">
-                        <div class="card card-body">
-                            Un usuario escritor al igual que el lector, puede leer las noticias disponibles, pero ademas tendra la posibilidad de subir sus pripias noticas dentro de la pagina
-                        </div>
-                    </div>
-                </div>
+                <h1 class="text-center">Seleccione el tipo de usuario</h1>
                 <div class="formItem">
                     <div class="btb-group d-flex justify-content-center" role="group" aria-label="grupo lector">
                         <button type="submit" class="btn btn-dark btn-lg rounded-start" value="read" name="type">Usuario lector</button>
@@ -41,10 +30,22 @@
                     </div>
                     <div class="collapse" id="infor">
                         <div class="card card-body">
-                            Un usuario Lector solo prodra entrar y ver las noticas subidas en la pagina, no podra subir sus propias noticas, por lo que si quiere dar a conocer una situación particular, tendra que ser desde el formulario de contacto
+                            Un usuario Lector solo prodra entrar y ver las noticias subidas en la pagina, no podra subir sus propias noticias, por lo que si quiere dar a conocer una situación particular, tendra que ser desde el formulario de contacto
                         </div>
                     </div>
                 </div>
+                <div class="formItem">
+                    <div id="writeBtn" class="btb-group d-flex justify-content-center" role="group" aria-label="grupo escritor">
+                        <button type="submit" class="btn btn-dark btn-lg rounded-start" value="write" name="type">Usuario escritor</button>
+                        <button type="button" class="btn btn-dark btn-lg btn-outline-secondary rounded-end" data-bs-toggle="collapse" data-bs-target="#infow" aria-expanded="false" aria-controls="información usuario escritor">About...</button>
+                    </div>
+                    <div class="collapse" id="infow">
+                        <div class="card card-body">
+                            Un usuario escritor al igual que el lector, puede leer las noticias disponibles, pero ademas, tendra la posibilidad de subir sus propias noticias dentro de la pagina
+                        </div>
+                    </div>
+                </div>
+                <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'index' %}">...Volver</a>
             </div>
         </form>
     </main>
