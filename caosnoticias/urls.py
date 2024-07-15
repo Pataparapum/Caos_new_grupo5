@@ -1,7 +1,6 @@
-from django.contrib.auth import views as auth_views
+# caosnoticias/urls.py
+from django.urls import path
 from . import views
-from django.urls import path, include
-
 
 urlpatterns = [
     path('contacto/', views.contacto, name='contacto'),
@@ -13,9 +12,9 @@ urlpatterns = [
     path('noticias_deportes/', views.noticias_deportes, name='noticias_deportes'),
     path('noticias_fisica_cuantica/', views.noticias_fisica_cuantica, name='noticias_fisica_cuantica'),
     path('formulario_exitoso/', views.formulario_exitoso, name='formulario_exitoso'),
-    path('ver_mensajes/', views.ver_mensajes, name='ver_mensajes'),
     path('periodistas/', views.periodistas, name='periodistas'),
     path('user/', views.userCenter, name='userCenter'),
     path('noticias_policial/', views.noticias_policial, name='noticias_policial'),
+    path('contacto/', views.contacto, name='contacto'),
+    path('mensajes_recibidos/', views.mensajes_recibidos, name='mensajes_recibidos'),
 ]
-

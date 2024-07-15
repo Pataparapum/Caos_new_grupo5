@@ -1,43 +1,33 @@
-# tu_app_noticias/views.py
-from django.contrib.auth import logout
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from subir_noticias.models import Noticia
 from .forms import ContactoForm
-from .models import ContactoFormModel 
+from .models import Contacto
 from RegisterAndLogin.models import ReadUser, WriteUser
 
 
+
 def index(request):
-    request.session['usuario'] = request.user.username
-    user = request.session['usuario']
+    try:
+        ultima_noticia = Noticia.objects.latest('fecha_publicacion')
+    except Noticia.DoesNotExist:
+        ultima_noticia = None
+
     context = {
-        'usuario':user
+        'usuario': request.user.username,
+        'ultima_noticia': ultima_noticia,
     }
-        
     return render(request, 'noticias/index.html', context)
-    
-def contacto(request):
-    if request.method == 'POST':
-        form = ContactoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Tu mensaje fue enviado con éxito.')
-            return redirect('formulario_exitoso')
-        else:
-            messages.error(request, 'Error en el formulario. Por favor corrige los errores.')
-    else:
-        form = ContactoForm()
-    return render(request, 'noticias/contacto.html', {'form': form})
 
 @login_required
-def formulario_exitoso(request):
-    return render(request, 'noticias/formulario_exitoso.html')
+def mensajes_recibidos(request):
+    mensajes = Contacto.objects.all()
+    return render(request, 'noticias/mensajes_recibidos.html', {'mensajes': mensajes})
+
 
 @login_required
-def ver_mensajes(request):
-    mensajes = ContactoFormModel.objects.all()
-    return render(request, 'noticias/ver_mensajes.html', {'mensajes': mensajes})
+def userCenter(request):
+    return render(request,'userCenter/userCenter.html')
 
 def noticias_climaticas(request):
     return render(request, 'noticias/noticias_climaticas.html')
@@ -85,3 +75,16 @@ def userCenter(request):
 
 def noticias_policial(request):
     return render(request, 'noticias/noticias_policial.html')
+
+def formulario_exitoso(request):
+    return render(request, 'noticias/formulario_exitoso.html')
+
+def contacto(request):
+    if request.method == "POST":
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('formulario_exitoso')
+    else:
+        form = ContactoForm()
+    return render(request, 'noticias/contacto.html', {'form': form})

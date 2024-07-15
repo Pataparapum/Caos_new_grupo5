@@ -40,6 +40,7 @@
                     <input type="submit" id="inputSubmit" class="btn btn-outline-secondary btn-dark btn-lg rounded-pill" value="ingresar">
                     <p id="obligatorio" class="text-secondary">* obligatorio</p>
                     <p>¿Tienes un cuenta? <a href="{% url 'login' %}">Sign in</a></p>
+                    <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'index' %}">...Volver</a>
                     {% if error %}
                     <p id="error" class="text-danger">{{error}}</p>
                     {% endif %}
