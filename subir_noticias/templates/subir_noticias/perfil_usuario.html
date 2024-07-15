@@ -28,7 +28,6 @@
         </article>
     </header>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,11 +75,13 @@
                             <span class="text-warning">Pendiente</span>
                         {% endif %}
                     </td>
-                    <td>{% if noticia.rechazada %}{{ noticia.motivo_rechazo }}{% else %}N/A{% endif %}</td>
+                    <td>{{ noticia.motivo_rechazo }}</td>
                     <td>{{ noticia.fecha_publicacion }}</td>
                     <td>
-                        {% if noticia.aprobada %}
-                            <a href="{% url 'ver_noticia_publicada' noticia.id %}" class="btn btn-primary">Publicar</a>
+                        {% if noticia.aprobada and noticia.publicada %}
+                            <a href="{% url 'ver_noticia_publicada' noticia.id %}" class="btn btn-info">Ver Publicada</a>
+                        {% else %}
+                            No Disponible
                         {% endif %}
                     </td>
                 </tr>

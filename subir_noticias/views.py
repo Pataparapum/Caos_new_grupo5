@@ -22,6 +22,10 @@ def subir_noticia(request):
     return render(request, 'subir_noticias/subir_noticia.html', {'noticia_form': noticia_form, 'imagen_form': imagen_form})
 
 @login_required
+def confirmacion(request):
+    return render(request, 'subir_noticias/confirmacion.html')
+
+@login_required
 def revisar_noticias(request):
     noticias = Noticia.objects.filter(aprobada=False, rechazada=False)
     return render(request, 'subir_noticias/revisar_noticias.html', {'noticias': noticias})
@@ -36,24 +40,24 @@ def aprobar_noticia(request, noticia_id):
     noticia.save()
     return redirect('revisar_noticias')
 
-@login_required
 def rechazar_noticia(request, noticia_id):
     noticia = get_object_or_404(Noticia, id=noticia_id)
+    
     if request.method == 'POST':
-        motivo = request.POST.get('motivo')
+        motivo_rechazo = request.POST.get('motivo', '')
+        noticia.motivo_rechazo = motivo_rechazo
         noticia.rechazada = True
-        noticia.motivo_rechazo = motivo
         noticia.save()
-        return redirect('revisar_noticias')
+        noticia.delete()  # Elimina la noticia de la base de datos
+        return redirect('noticias_publicadas')
+    
     return render(request, 'subir_noticias/rechazar_noticia.html', {'noticia': noticia})
 
-# views.py
-@login_required
+@login_required(login_url='/subir_noticias/registro/')
 def ver_noticia(request, noticia_id):
     noticia = get_object_or_404(Noticia, id=noticia_id)
     imagenes = Imagen.objects.filter(noticia=noticia)
     return render(request, 'subir_noticias/ver_noticia.html', {'noticia': noticia, 'imagenes': imagenes})
-
 
 @login_required
 def perfil_usuario(request):
@@ -61,22 +65,14 @@ def perfil_usuario(request):
     return render(request, 'subir_noticias/perfil_usuario.html', {'noticias': noticias})
 
 
-# views.py
-@login_required
+def noticias_publicadas(request):
+    noticias = Noticia.objects.filter(aprobada=True, publicada=True)
+    return render(request, 'subir_noticias/noticias_publicadas.html', {'noticias': noticias})
+
 def ver_noticia_publicada(request, noticia_id):
     noticia = get_object_or_404(Noticia, id=noticia_id, aprobada=True, publicada=True)
     imagenes = Imagen.objects.filter(noticia=noticia)
     return render(request, 'subir_noticias/ver_noticia_publicada.html', {'noticia': noticia, 'imagenes': imagenes})
 
-
-
-
-def noticias_publicadas(request):
-    noticias = Noticia.objects.filter(aprobada=True, publicada=True)
-    return render(request, 'subir_noticias/noticias_publicadas.html', {'noticias': noticias})
-
-
-
-def ver_noticia_publicada(request, noticia_id):
-    noticia = get_object_or_404(Noticia, id=noticia_id)
-    return render(request, 'subir_noticias/ver_noticia_publicada.html', {'noticia': noticia})
+def registro(request):
+    return render(request, 'subir_noticias/registro.html')

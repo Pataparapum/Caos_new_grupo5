@@ -89,29 +89,13 @@
         </div>
     </nav>
 
-    <main class="container mt-4">
-        <h1>Noticias Publicadas</h1>
-        <div class="row">
-            {% for noticia in noticias %}
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    {% if noticia.imagenes.all %}
-                        <img src="{{ noticia.imagenes.first.imagen.url }}" class="card-img-top" alt="Imagen de la noticia">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{% url 'ver_noticia_publicada' noticia.id %}">{{ noticia.titulo }}</a></h5>
-                        <p class="card-text">{{ noticia.contenido|truncatewords:30 }}</p>
-                        <p class="card-text">Autor: {{ noticia.autor.username }}</p>
-                        <p class="card-text">Fecha: {{ noticia.fecha_publicacion }}</p>
-                        <a href="{% url 'ver_noticia_publicada' noticia.id %}" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </main>
 
-    <!-- Pie de página -->
+    <section class="container">
+        <h1>Debes iniciar sesión o registrarte</h1>
+    </section>
+
+
+
     <section class="pie-de-pagina">
         <footer class="container-fluid">
             <div class="row">
@@ -131,7 +115,6 @@
             <p class="text-center">© Caos News 2024</p>
         </footer>
     </section>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{% static './js/form.js' %}"></script>
     <script src="{% static './js/getUser.js' %}"></script>
