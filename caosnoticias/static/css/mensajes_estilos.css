@@ -1,21 +1,61 @@
-.mensajes-recibidos {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 20px;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    background-color: #f0f0f0;
+/* mensajes_estilos.css */
+
+.mensajes-recibidos h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
 }
 
-.mensajes {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 20px;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    background-color: #f0f0f0;
+.mensaje {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.mensaje-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.mensaje-avatar img {
+    width: 50px;
+    height: 50px;
+}
+
+.mensaje-info {
+    margin-left: 1rem;
+}
+
+.mensaje-info .nombre {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.mensaje-info .destinatario {
+    font-size: 1rem;
+    color: #555;
+}
+
+.mensaje-fecha {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.mensaje-cuerpo {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.mensaje-eliminar button {
+    margin-top: 1rem;
+}
+
+.no-mensajes {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
 }

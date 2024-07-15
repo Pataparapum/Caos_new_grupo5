@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/estiloindex.css' %}">
-    <!-- Carga única de jQuery -->
+    <link rel="stylesheet" href="{% static 'css/deportesestilo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cc7bac99e2.js" crossorigin="anonymous"></script>
@@ -35,14 +36,13 @@
                             Crear Cuenta
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="{% url 'typeUser' %}">Crear Cuenta</a></li>
-                            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                            <li><a class="dropdown-item" href="{% url 'typeUser' %}">Crear Cuenta</a></li>
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a></li>
                         </ul>
                     </div>
                 </form>
             {% endif %}
         </section>
-        <!-- Carrito de compras -->
         <section class="mt-auto">
             <a href="{% url 'view_cart' %}" class="btn btn-success position-relative">
                 <i class="fas fa-shopping-cart"></i>
@@ -54,7 +54,6 @@
             </a>
         </section>
     </header>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-md">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,65 +86,48 @@
             </div>
         </div>
     </nav>
-
-    <!-- Carrusel de noticias -->
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes ciencia y tecnologia/Carruselciencia1.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes ciencia y tecnologia/Carruselciencia2.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{%static 'img/imagenes ciencia y tecnologia/Carruselciencia3.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <!-- Ejemplo -->
     <div class="container-fluid bg-light py-5 text-center">
         <div class="row"></div>
         <h1>Ciencia y Tecnología</h1>
-        </div>
     </div>
 
-    <div class="container mt-5">
-        <h2 class="text-center">Noticia principal</h2>
+    <div class="custom-container container mt-5">
+        <h2 class="custom-title text-center">MIT Desarrolla Batería que Dura 10 Veces Más que las Actuales</h2>
         <div class="row">
-            <div class="col"></div>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa nemo voluptas laudantium sequi nesciunt hic pariatur! Quasi repudiandae delectus cupiditate voluptates voluptas odio eos, maxime omnis ipsum! Suscipit, cupiditate quisquam?
+            <div class="col-md-6">
+                <p class="custom-text text-justify">
+                    Un equipo de investigadores del Instituto de Tecnología de Massachusetts (MIT) ha anunciado el desarrollo de una nueva batería revolucionaria que promete transformar la industria de la energía. Esta batería, hecha de materiales innovadores, tiene una duración hasta 10 veces mayor que las baterías de iones de litio actuales y es significativamente más segura y ecológica.
+                    El nuevo diseño de batería, denominado "Solid State Quantum Battery" (Batería Cuántica de Estado Sólido), utiliza un electrolito sólido en lugar de uno líquido, lo que elimina el riesgo de fugas y explosiones. Además, incorpora materiales avanzados que permiten una mayor densidad de energía, lo que se traduce en una capacidad de almacenamiento mucho mayor.
+                    "La Solid State Quantum Battery representa un salto cuántico en la tecnología de almacenamiento de energía", afirmó la Dra. Mei Ling, líder del proyecto en el MIT. "No solo ofrece una vida útil más larga y una mayor seguridad, sino que también es más sostenible y menos dañina para el medio ambiente".
+                </p>
             </div>
-            <div class="col"></div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea praesentium non architecto eaque molestias exercitationem modi nisi ad ab quod, id enim! Dolorem cum sed nesciunt provident, consequuntur odit possimus!
+            <div class="col-md-6">
+                <p class="custom-text text-justify">
+                    La nueva batería ha sido sometida a rigurosas pruebas y ha demostrado ser capaz de soportar más de 10,000 ciclos de carga y descarga sin pérdida significativa de capacidad. Esto significa que un vehículo eléctrico equipado con esta batería podría funcionar durante más de 30 años sin necesidad de reemplazar la batería, lo que reduciría drásticamente los costos de mantenimiento y el impacto ambiental.
+                    Los investigadores también han destacado el potencial de esta tecnología para aplicaciones en almacenamiento de energía a gran escala, como en redes eléctricas y sistemas de energía renovable. "Con esta nueva batería, podemos almacenar energía solar y eólica de manera más eficiente, lo que facilitará la transición a una matriz energética más verde y sostenible", agregó el Dr. James Rodriguez, coautor del estudio.
+                </p>
             </div>
         </div>
     </div>
 
     <!-- Tarjetas horizontales -->
     <div class="container mt-5">
-        <div class="card mb-3 border-0 ">
+        <div class="card mb-3 border-0">
             <div class="row g-0">
                 <div class="col-md-5">
-                    <img src="{% static 'imagenes/imagen2.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes ciencia y tecnologia/ciencia_1.png' %}" class="img-fluid custom-image rounded-start" alt="...">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Noticia 1</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quo voluptatibus harum rerum odio perspiciatis, culpa est assumenda doloremque eaque distinctio praesentium, totam commodi expedita nemo porro repudiandae dolorem beatae!</p>
+                        <h2 class="card-title">La Primera Colonia Humana en Marte es Establecida con Éxito por la NASA y SpaceX</h2>
+                        <p class="custom-text text-justify">
+                            La NASA y SpaceX han establecido con éxito la primera colonia humana en Marte, llamada "Aurora", en el cráter Jezero.
+                            El equipo de 20 astronautas y científicos ha instalado módulos habitacionales, sistemas de soporte vital y una planta
+                            de energía solar. El proyecto, financiado por Elon Musk y colaboraciones internacionales, busca hacer de la humanidad 
+                            una especie multiplanetaria. La tecnología desarrollada para sobrevivir en Marte podría ayudar a resolver problemas en 
+                            la Tierra. Los próximos meses serán cruciales para expandir y consolidar la colonia. Este logro marca un hito en la 
+                            exploración espacial y la capacidad de innovación humana.
+                        </p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
@@ -155,62 +137,65 @@
         </div>
     </div>
     <div class="container mt-5">
-        <div class="card mb-3 border-0 ">
+        <div class="card mb-3 border-0">
             <div class="row g-0">
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Noticia 2</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quo voluptatibus harum rerum odio perspiciatis, culpa est assumenda doloremque eaque distinctio praesentium, totam commodi expedita nemo porro repudiandae dolorem beatae!</p>
+                        <h2 class="card-title">China Establece la Primera Colonia Permanente en la Cara Oculta de la Luna</h2>
+                        <p class="custom-text text-justify">
+                            China ha alcanzado un hito sin precedentes en la exploración espacial al inaugurar la primera colonia permanente 
+                            en la cara oculta de la Luna, llamada "Base Chang'e". Este logro monumental, llevado a cabo por la Administración 
+                            Nacional del Espacio de China (CNSA), marca un avance significativo en la carrera espacial y la expansión de la 
+                            humanidad más allá de la Tierra.
+                        </p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="{% static 'imagenes/imagen2.jpg' % }" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes ciencia y tecnologia/ciencia_2.png' %}" class="img-fluid custom-image rounded-start" alt="...">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Tarjetas -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{% static 'imagenes/mountains-190055_640.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+        <!-- Tarjetas -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'img/imagenes ciencia y tecnologia/ciencia_3.png' %}" class="card-img-top custom-image rounded" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Avances en Energía Renovable</h5>
+                            <p class="custom-text text-justify">Las innovaciones en energía renovable están cambiando la forma en que producimos y consumimos energía. Los avances en paneles solares, turbinas eólicas y almacenamiento de energía están haciendo que la energía limpia sea más accesible y eficiente.</p>
+                            <a href="#" class="btn btn-primary">Ir a noticia</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{% static 'imagenes/mountains-190055_640.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'img/imagenes ciencia y tecnologia/ciencia_4.png' %}" class="card-img-top custom-image rounded" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">El Futuro de la Inteligencia Artificial</h5>
+                            <p class="custom-text text-justify">La inteligencia artificial (IA) está transformando múltiples sectores, desde la medicina hasta la agricultura. Las nuevas aplicaciones de IA están mejorando la eficiencia y abriendo nuevas posibilidades para resolver problemas complejos.</p>
+                            <a href="#" class="btn btn-primary">Ir a noticia</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{% static 'imagenes/mountains-190055_640.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'img/imagenes ciencia y tecnologia/ciencia_5.png' %}" class="card-img-top custom-image rounded" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Nuevas Fronteras en la Exploración Espacial</h5>
+                            <p class="custom-text text-justify">Las misiones a Marte y la Luna están abriendo nuevas fronteras en la exploración espacial. Estos esfuerzos están impulsando la innovación y la cooperación internacional en la carrera por expandir los límites de la humanidad.</p>
+                            <a href="#" class="btn btn-primary">Ir a noticia</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
 
-    <!-- Pie de página / Footer -->
     <section class="pie-de-pagina">
         <footer class="container-fluid">
             <div class="row">
@@ -222,7 +207,7 @@
                     <h4>Síguenos</h4>
                     <ul class="social-media">
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-X"></i></a></li>
+                        <li><a href="#"><i class="fab fa-x"></i></a></li>
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
@@ -234,3 +219,5 @@
     <script src="{% static './js/form.js' %}"></script>
     <script src="{% static './js/getUser.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
