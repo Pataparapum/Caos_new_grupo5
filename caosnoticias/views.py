@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from subir_noticias.models import Noticia
+from subir_noticias.models import Noticia, Imagen
 from .forms import ContactoForm
 from .models import Contacto
 from RegisterAndLogin.models import ReadUser, WriteUser
@@ -9,12 +9,13 @@ from RegisterAndLogin.models import ReadUser, WriteUser
 
 def index(request):
     try:
-        ultima_noticia = Noticia.objects.latest('fecha_publicacion')
+        ultima_noticia = Noticia.objects.filter(aprobada=True).latest('fecha_publicacion')
     except Noticia.DoesNotExist:
         ultima_noticia = None
-
+    imagenUrl = Imagen.objects.get(id=ultima_noticia.id).imagen
     context = {
         'usuario': request.user.username,
+        'imagenU': imagenUrl,
         'ultima_noticia': ultima_noticia,
     }
     return render(request, 'noticias/index.html', context)

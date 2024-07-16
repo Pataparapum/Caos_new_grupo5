@@ -67,7 +67,7 @@
                         <a href="{% url 'index' %}" class="nav-link text-decoration-none">Inicio</a>
                     </li>
                     <li class="border-end border-dark nav-item">
-                        <a href="#" class="nav-link text-decoration-none">Policial</a>
+                        <a href="{% url 'noticias_policial' %}" class="nav-link text-decoration-none">Policial</a>
                     </li>
                     <li class="border-end border-dark nav-item">
                         <a href="{% url 'noticias_economia' %}" class="nav-link text-decoration-none">Economía</a>
@@ -186,7 +186,7 @@
                                 <p>Autor: {{ ultima_noticia.autor }}</p>
                                 <p>Fecha: {{ ultima_noticia.fecha_publicacion }}</p>
                                 <p>{{ ultima_noticia.contenido|truncatewords:50 }}</p>
-                                <img src="{{ ultima_noticia.imagen.url }}" alt="Imagen de la noticia" class="img-fluid">
+                                <img src="{{ imagenU.url }}" alt="Imagen de la noticia" class="img-fluid">
                                 <a href="{% url 'ver_noticia' ultima_noticia.id %}" class="btn btn-primary mt-3">Leer más</a>
                             {% else %}
                                 <p>No hay noticias disponibles.</p>

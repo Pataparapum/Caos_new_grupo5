@@ -19,10 +19,14 @@
                 </a>
             </section>
             <section id="log_in" class="col-3 col-sm mt-auto">
-                <div id="divUsuario">
-                    <button type="button" id="boton" class="btn btn-success rounded-pill">
+                <div id="divUsuario" class="dropdown">
+                    <button type="button" id="boton" class="btn btn-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ user }}
                     </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a id="userCenter" class="dropdown-item" href="{% url 'userCenter' %}">Configuraciones</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                    </ul>
                 </div>
             </section>
         </article>

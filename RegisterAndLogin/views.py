@@ -52,7 +52,7 @@ def register(request):
                 return render (request, 'crearCuenta.html', context)
             
             form = Writer(request.POST)
-            if form.is_valid() and userExist(request.POST['userName']):
+            if form.is_valid() and not userExist(request.POST['userName']):
                 
                 form.save()
                 
