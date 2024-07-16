@@ -88,64 +88,37 @@
             </div>
         </div>
     </nav>
-    <!-- Carrusel de noticias -->
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes economia/economia eu.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes economia/economia 11.png' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes economia/economia fr.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <!-- Ejemplo -->
     <div class="container-fluid bg-light py-5 text-center">
         <div class="row"></div>
-        <h1>Economias</h1>
-        </div>
+        <h1>Economías</h1>
     </div>
 
-    <div class="container mt-5">
-        <h2 class="text-center">Historia de economia del siglo XX</h2>
+    <div class="custom-container container mt-5">
+        <h2 class="custom-title text-center">Historia de economía del siglo XX</h2>
         <div class="row">
-            <div class="col-8">
-                <img class="imagen-salto" src="{% static 'img/imagenes economia/economia 11.png' %}" alt="">
+            <div class="col-md-8">
+                <img class="custom-image img-fluid" src="{% static 'img/imagenes economia/economia 11.png' %}" alt="">
             </div>
-            <div class="col-4">
-                <p>En el siglo XX, la economía global experimentó transformaciones drásticas. Comenzando con la Primera Guerra Mundial, las economías europeas quedaron devastadas, dando paso a los "locos años veinte", una década de crecimiento económico y especulación en los Estados Unidos. Esta bonanza terminó abruptamente con la Gran Depresión de 1929, afectando a gran parte del mundo. La Segunda Guerra Mundial trajo un resurgimiento de la producción industrial y, al finalizar, el Plan Marshall ayudó a reconstruir Europa. La segunda mitad del siglo vio el auge del estado de bienestar en muchos países occidentales, mientras que economías emergentes en Asia empezaron a ganar protagonismo. La Guerra Fría dividió al mundo en bloques económicos y políticos, culminando con la caída del comunismo en 1991. Hacia finales del siglo, la globalización y la revolución tecnológica transformaron aún más las economías, sentando las bases para el mundo interconectado de hoy.</p>
+            <div class="col-md-4">
+                <p class="custom-text text-justify">
+                    En el siglo XX, la economía global experimentó transformaciones drásticas. Comenzando con la Primera Guerra Mundial, las economías europeas quedaron devastadas, dando paso a los "locos años veinte", una década de crecimiento económico y especulación en los Estados Unidos. Esta bonanza terminó abruptamente con la Gran Depresión de 1929, afectando a gran parte del mundo. La Segunda Guerra Mundial trajo un resurgimiento de la producción industrial y, al finalizar, el Plan Marshall ayudó a reconstruir Europa. La segunda mitad del siglo vio el auge del estado de bienestar en muchos países occidentales, mientras que economías emergentes en Asia empezaron a ganar protagonismo. La Guerra Fría dividió al mundo en bloques económicos y políticos, culminando con la caída del comunismo en 1991. Hacia finales del siglo, la globalización y la revolución tecnológica transformaron aún más las economías, sentando las bases para el mundo interconectado de hoy.
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- Tarjetas horizontales -->
     <div class="container mt-5">
-        <div class="card mb-3 border-0 ">
+        <div class="card mb-3 border-0">
             <div class="row g-0">
                 <div class="col-md-5">
-                    <img src="{% static 'img/imagenes economia/economia val.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes economia/economia val.jpg' %}" class="img-fluid custom-image rounded-start" alt="...">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Que dificultades enfrentan la economía mundial durante una guerra?</h2>
-                        <p>Durante una guerra, las economías enfrentan múltiples dificultades. La producción se redirige hacia la fabricación de armamento y suministros militares, lo que puede provocar escasez de bienes de consumo y aumento de precios. La infraestructura civil, como fábricas, puentes y carreteras, a menudo sufre daños severos, afectando el comercio y el transporte. La mano de obra se reduce al ser movilizada hacia el frente, lo que disminuye la productividad en sectores no militares. Además, los gastos gubernamentales en defensa suelen aumentar significativamente, generando déficit fiscales y deudas nacionales. La inestabilidad política y social también puede disuadir la inversión extranjera y local, ralentizando el crecimiento económico a largo plazo.</p>   
+                        <h2 class="card-title">Qué dificultades enfrenta la economía mundial durante una guerra?</h2>
+                        <p>
+                            Durante una guerra, las economías enfrentan múltiples dificultades. La producción se redirige hacia la fabricación de armamento y suministros militares, lo que puede provocar escasez de bienes de consumo y aumento de precios. La infraestructura civil, como fábricas, puentes y carreteras, a menudo sufre daños severos, afectando el comercio y el transporte. La mano de obra se reduce al ser movilizada hacia el frente, lo que disminuye la productividad en sectores no militares. Además, los gastos gubernamentales en defensa suelen aumentar significativamente, generando déficit fiscales y deudas nacionales. La inestabilidad política y social también puede disuadir la inversión extranjera y local, ralentizando el crecimiento económico a largo plazo.
+                        </p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
@@ -154,75 +127,83 @@
             </div>
         </div>
     </div>
+
     <div class="container mt-5">
-        <div class="card mb-3 border-0 ">
+        <div class="card mb-3 border-0">
             <div class="row g-0">
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">Como podemos contribuir a la estabilidad de la economia mundial?</h2>
-                        <p>Para contribuir a la estabilidad de la economía mundial, es esencial fomentar la cooperación internacional y el comercio justo. Los países deben trabajar juntos a través de organizaciones como la ONU, el FMI y la OMC para establecer políticas económicas inclusivas y sostenibles. Invertir en educación y tecnología puede mejorar la productividad y la innovación, mientras que políticas fiscales responsables y transparentes pueden reducir la deuda y controlar la inflación. Además, es crucial promover la igualdad y reducir la pobreza, ya que una distribución más equitativa de la riqueza fortalece el consumo y el crecimiento económico. La atención a la sostenibilidad ambiental también es vital, ya que el cambio climático representa una amenaza significativa para la estabilidad económica a largo plazo.</p>
+                        <h2 class="card-title">Cómo podemos contribuir a la estabilidad de la economía mundial?</h2>
+                        <p>
+                            Para contribuir a la estabilidad de la economía mundial, es esencial fomentar la cooperación internacional y el comercio justo. Los países deben trabajar juntos a través de organizaciones como la ONU, el FMI y la OMC para establecer políticas económicas inclusivas y sostenibles. Invertir en educación y tecnología puede mejorar la productividad y la innovación, mientras que políticas fiscales responsables y transparentes pueden reducir la deuda y controlar la inflación. Además, es crucial promover la igualdad y reducir la pobreza, ya que una distribución más equitativa de la riqueza fortalece el consumo y el crecimiento económico. La atención a la sostenibilidad ambiental también es vital, ya que el cambio climático representa una amenaza significativa para la estabilidad económica a largo plazo.
+                        </p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="{% static 'img/imagenes economia/economia ga.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes economia/economia ga.jpg' %}" class="img-fluid custom-image rounded-start" alt="...">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Tarjetas -->
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes economia/economia inno.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes economia/economia inno.jpg' %}" class="card-img-top custom-image rounded" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Primer accion para innovar la economia mundial</h5>
-                        <p class="card-text">Para innovar la economía mundial, es crucial fomentar la colaboración global en ciencia y tecnología, incentivando la inversión en investigación y desarrollo. Esto implica apoyar la educación STEM, promover políticas que faciliten la adopción de tecnologías emergentes, y crear marcos regulatorios que impulsen el emprendimiento y la sostenibilidad. Al hacerlo, se puede acelerar la transición hacia una economía digital y verde, mejorando la productividad y generando oportunidades inclusivas para todos.</p>
+                        <h5 class="card-title">Primera acción para innovar la economía mundial</h5>
+                        <p class="card-text">
+                            Para innovar la economía mundial, es crucial fomentar la colaboración global en ciencia y tecnología, incentivando la inversión en investigación y desarrollo. Esto implica apoyar la educación STEM, promover políticas que faciliten la adopción de tecnologías emergentes, y crear marcos regulatorios que impulsen el emprendimiento y la sostenibilidad. Al hacerlo, se puede acelerar la transición hacia una economía digital y verde, mejorando la productividad y generando oportunidades inclusivas para todos.
+                        </p>
                         <a href="#" class="btn btn-primary">Ir a noticia</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes economia/economia dol.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes economia/economia dol.jpg' %}" class="card-img-top custom-image rounded" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Nuestra ganancia cuando la economia es estable.</h5>
-                        <p class="card-text">Cuando la economía es estable, se obtienen múltiples beneficios, como un aumento en la confianza de los consumidores y las empresas, lo que fomenta la inversión y el gasto. La estabilidad económica reduce la incertidumbre, facilitando la planificación a largo plazo y la creación de empleo. Además, contribuye a mantener bajas las tasas de inflación y de interés, lo que favorece el acceso al crédito y promueve el crecimiento sostenible. En resumen, una economía estable proporciona un entorno propicio para el desarrollo y el bienestar general de la sociedad.</p>
+                        <h5 class="card-title">Nuestra ganancia cuando la economía es estable</h5>
+                        <p class="card-text">
+                            Cuando la economía es estable, se obtienen múltiples beneficios, como un aumento en la confianza de los consumidores y las empresas, lo que fomenta la inversión y el gasto. La estabilidad económica reduce la incertidumbre, facilitando la planificación a largo plazo y la creación de empleo. Además, contribuye a mantener bajas las tasas de inflación y de interés, lo que favorece el acceso al crédito y promueve el crecimiento sostenible. En resumen, una economía estable proporciona un entorno propicio para el desarrollo y el bienestar general de la sociedad.
+                        </p>
                         <a href="#" class="btn btn-primary">Ir a noticia</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes economia/economia 11.png' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes economia/economia 11.png' %}" class="card-img-top custom-image rounded" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">La economia fragil</h5>
-                        <p class="card-text">La economía mundial puede fragilizarse mediante la implementación de políticas proteccionistas, que limitan el comercio y la cooperación internacional, y fomentan el nacionalismo económico. La inestabilidad política, los conflictos bélicos y las sanciones económicas también socavan la confianza y aumentan la incertidumbre global. Asimismo, el mal manejo de la deuda pública y la falta de regulación en los mercados financieros pueden provocar crisis financieras. Finalmente, el cambio climático y las pandemias descontroladas pueden interrumpir cadenas de suministro y generar desastres económicos a gran escala.</p>
+                        <h5 class="card-title">La economía frágil</h5>
+                        <p class="card-text">
+                            La economía mundial puede fragilizarse mediante la implementación de políticas proteccionistas, que limitan el comercio y la cooperación internacional, y fomentan el nacionalismo económico. La inestabilidad política, los conflictos bélicos y las sanciones económicas también socavan la confianza y aumentan la incertidumbre global. Asimismo, el mal manejo de la deuda pública y la falta de regulación en los mercados financieros pueden provocar crisis financieras. Finalmente, el cambio climático y las pandemias descontroladas pueden interrumpir cadenas de suministro y generar desastres económicos a gran escala.
+                        </p>
                         <a href="#" class="btn btn-primary">Ir a noticia</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 
-    <!-- Pie de página / Footer -->
     <section class="pie-de-pagina">
         <footer class="container-fluid">
             <div class="row">
                 <div class="col-md-4 footerItem">
                     <h4>Sobre nosotros</h4>
-                    <p>"En nuestra página de noticias, nos dedicamos a brindar información actualizada y precisa, cubriendo una amplia gama de temas desde política y economía hasta deportes y entretenimiento. Nuestro compromiso es con la verdad y la transparencia, asegurando que cada artículo no solo informe, sino también enriquezca el entendimiento de nuestros lectores sobre los eventos que moldean nuestro mundo. Utilizamos una variedad de fuentes confiables y un equipo editorial dedicado a verificar cada hecho, lo que nos convierte en un recurso indispensable para quienes buscan comprender las complejidades de la actualidad global."</p>
+                    <p>
+                        "En nuestra página de noticias, nos dedicamos a brindar información actualizada y precisa, cubriendo una amplia gama de temas desde política y economía hasta deportes y entretenimiento. Nuestro compromiso es con la verdad y la transparencia, asegurando que cada artículo no solo informe, sino también enriquezca el entendimiento de nuestros lectores sobre los eventos que moldean nuestro mundo. Utilizamos una variedad de fuentes confiables y un equipo editorial dedicado a verificar cada hecho, lo que nos convierte en un recurso indispensable para quienes buscan comprender las complejidades de la actualidad global."
+                    </p>
                 </div>
                 <div class="col-md-4 footerItem">
                     <h4>Síguenos</h4>
                     <ul class="social-media">
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-X"></i></a></li>
+                        <li><a href="#"><i class="fab fa-x"></i></a></li>
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>

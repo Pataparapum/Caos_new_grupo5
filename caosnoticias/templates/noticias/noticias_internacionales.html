@@ -88,57 +88,107 @@
             </div>
         </div>
     </nav>
-
-    <!-- Carrusel de noticias -->
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" style="max-height:700px;" >
-            <img src="{% static 'img/noticiasinternacionales/noticiacarrusel1.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/noticiasinternacionales/noticiacarrusel2.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/noticiasinternacionales/noticiacarrusel3.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+    <div class="container-fluid bg-light py-5 text-center">
+        <div class="row"></div>
+        <h1>Internacional</h1>
     </div>
 
-    <!-- Sección de Noticias Publicadas -->
+    <div class="custom-container container mt-5">
+        <h2 class="custom-title text-center">Cumbre Global sobre el Cambio Climático: Líderes Mundiales Comprometidos con la Acción Climática</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <img class="custom-image img-fluid" src="{% static 'img/noticiasinternacionales/internaciona_1.jpg' %}" alt="Cumbre sobre el Cambio Climático">
+            </div>
+            <div class="col-md-4">
+                <p class="custom-text text-justify">
+                    En la reciente Cumbre Global sobre el Cambio Climático celebrada en París, líderes mundiales de más de 100 países se comprometieron a implementar políticas más estrictas para reducir las emisiones de carbono. Durante el evento, se discutieron estrategias para promover la energía renovable y mejorar la eficiencia energética. Además, se anunció la creación de un fondo internacional destinado a apoyar a los países en desarrollo en su transición hacia economías sostenibles y resilientes al clima. Esta cumbre marca un paso significativo en los esfuerzos globales para combatir el cambio climático y proteger el medio ambiente para las futuras generaciones.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas horizontales -->
     <div class="container mt-5">
-        <h2 class="text-center">Noticias Publicadas</h2>
-        {% for noticia in noticias %}
-        <div class="card mb-3">
+        <div class="card mb-3 border-0">
             <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{% static 'imagenes/noticia_imagen.jpg' %}" class="img-fluid rounded-start" alt="{{ noticia.titulo }}">
+                <div class="col-md-5">
+                    <img src="{% static 'img/noticiasinternacionales/elecciones_1.jpg' %}" class="img-fluid custom-image rounded-start" alt="Elecciones en Europa">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="card-body">
-                        <h5 class="card-title">{{ noticia.titulo }}</h5>
-                        <p class="card-text">{{ noticia.contenido|truncatewords:30 }}</p>
-                        <p class="card-text">
-                            <small class="text-muted">Publicado por: <img src="{{ noticia.autor.foto.url }}" alt="{{ noticia.autor.username }}" class="rounded-circle" style="width: 40px; height: 40px;"> {{ noticia.autor.username }}</small>
+                        <h2 class="card-title">Elecciones en Europa: Un Nuevo Panorama Político</h2>
+                        <p class="custom-text text-justify">
+                            Las recientes elecciones en varios países europeos han resultado en cambios significativos en el panorama político. En Alemania, el partido Verde ha logrado un avance histórico, obteniendo un número récord de escaños en el Parlamento. En Francia, el movimiento centrista ha consolidado su posición, mientras que en Italia, una coalición de partidos de derecha ha ganado terreno. Estos resultados reflejan un cambio en las prioridades de los votantes europeos, con un enfoque creciente en la sostenibilidad, la justicia social y la reforma económica. Los analistas prevén que estos cambios influirán en las políticas nacionales y en la dirección futura de la Unión Europea.
                         </p>
-                        <a href="{% url 'ver_noticia_publicada' noticia.id %}" class="btn btn-primary">Leer más</a>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-success bt-lg">Leer más</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
+    </div>
+    <div class="container mt-5">
+        <div class="card mb-3 border-0">
+            <div class="row g-0">
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h2 class="card-title">Crisis Humanitaria en Medio Oriente: Llamado a la Acción Internacional</h2>
+                        <p class="custom-text text-justify">
+                            La crisis humanitaria en Medio Oriente continúa empeorando, con millones de personas desplazadas debido a conflictos y violencia. Las organizaciones humanitarias han emitido un llamado urgente a la comunidad internacional para proporcionar asistencia y apoyo. En Siria y Yemen, la situación es particularmente grave, con escasez de alimentos, agua y atención médica. Los líderes mundiales están siendo instados a incrementar la ayuda humanitaria y a trabajar hacia soluciones diplomáticas para poner fin a la violencia y permitir el regreso seguro de los desplazados a sus hogares.
+                        </p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-success bt-lg">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <img src="{% static 'img/noticiasinternacionales/crisis_1.png' %}" class="img-fluid custom-image rounded-start" alt="Crisis Humanitaria en Medio Oriente">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'img/internacional/economia_global.jpg' %}" class="card-img-top custom-image rounded" alt="Economía Global">
+                    <div class="card-body">
+                        <h5 class="card-title">Economía Global: Recuperación Post-Pandemia</h5>
+                        <p class="custom-text text-justify">
+                            La economía global muestra signos de recuperación tras la pandemia de COVID-19, con un crecimiento en el comercio y la inversión. Sin embargo, los desafíos persisten, incluidos los problemas en la cadena de suministro y la inflación. Los economistas instan a los gobiernos a implementar políticas fiscales y monetarias que apoyen un crecimiento sostenible y equitativo.
+                        </p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'img/internacional/tecnologia.jpg' %}" class="card-img-top custom-image rounded" alt="Innovación Tecnológica">
+                    <div class="card-body">
+                        <h5 class="card-title">Innovación Tecnológica: Nuevos Avances en IA</h5>
+                        <p class="custom-text text-justify">
+                            La inteligencia artificial (IA) continúa avanzando, con nuevas aplicaciones que transforman diversas industrias. Desde la salud hasta la educación, la IA está mejorando la eficiencia y creando nuevas oportunidades. Los expertos subrayan la importancia de regulaciones éticas para asegurar que el desarrollo de la IA beneficie a toda la sociedad.
+                        </p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'img/internacional/medio_ambiente.jpg' %}" class="card-img-top custom-image rounded" alt="Medio Ambiente">
+                    <div class="card-body">
+                        <h5 class="card-title">Medio Ambiente: Conservación de la Biodiversidad</h5>
+                        <p class="custom-text text-justify">
+                            La conservación de la biodiversidad se ha convertido en una prioridad global, con iniciativas para proteger especies en peligro de extinción y restaurar hábitats naturales. Los esfuerzos incluyen proyectos de reforestación, protección de áreas marinas y programas de educación ambiental. La colaboración internacional es clave para lograr estos objetivos.
+                        </p>
+                        <a href="#" class="btn btn-primary">Ir a noticia</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Pie de página / Footer -->
@@ -153,7 +203,7 @@
                     <h4>Síguenos</h4>
                     <ul class="social-media">
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-X"></i></a></li>
+                        <li><a href="#"><i class="fab fa-x'></i></a></li>
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
@@ -163,8 +213,8 @@
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="form.js"></script>
-    <script src="./js/getUser.js"></script>
+    <script src="{% static './js/form.js' %}"></script>
+    <script src="{% static './js/getUser.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

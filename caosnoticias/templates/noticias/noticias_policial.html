@@ -88,64 +88,38 @@
             </div>
         </div>
     </nav>
-    <!-- Carrusel de noticias -->
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes policial/police llu.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes policial/police car.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" style="max-height:700px;" >
-            <img src="{% static 'img/imagenes policial/police foret.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <!-- Ejemplo -->
     <div class="container-fluid bg-light py-5 text-center">
         <div class="row"></div>
         <h1>Policial</h1>
-        </div>
     </div>
 
-    <div class="container mt-5">
-        <h2 class="text-center">Historia de un detective</h2>
+    <div class="custom-container container mt-5">
+        <h2 class="custom-title text-center">Historia de un detective</h2>
         <div class="row">
-            <div class="col-8">
-                <img class="{% static 'imagen-salto' %}" src="{% static 'img/imagenes policial/police eli.jpg' %}" alt="">
+            <div class="col-md-8">
+                <img class="custom-image img-fluid" src="{% static 'img/imagenes policial/police eli.jpg' %}" alt="">
             </div>
-            <div class="col-4">
-                <p>El detective Marco Ramírez, conocido por resolver los casos más enigmáticos en una pequeña ciudad costera, recibió una llamada urgente del Museo de Historia Local: su joya más valiosa, un diamante azul, había desaparecido sin señales de entrada forzada. Al investigar, descubrió una huella dactilar que pertenecía a Julia, la curadora del museo, quien confesó haber sido chantajeada por un ex empleado, Roberto. Marco ideó un plan para atraparlo, convenciendo a Julia de fingir que aún estaba bajo su control y organizando un encuentro para entregar la joya. En la cita, el detective y su equipo arrestaron a Roberto, recuperaron el diamante y resolvieron el caso, demostrando una vez más la astucia de Marco.</p>
+            <div class="col-md-4">
+                <p class="custom-text text-justify">
+                    El detective Marco Ramírez, conocido por resolver los casos más enigmáticos en una pequeña ciudad costera, recibió una llamada urgente del Museo de Historia Local: su joya más valiosa, un diamante azul, había desaparecido sin señales de entrada forzada. Al investigar, descubrió una huella dactilar que pertenecía a Julia, la curadora del museo, quien confesó haber sido chantajeada por un ex empleado, Roberto. Marco ideó un plan para atraparlo, convenciendo a Julia de fingir que aún estaba bajo su control y organizando un encuentro para entregar la joya. En la cita, el detective y su equipo arrestaron a Roberto, recuperaron el diamante y resolvieron el caso, demostrando una vez más la astucia de Marco.
+                </p>
             </div>
         </div>
     </div>
 
     <!-- Tarjetas horizontales -->
     <div class="container mt-5">
-        <div class="card mb-3 border-0 ">
+        <div class="card mb-3 border-0">
             <div class="row g-0">
                 <div class="col-md-5">
-                    <img src="{% static 'img/imagenes policial/police gra.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes policial/police gra.jpg' %}" class="img-fluid custom-image rounded-start" alt="...">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
                         <h2 class="card-title">Policial 1</h2>
-                        <p>El primer acto que puede hacer un policía cuando ocurre un accidente es asegurar la escena. Esto implica evaluar la situación para determinar la gravedad del accidente y los posibles riesgos inmediatos, como incendios o fugas de combustible. Luego, debe proteger la escena colocando señales de advertencia o barreras para desviar el tráfico y evitar más accidentes, al mismo tiempo que preserva cualquier evidencia. Si está capacitado, el policía debe proporcionar primeros auxilios a los heridos hasta la llegada de los servicios médicos de emergencia. Además, debe notificar a los servicios de emergencia necesarios, como paramédicos y bomberos, y comenzar a recopilar información inicial relevante, como la ubicación exacta y las condiciones del tráfico y el clima</p>   
+                        <p class="custom-text text-justify">
+                            El primer acto que puede hacer un policía cuando ocurre un accidente es asegurar la escena. Esto implica evaluar la situación para determinar la gravedad del accidente y los posibles riesgos inmediatos, como incendios o fugas de combustible. Luego, debe proteger la escena colocando señales de advertencia o barreras para desviar el tráfico y evitar más accidentes, al mismo tiempo que preserva cualquier evidencia. Si está capacitado, el policía debe proporcionar primeros auxilios a los heridos hasta la llegada de los servicios médicos de emergencia. Además, debe notificar a los servicios de emergencia necesarios, como paramédicos y bomberos, y comenzar a recopilar información inicial relevante, como la ubicación exacta y las condiciones del tráfico y el clima.
+                        </p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
@@ -154,20 +128,23 @@
             </div>
         </div>
     </div>
+
     <div class="container mt-5">
-        <div class="card mb-3 border-0 ">
+        <div class="card mb-3 border-0">
             <div class="row g-0">
                 <div class="col-md-7">
                     <div class="card-body">
                         <h2 class="card-title">Policial 2</h2>
-                        <p>El primer acto que puede hacer un policía cuando ocurre un accidente es asegurar la escena. Esto implica evaluar la situación para determinar la gravedad del accidente y los posibles riesgos inmediatos, como incendios o fugas de combustible. Luego, debe proteger la escena colocando señales de advertencia o barreras para desviar el tráfico y evitar más accidentes, al mismo tiempo que preserva cualquier evidencia. Si está capacitado, el policía debe proporcionar primeros auxilios a los heridos hasta la llegada de los servicios médicos de emergencia. Además, debe notificar a los servicios de emergencia necesarios, como paramédicos y bomberos, y comenzar a recopilar información inicial relevante, como la ubicación exacta y las condiciones del tráfico y el clima.</p>
+                        <p class="custom-text text-justify">
+                            El primer acto que puede hacer un policía cuando ocurre un accidente es asegurar la escena. Esto implica evaluar la situación para determinar la gravedad del accidente y los posibles riesgos inmediatos, como incendios o fugas de combustible. Luego, debe proteger la escena colocando señales de advertencia o barreras para desviar el tráfico y evitar más accidentes, al mismo tiempo que preserva cualquier evidencia. Si está capacitado, el policía debe proporcionar primeros auxilios a los heridos hasta la llegada de los servicios médicos de emergencia. Además, debe notificar a los servicios de emergencia necesarios, como paramédicos y bomberos, y comenzar a recopilar información inicial relevante, como la ubicación exacta y las condiciones del tráfico y el clima.
+                        </p>
                         <div class="text-center">
                             <a href="#" class="btn btn-success bt-lg">Leer más</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <img src="{% static 'img/imagenes policial/police minot.jpg' %}" class="img-fluid rounded-start" alt="...">
+                    <img src="{% static 'img/imagenes policial/police minot.jpg' %}" class="img-fluid custom-image rounded-start" alt="...">
                 </div>
             </div>
         </div>
@@ -178,37 +155,36 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes policial/police sena.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes policial/police sena.jpg' %}" class="card-img-top custom-image rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="custom-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <a href="#" class="btn btn-primary">Ir a noticia</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes policial/police car.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes policial/police car.jpg' %}" class="card-img-top custom-image rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="custom-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <a href="#" class="btn btn-primary">Ir a noticia</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{% static 'img/imagenes policial/police moto.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{% static 'img/imagenes policial/police moto.jpg' %}" class="card-img-top custom-image rounded" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="custom-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <a href="#" class="btn btn-primary">Ir a noticia</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 
     <!-- Pie de página / Footer -->
     <section class="pie-de-pagina">
@@ -222,8 +198,8 @@
                     <h4>Síguenos</h4>
                     <ul class="social-media">
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-X"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-x'></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram'></i></a></li>
                     </ul>
                 </div>
             </div>

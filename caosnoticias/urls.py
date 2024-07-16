@@ -17,4 +17,5 @@ urlpatterns = [
     path('noticias_policial/', views.noticias_policial, name='noticias_policial'),
     path('contacto/', views.contacto, name='contacto'),
     path('mensajes_recibidos/', views.mensajes_recibidos, name='mensajes_recibidos'),
+    path('mensajes_recibidos/eliminar/<int:mensaje_id>/', views.eliminar_mensaje, name='eliminar_mensaje'),
 ]
