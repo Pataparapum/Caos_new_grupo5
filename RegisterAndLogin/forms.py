@@ -20,12 +20,14 @@ class Reader(forms.Form, ModelForm):
             "userName" : forms.TextInput(
                                  attrs={'class':'inputform form-control',
                                         'id': 'user',
-                                        'placeholder': 'user'
+                                        'placeholder': 'user',
+                                        'name': 'userName'
                                         }),
             "email" : forms.EmailInput(
                                  attrs={'class':'inputform form-control',
                                         'id':'email',
-                                        'placeholder':'name@example.com'
+                                        'placeholder':'name@example.com',
+                                        'name': 'email'
                                         }),
             
         }
@@ -45,17 +47,20 @@ class Writer(forms.Form, ModelForm):
         widgets = {
             "userName" : forms.TextInput(attrs={'class':'inputform form-control',
                                         'id': 'user',
-                                        'placeholder': 'user'
+                                        'placeholder': 'user',
+                                        'name': "userName"
                                     }),
             "email" : forms.EmailInput(
                                  attrs={'class':'inputform form-control',
                                         'id':'email',
-                                        'placeholder':'name@example.com'
+                                        'placeholder':'name@example.com',
+                                        'name': "email"
                                         }),
             "empresa" : forms.TextInput(
                                   attrs={'class':'inputform form-control',
                                          'id':'empresa',
-                                         'placeholder':'empresa'
+                                         'placeholder':'empresa',
+                                         'name': 'empresa'
                                          }),
         }
         
@@ -65,7 +70,8 @@ class ChangeUserName(forms.Form):
         attrs={
             'class':'inputform form-control',
             'id':'newusername',
-            'placeholder':'nuevo nombre de usuario'
+            'placeholder':'nuevo nombre de usuario',
+            'name': 'newuserName'
         }
     ))
     
@@ -73,7 +79,8 @@ class ChangeUserName(forms.Form):
         attrs={
             'class':'inputform form-control',
             'id':'cnewusername',
-            'placeholder':'confirmar nombre de usuario'
+            'placeholder':'confirmar nombre de usuario',
+            'name': 'cuserName'
         }
     ))
         
@@ -83,7 +90,8 @@ class ChangePassword(forms.Form):
         attrs={
             'class':'inputform form-control',
             'id':'oldpassword',
-            'placeholder':'old password'
+            'placeholder':'old password',
+            'name': 'oldPassword'
         }
     ))
     
@@ -91,7 +99,8 @@ class ChangePassword(forms.Form):
         attrs={
             'class':'inputform form-control',
             'id':'newpassword',
-            'placeholder':'new password'
+            'placeholder':'new password',
+            'name': 'newPassword'
         }
     ))
     
@@ -99,7 +108,8 @@ class ChangePassword(forms.Form):
         attrs={
             'class':'inputform form-control',
             'id':'newpasswordc',
-            'placeholder':'confirmar password'
+            'placeholder':'confirmar password',
+            'name': 'newPasswordC'
         }
     ))
     
@@ -121,13 +131,15 @@ class UserLoginForm(AuthenticationForm):
         attrs={
             'class':'inputform form-control',
             'placeholder': 'username',
-            'id':'user'
+            'id':'user',
+            'name': 'userName'
         }
     ))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class':'inputform form-control',
             'placeholder':'password',
-            'id':'password'
+            'id':'password',
+            'name': 'password'
         }
     ))

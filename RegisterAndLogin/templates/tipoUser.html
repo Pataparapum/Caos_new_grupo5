@@ -19,7 +19,7 @@
     </header>
     <main>
         
-        <form action="{% url "register" %}" class="form-group formtype" id="form" method="POST">
+        <form action="{% url 'register' %}" class="form-group formtype" id="form" method="POST">
             {% csrf_token %}
             <div id="formulario" class="mb-3">
                 <h1 class="text-center">Seleccione el tipo de usuario</h1>

@@ -1,0 +1,68 @@
+body,html {
+    height: 100%;
+}
+
+body {
+    margin: auto;
+    background-color: #F3EFEE;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    background-color: #333333;
+
+}
+
+main {
+    margin: auto;
+    height: 450px;
+    width: 700px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+/* IDs */
+#logo {
+    width: 800px;
+    margin: auto;
+}
+
+#imgLogo {
+    margin: 20px;
+    border-radius: 100px;
+}
+
+#caosNew {
+    display: flex;
+    justify-content: center;
+}
+
+#caosNew > img {
+    border-radius: 10px;
+}
+
+#caosNew > p {
+    font-weight:900;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+table {
+    text-align: center;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+input {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+}

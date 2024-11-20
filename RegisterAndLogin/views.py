@@ -1,122 +1,28 @@
 from django.contrib.messages import constants as messages
-from django.shortcuts import render, redirect
-from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .funciones import userExist, oldPasswordCorrect, ReadUserExist, WriteUserExist
-from .forms import Reader, Writer, ChangePassword, ChangeUserName
+from .funciones import *
+from .forms import ChangePassword, ChangeUserName
 from .models import ReadUser, WriteUser
 
 
-
+logger = logging.getLogger(__name__)
 
 def register(request):
-    if (request.method != 'POST'):
-        return redirect('index')
+    if request.method != 'POST': return redirect('index')
+    
     
     userType = request.POST["type"]
     context = {}
-    
-    if (request.POST["type"] == "write"):
-        form = Writer()
-        context = {
-            'form':form,
-            'user':userType
-        }
+
+
+    if userType == "write" or userType == "read": return typeForm(request, userType, context);
         
-        return render(request, "crearCuenta.html", context)
-    
-    elif (request.POST["type"] == "read"):
-        form = Reader()
-        context = {
-            'form':form,
-            'user':userType
-        }
-        
-        return render(request, "crearCuenta.html", context)
-        
-    else:
-        if (userType == "createwrite"):
-            try:
-                validate_email(request.POST['email'])
-            except ValidationError:
-                form = Writer()
-                mensaje = 'Formato de email invalido'
-                context = {
-                    'form' : form,
-                    'error' : mensaje,
-                    'user' : 'write'
-                }
-                return render (request, 'crearCuenta.html', context)
-            
-            form = Writer(request.POST)
-            if form.is_valid() and not userExist(request.POST['userName']):
-                
-                form.save()
-                
-                user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], request.POST['password'])
-                user.first_name = "write"
-                user.has_perm('RegisterAndLogin.view_Newspaper')
-                user.has_perm('RegisterAndLogin.add_Newspaper')
-                user.has_perm('RegisterAndLogin.delete_Newspaper')
-                user.has_perm('RegisterAndLogin.change_Newspaper')
-                user.has_perm('RegisterAndLogin.delete_WriteUser')
-                user.has_perm('RegisterAndLogin.change_WriteUser')
-                user.save()
-                
-                login(request, user)
+    if userType == "createwrite": return writeUserCase(request)
                     
-                form = Writer()
-                return redirect('index')
-            else:
-                form = Writer()
-                mensaje = 'los datos no son validos o el usuario ya esta registrado'
-                context = {
-                    'error': mensaje,
-                    'form':form,
-                    'user':'write'
-                }
-                return render(request, 'crearCuenta.html', context)
-                    
-        elif (userType == "createread"):
-            try:
-                validate_email(request.POST['email'])
-            except ValidationError:
-                form = Reader()
-                mensaje = 'Formato de email invalido'
-                context = {
-                    'form' : form,
-                    'error' : mensaje,
-                    'user' : 'read'
-                }
-                return render (request, 'crearCuenta.html', context)
-            
-            form = Reader(request.POST)
-            if form.is_valid() and userExist(request.POST['userName']):
-                form.save()
-                    
-                user = User.objects.create_user(form.cleaned_data['userName'], form.cleaned_data['email'], form.cleaned_data['password'])
-                user.first_name = "read"
-                user.has_perm('RegisterAndLogin.view_Newspaper')
-                user.has_perm('RegisterAndLogin.delete_ReadUser')
-                user.has_perm('RegisterAndLogin.change_ReadUser')
-                
-                login(request, user)
-                
-                form = Reader()
-                return redirect('index')
-            
-            else:
-                form = Reader()
-                mensaje = 'los datos no son validos o el usuario ya esta registrado'
-                context = {
-                    'error': mensaje,
-                    'form':form,
-                    'user':'write'
-                }
-                return render(request, 'crearCuenta.html', context)
+    if userType == "createread": return readUserCase(request)
                 
 
 @login_required
@@ -228,30 +134,50 @@ def cambiarPassword(request):
 @login_required
 def deleteAccount(request):
     username = request.user.username
+    return deleteUser(request, username)
+    
+
+@login_required
+def deleteUser(request, username):
     try:
         user = User.objects.get(username=username)
         if(WriteUserExist(user)):
             write = WriteUser.objects.get(userName=username)
-            logout(request)
             write.delete()
             user.delete()
-            return redirect('index')
+            logger.warning('escritor borrado')
+            
+            return redirect('usuarios')
         
         elif (ReadUserExist(user)):
             read = ReadUser.objects.get(userName=username)
-            logout(request)
             read.delete()
             user.delete()
-            return redirect('index')
+
+            logger.warning('lector borrado')
+
+            return redirect('usuarios')
         
         else:
+            logger.warning('no paso nada')
             logout(request)
             user.delete()
-            return redirect('index')
+
+            return redirect('usuarios')
     
     except User.DoesNotExist:
         messages.error(request, 'El usuario no existe')
+        return redirect('usuarios')
         
     except Exception as e:
         messages.error(request, e)
-        
+        return redirect('usuarios')
+
+def usuarios(request):
+    usuarios = User.objects.filter(first_name="read") | User.objects.filter(first_name="write")
+
+    context = {
+        "user": usuarios
+    }
+
+    return render(request, 'usuario.html', context)

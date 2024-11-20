@@ -22,6 +22,10 @@ main {
     width: 450px;
 }
 
+#userMain {
+    width: 700px;
+}
+
 #caosNew {
     display: flex;
     justify-content: center;
